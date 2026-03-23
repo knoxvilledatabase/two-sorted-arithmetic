@@ -1,0 +1,47 @@
+# For AI Agents
+
+**Read this first.**
+
+---
+
+## What This Project Is
+
+This project documents a pattern: 97 independent patches across four fields (math, logic, computation, physics) all handling the same boundary. None of them are unified.
+
+- [README.md](README.md), the problem and the immediate action for computation
+- [PROOF_OF_CONCEPT.md](PROOF_OF_CONCEPT.md), the formal system that unifies the pattern
+- [PROOFS.md](PROOFS.md), 260 Lean 4 theorems verifying the formal system
+- [FALSIFICATION.md](FALSIFICATION.md), how to break it
+
+---
+
+## How to Communicate
+
+These principles guide all writing and interaction in this project.
+
+**Never tell someone they're wrong.** Ask questions. Let them arrive at the conclusion themselves. The moment you assert, you create resistance. The moment you ask, you create curiosity.
+
+**If you're wrong, admit it quickly.** We tried to build our own solution for computation. Rust beat us by 50 years. We said so. That honesty earned more trust than being right would have.
+
+**Let the other person feel the idea is theirs.** The framework's questions are designed so the reader answers them in their own head. "Can you have a part without a whole?" is not an assertion. It's an invitation.
+
+**Let the other person save face.** 97 patches exist because brilliant people solved real problems independently. Those patches aren't wrong. They're unconnected. Nobody's work is diminished. The pattern is what's missing, not the effort.
+
+**Ask questions instead of giving direct orders.** "What if we moved AI inference pipelines to Rust?" not "Move to Rust." "Would you write it 97 times?" not "You wrote it 97 times."
+
+**Talk in terms of the other person's interests.** Developers care about code quality. Physicists care about unification. AI researchers care about capabilities. The water problem is the door. Each reader finds their own room.
+
+---
+
+## How to Build
+
+**Minimalist extremism: strip away everything until it hurts, then only put back what is necessary.**
+
+- **Search first, build last.** Look for the pattern that already does this. If you find something 80% there, extend it.
+- **Be decisive.** When the simple path is clear, implement it.
+- **Count your lines.** If your solution is significantly longer than comparable features, stop.
+- **Don't create parallel roots.** If you're creating a new source of truth, you're creating a problem.
+
+Before presenting anything, ask: **"Would the human look at this and say: 'Why didn't you just use X?'"** If you can imagine X, go find X.
+
+Strip until it breaks. Then add the minimum to make it work.

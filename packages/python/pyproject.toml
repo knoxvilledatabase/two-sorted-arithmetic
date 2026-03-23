@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "two-sorted"
+version = "0.1.0"
+description = "Origin | Bounded type system. Replaces None and NaN with one formally verified concept."
+readme = "README.md"
+license = {text = "Unlicense"}
+requires-python = ">=3.10"
+keywords = ["type-safety", "null-safety", "origin", "bounded", "formally-verified"]
+authors = [{name = "knoxvilledatabase"}]
+
+[project.urls]
+Repository = "https://github.com/knoxvilledatabase/two-sorted-arithmetic"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

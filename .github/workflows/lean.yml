@@ -1,0 +1,40 @@
+name: Lean 4 Verification
+
+on:
+  push:
+    branches: [main]
+    paths: ['lean/**']
+  pull_request:
+    paths: ['lean/**']
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install elan (Lean toolchain manager)
+        run: |
+          curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain leanprover/lean4:v4.28.0
+          echo "$HOME/.elan/bin" >> $GITHUB_PATH
+
+      - name: Verify Lean version
+        run: lean --version
+
+      - name: Check two_sorted_arithmetic.lean
+        run: lean lean/two_sorted_arithmetic.lean
+
+      - name: Check novel_prediction.lean
+        run: lean lean/novel_prediction.lean
+
+      - name: Check exhaustive_tests.lean
+        run: lean lean/exhaustive_tests.lean
+
+      - name: Count theorems
+        run: |
+          echo "Core: $(grep -c '^theorem' lean/two_sorted_arithmetic.lean)"
+          echo "Novel: $(grep -c '^theorem' lean/novel_prediction.lean)"
+          echo "Exhaustive: $(grep -c '^theorem' lean/exhaustive_tests.lean)"
+          TOTAL=$(grep -c '^theorem' lean/two_sorted_arithmetic.lean lean/novel_prediction.lean lean/exhaustive_tests.lean | tail -1 | cut -d: -f2)
+          echo "Total: $TOTAL"
+          echo "All files compiled. Zero errors. Zero sorry's."

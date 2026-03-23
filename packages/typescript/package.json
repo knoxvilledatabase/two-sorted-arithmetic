@@ -1,0 +1,37 @@
+{
+  "name": "two-sorted",
+  "version": "0.1.0",
+  "description": "Origin | Bounded type system. Replaces null, undefined, NaN with one formally verified concept.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "comparison": "npx tsx src/comparison.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "type-safety",
+    "null-safety",
+    "origin",
+    "bounded",
+    "two-sorted",
+    "formally-verified",
+    "error-handling",
+    "nan",
+    "undefined"
+  ],
+  "author": "knoxvilledatabase",
+  "license": "Unlicense",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/knoxvilledatabase/two-sorted-arithmetic"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "@types/jest": "^29.5.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.3.0"
+  }
+}
