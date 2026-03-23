@@ -5,3 +5,4 @@ __pycache__/
 .pytest_cache/
 *.js.map
 stupid-simple-math/
+origin/
