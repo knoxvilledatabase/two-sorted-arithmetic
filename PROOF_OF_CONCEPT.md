@@ -82,7 +82,7 @@ Was zero ever one thing? Or was it always at least three:
 - **1**, container. The part. The symbol exists. The boundary that makes it one thing.
 - **0**, contents. The symbol's quantity is empty.
 
-The container and the contents are inseparable, they are always co-present in B. Neither can exist without a categorical origin.
+Are the container and the contents complementary opposites, needing each other to exist, but needing to be different to be useful? Neither can exist without a categorical origin.
 
 `a × b = c` is 1 container times 1 container equals 1 container.
 
@@ -142,6 +142,8 @@ Can a symbol remove the boundary that defines it? No. The boundary is what makes
 This is why every formal system that tries to reach past its own edge,`Type : Type`, the set of all sets, the program that halts on itself, doesn't break through. It breaks.
 
 Can symbols generate anything other than symbols? No. Every proof is symbols. Every number is symbols. Every equation is symbols verifying other symbols. Math is sealed inside a completely closed system.
+
+Can you have a concept without representation?
 
 But the seeing came first. The symbols came after. That's the ground.
 
