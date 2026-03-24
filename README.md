@@ -30,7 +30,7 @@ A stop sign, a red traffic light, and a "road closed" barrier have different cau
 
 **1.** We traced zero back through antiquity and found it's at least three things collapsed into one symbol.
 
-**2.** We built a [proof of concept](PROOF_OF_CONCEPT.md) to see what happens when we uncollapse them.
+**2.** We developed a [proof of concept](PROOF_OF_CONCEPT.md) to see what happens when we uncollapse them.
 
 **3.** Claude [prototyped it](packages/typescript/src/comparison.ts). 71% fewer branches.
 
