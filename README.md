@@ -242,9 +242,9 @@ I am only a programmer and a dad who wondered what would happen if we applied th
 
 ## What We Built
 
-We didn't stop at the proof of concept.
+Does the [Lean 4 formalization](lean/TwoSortedArith/) prove it formally? 260 theorems, zero errors, zero `sorry`s. 17 domains verified. 136 pairwise boundary preservations.
 
-The [Lean 4 formalization](lean/TwoSortedArith/) proves it formally, 260 theorems, zero errors, zero `sorry`s. 17 domains verified. 136 pairwise boundary preservations. Is this math sound enough?
+Is that math sound enough?
 
 The [Origin](https://github.com/knoxvilledatabase/origin) crate makes it a compiler error, available today in Rust and Python.
 
