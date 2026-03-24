@@ -6,12 +6,19 @@
 
 ## Preface
 
-Has the number zero always been doing two jobs at the same time?
+Has the number zero always been doing at least three jobs at the same time?
 
-First job: representing quantity like "no apples". 
+First job: representing quantity like "no apples".
 
-Second job: representing the categorical origin of the domain it belongs to.
+Second job: A symbol or container like an empty bucket.
 
+Third job: The categorical origin of the domain it belongs to.
+
+## Overview
+
+When mathematics reaches a boundary and writes "undefined," is it referring to the origin, the container or the contents when the symbol only carries the contents?
+
+---
 
 ## Where Did Zero Originally Come From
 
