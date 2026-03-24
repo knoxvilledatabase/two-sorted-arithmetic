@@ -4,6 +4,15 @@
 
 ---
 
+## Preface
+
+Has the number zero always been doing two jobs at the same time?
+
+First job: representing quantity. 
+
+Second job: representing the categorical origin of the domain it belongs to.
+
+
 ## Where Zero Came From
 
 Zero was born in India, not as a placeholder, but as a philosophical object with two faces.
@@ -351,11 +360,15 @@ The 260 theorems verify how the boundary behaves. The law, you can't have a part
 
 ## The Conclusion
 
-We built this theory to reduce water consumption in AI. We formalized it, proved it, prototyped it, and benchmarked it. Rust's `Option<T>` beat us, born from ML's `option` type in 1973. The theory explains *why*, collapsing Origin and Bounded into a single symbol forces null checks that Option types eliminate at the type level. The [energy benchmarks](packages/rust-python/energy_benchmark.py) measure *how much* that efficiency matters in practice: 98.6% less energy per operation (Rust vs Python, not the theory alone).
+97 independent patches across four fields, all handling the same boundary, none of them unified. That's what we found. That's what the 260 theorems verify. That's what the 17-domain isomorphism proves: the absorbing element structure is the same in every case.
 
-For computation, the call to action is clear: move AI inference pipelines from Python to Rust. The theory is here. The proof is here. The measurements are here. The rest is engineering.
+The unification came first. The water argument follows from it. Each patch is code. Each line of code is an operation. Each operation is energy. Each unit of energy is heat. Each unit of heat is water. Unify the patches and the cascade reverses.
 
-But `Option<T>` solved computation. It didn't unify it with math, logic, or physics. Those three fields are still running hundreds of separate functions for the same boundary. The unification, the base class that connects all four fields, is what this proposal is. What would happen if all four fields stopped running siloed boundary patches?
+We prototyped it, benchmarked it, and Rust's `Option<T>` beat us — born from ML's `option` type in 1973. The theory explains *why*: collapsing Origin and Bounded into a single symbol forces null checks that Option types eliminate at the type level. `Option<T>` solved computation. It didn't unify it with math, logic, or physics. Those three fields are still running separate patches for the same boundary.
+
+The [Origin](https://github.com/knoxvilledatabase/origin) crate goes one step further: `Value<T, B>` preserves what `Option` and `Result` cannot — the last known value at every boundary, the reasoning chain that led there, and the compiler enforcement that makes ignoring a boundary a compile error.
+
+A soft philosophical problem — zero is multiple things, the boundary between knowledge and uncertainty has no name — turned into a hard compiler error.
 
 ---
 
