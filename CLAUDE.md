@@ -45,3 +45,21 @@ These principles guide all writing and interaction in this project.
 Before presenting anything, ask: **"Would the human look at this and say: 'Why didn't you just use X?'"** If you can imagine X, go find X.
 
 Strip until it breaks. Then add the minimum to make it work.
+
+---
+
+## How to Present
+
+**Different audiences, different doors.** The engineer needs the install command. The researcher needs the formal argument. The mathematician needs the Lean theorems. Write separate documents for separate audiences. One document trying to reach everyone reaches no one.
+
+- [README.md](README.md) is for the engineer who asks "what does this do for me?"
+- [PROOF_OF_CONCEPT.md](PROOF_OF_CONCEPT.md) is for the person who asks "why does this work?"
+- [PROOFS.md](PROOFS.md) is for the person who asks "prove it"
+- [Origin README](https://github.com/knoxvilledatabase/origin) is for the developer who wants to use it today
+- [RESEARCH.md](https://github.com/knoxvilledatabase/origin/blob/main/RESEARCH.md) is for the AI safety researcher
+
+**Show, don't describe.** A code block with `# still here` pointing at a preserved value beats any paragraph explaining what `last` does. Three implementations side by side beat a prose argument about type system differences. Demonstration wins over explanation every time.
+
+**Publish before you pitch.** `pip install origin-lang` working is more credible than any README. Make the install command real before writing the post. A live package signals "this is real." A GitHub link signals "this is a project."
+
+**Honesty is a strategy, not a concession.** Every time we made the argument more honest, it got stronger. The Python column says "opt-in" not "broken." The `divide` function says "demonstration, not domain rule." The energy claim says "Python to Rust, not the theory alone." Overclaiming loses the exact people you need to convince. The honest version wins every argument the inflated version loses.
