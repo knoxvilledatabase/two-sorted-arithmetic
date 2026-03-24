@@ -16,7 +16,7 @@ Third job: The categorical origin of the domain it belongs to.
 
 ## Overview
 
-When mathematics reaches a boundary and writes "undefined," is it referring to the origin, the container or the contents when the symbol only carries the contents?
+When mathematics reaches a boundary and writes "undefined," is it referring to the origin, the container or the contents when the symbol represents all three?
 
 ---
 
