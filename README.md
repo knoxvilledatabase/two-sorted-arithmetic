@@ -236,5 +236,5 @@ Obviously Claude helped to identify the workarounds and build the proof of conce
 
 This is only a proof of concept. I am not a scientist, engineer or mathematician. 
 
-I am only a programmer and a dad who's saw dissapointment in his daughter's eye. 
+I am only a programmer and a dad who wondered what would happen if we applied the DRY Principle to the AI water consumption problem. 
 
