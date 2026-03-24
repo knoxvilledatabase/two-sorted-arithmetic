@@ -236,7 +236,5 @@ Obviously Claude helped to identify the workarounds and build the proof of conce
 
 This is only a proof of concept. I am not a scientist, engineer or mathematician. 
 
-I am only a programmer and a dad who asked:
-
-We're not claiming all 97 are the same. We're asking: what if some of them share the same interface? And what if that subset is larger than anyone noticed?
+I am only a programmer and a dad who's saw dissapointment in his daughter's eye. 
 
