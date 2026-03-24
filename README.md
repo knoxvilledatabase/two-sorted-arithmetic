@@ -51,7 +51,7 @@ But moving to Rust is the immediate band-aid fix for computation. It's still a p
 
 ## What happens when you consolidate all 97 functions into one method?
 
-When AI does math, simulates physics, reasons about logic, does it not do this in code?
+When AI does math, simulates physics, reasons about logic, isn't it doing all of that in code?
 
 What would happen if AI understood the boundary across all fields and stopped running siloed boundary patches?
 
