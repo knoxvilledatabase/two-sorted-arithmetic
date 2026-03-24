@@ -257,3 +257,22 @@ cargo add origin-lang
 
 `Result` tells you the operation failed. `Value` tells you where you ended up.
 
+---
+
+## Repository Map
+
+| Path | What it does |
+|---|---|
+| [README.md](README.md) | The problem, the 97 patches, the DRY argument |
+| [PROOF_OF_CONCEPT.md](PROOF_OF_CONCEPT.md) | The formal system: zero's three jobs, axioms, cross-domain pattern |
+| [PROOFS.md](PROOFS.md) | 260 Lean 4 theorems, annotated |
+| [FALSIFICATION.md](FALSIFICATION.md) | How to break it: the kill switch |
+| [PREDICTIONS.md](PREDICTIONS.md) | Novel predictions the theory makes |
+| [NEXT.md](NEXT.md) | What remains to be done |
+| `lean/TwoSortedArith/` | Mathlib-ready Lean 4 (971 lines, 3 files, one import chain) |
+| `lean/*.lean` | Original working proofs (4,125 lines, standalone for live.lean-lang.org) |
+| `packages/typescript/` | TypeScript prototype: 71% fewer branches |
+| `packages/python/` | Python prototype |
+| `packages/rust-python/` | Rust core + energy benchmark: 98.6% less energy per operation |
+| [Origin](https://github.com/knoxvilledatabase/origin) | The compiler that enforces it (separate repo) |
+
