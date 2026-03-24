@@ -1,6 +1,6 @@
 # Proof of Concept: A Two-Sorted Arithmetic
 
-*The [README](README.md) asked the question. This is the formal system we built to answer it.*
+*The [README](README.md) asked the question. This is the proof of concept we built to answer it.*
 
 ---
 
