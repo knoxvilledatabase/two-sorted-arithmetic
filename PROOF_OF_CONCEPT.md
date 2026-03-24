@@ -66,6 +66,8 @@ To argue against the whole being a necessary precondition, you must construct an
 
 Is this a theorem? Theorems are proven within systems. Can this be proven within a system, or is it the precondition for systems to exist?
 
+Did we drag the origin inside a system that can't accommodate it, get a nonsensical answer, and blame the question?
+
 We used the symbol **𝒪** to represent the whole or *categorical origin* to make it thinkable.
 
 A finger pointing at the moon is not the moon. 
