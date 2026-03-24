@@ -226,9 +226,11 @@ What would happen if AI understood the boundary across all fields and stopped ru
 
 When AI reasons, does it not cross field boundaries? Does a physics simulation not use math which uses logic which runs in computation? What if unified handling eliminated those transitions?
 
+A model trained on all 97 patches holds all 97 simultaneously as weights. Every inference potentially runs redundant boundary handling in the same forward pass. The DRY principle here is not about code elegance. It is about what gets baked into the model and whether that redundancy costs compute at every single inference.
+
 Would fewer boundary confusions mean fewer hallucinations? Would learning one pattern instead of 97 reduce training compute? Would the savings compound across layers?
 
-We don't know. Nobody does. Nobody's built it.
+We don't know. Nobody does. Nobody's tested it.
 
 ---
 
