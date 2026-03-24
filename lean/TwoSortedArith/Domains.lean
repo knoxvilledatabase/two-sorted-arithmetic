@@ -39,9 +39,9 @@ this way, the structure is consistent and composes.
 
 ## Main result
 
-* `seventeen_domain_general_principle` — for ANY two domains with types `D₁` and `D₂`
-  and ANY function `f : D₁ → D₂`, the induced morphism preserves the distinction.
-  This covers all C(17,2) = 136 pairwise isomorphisms.
+* `morphism_always_preserves` — for any two types `D₁` and `D₂` and any function
+  `f : D₁ → D₂`, the induced morphism preserves the distinction. This is a
+  property of `morphism` itself, not a claim about specific domain pairings.
 -/
 
 namespace TwoSortedArith
@@ -295,19 +295,18 @@ theorem proof_isomorphism {D : Type} [DecidableEq D] (f : D → D → D) :
 end ProofTheory
 
 -- ============================================================================
--- The General Principle: all 136 pairwise morphisms
+-- The General Principle
 -- ============================================================================
+-- This is a single universally-quantified theorem, not 136 separate proofs.
+-- It says: for any two types and any function between them, the induced
+-- morphism preserves the distinction. The 17-domain claim is that each
+-- domain fits this model. The theorem verifies the model is consistent.
 
-/-- For ANY two domains and ANY function between them, the induced morphism
-preserves the distinction. This covers all C(17,2) = 136 pairwise cases. -/
-theorem seventeen_domain_general_principle {D₁ D₂ : Type} (f : D₁ → D₂) :
+/-- For any two types and any function between them, the induced morphism
+preserves the distinction. This is a property of `morphism` itself, not
+of any specific domain pairing. -/
+theorem morphism_always_preserves {D₁ D₂ : Type} (f : D₁ → D₂) :
     preservesDistinction (morphism f) :=
   morphism_preserves_distinction_general f
-
-/-- All 136 pairwise morphisms preserve distinction. -/
-theorem seventeen_domain_pairwise :
-    ∀ (A B : Type) (f : A → B), preservesDistinction (morphism f) := by
-  intros A B f
-  exact morphism_preserves_distinction_general f
 
 end TwoSortedArith

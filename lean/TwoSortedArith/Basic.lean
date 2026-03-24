@@ -186,8 +186,12 @@ theorem morphism_preserves_distinction_general {D₁ D₂ : Type} (f : D₁ → 
   · simp [morphism, origin']
   · intro d; exact ⟨f d, by simp [morphism, bounded']⟩
 
-/-- φ commutes with operations at the boundary. -/
-theorem morphism_commutes_at_boundary {D₁ D₂ : Type} [DecidableEq D₁] [DecidableEq D₂]
+/-- φ commutes with operations when one argument is Origin.
+This is the boundary case only. The full homomorphism condition
+`morphism φ (twoSortedOp op₁ x y) = twoSortedOp op₂ (morphism φ x) (morphism φ y)`
+for arbitrary x and y requires `op₂ (f a) (f b) = f (op₁ a b)`, which depends
+on the specific operations — not proved in general here. -/
+theorem morphism_commutes_at_origin {D₁ D₂ : Type} [DecidableEq D₁] [DecidableEq D₂]
     (φ : D₁ → D₂) (op₁ : D₁ → D₁ → D₁) (op₂ : D₂ → D₂ → D₂)
     (x : Zero' D₁) :
     morphism φ (twoSortedOp op₁ x origin') =

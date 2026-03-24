@@ -9,23 +9,22 @@ import TwoSortedArith.Basic
 # Two-Sorted Arithmetic: Structural Properties
 
 Algebraic and categorical properties of the two-sorted system.
-These theorems establish that the Origin|Bounded distinction is not just
-consistent but *canonical*: unique, rigid, functorial, and monadic.
+These theorems establish consistency, rigidity, and standard algebraic structure.
+`Zero' D` with `zBind` is the Option/Maybe monad; this is not a novel claim but
+confirms the two-sorted system sits in a well-understood algebraic framework.
 
 ## Main results
 
-### Uniqueness and rigidity
-* `uniqueness_of_split` — any absorbing classification must match Origin|Bounded.
-* `sort_dichotomy` — every element is Origin or Bounded, no third option.
-* `no_intermediate_sort` — no "middle sort" can exist.
+### Characterization
+* `sort_dichotomy` — every element is Origin or Bounded, no third form.
 * `origin_uniqueness` — Origin has exactly one inhabitant.
+* `absorber_is_origin` — any element absorbing everything must be Origin.
 * `morphism_uniqueness` — morphisms are unique given the bounded map.
 
 ### Algebraic structure
 * `twoSortedOp_associative` — sort-level associativity.
 * `origin_propagation_commutative` — commutativity of Origin propagation.
 * `origin_universal_absorber` — Origin absorbs every operation simultaneously.
-* `absorber_is_origin` — the absorber is unique: it must be Origin.
 * `contents_div_contents_eq_container` — `0_B ÷ 0_B = 1` (contents reveal container).
 
 ### Functoriality
@@ -33,9 +32,9 @@ consistent but *canonical*: unique, rigid, functorial, and monadic.
 * `functor_identity` — `morphism id = id`.
 * `functor_composition` — `morphism (g ∘ f) = morphism g ∘ morphism f`.
 
-### Monad laws
+### Monad laws (Option/Maybe)
 * `monad_left_identity` / `monad_right_identity` / `monad_associativity`.
-* `monad_origin_absorbs` — Origin is the zero of the monad.
+* `monad_origin_absorbs` — `None >>= f = None`, standard Option behavior.
 
 ### Axiom analysis
 * `three_axioms_reduce_to_two` — I3 is redundant; {I1, I2} suffices.
@@ -80,43 +79,22 @@ theorem composition_preserves_distinction {D₁ D₂ D₃ : Type}
 -- Contents ÷ Contents = Container
 -- ============================================================================
 
-inductive ContentsContainerResult where
-  | Container  : ContentsContainerResult
-  | BoundedVal : ContentsContainerResult
-  | OriginVal  : ContentsContainerResult
-deriving Repr, DecidableEq
+-- Contents ÷ Contents uses twoSortedDiv from Basic.lean directly.
+-- No separate type needed — DivResult.IsOne is the container revealed.
 
-def contentsSelfDiv {D : Type} [DecidableEq D]
-    (a b : Zero' D) : ContentsContainerResult :=
-  match a, b with
-  | Sum.inl _, _         => ContentsContainerResult.OriginVal
-  | _, Sum.inl _         => ContentsContainerResult.OriginVal
-  | Sum.inr x, Sum.inr y =>
-      if x.distinction = y.distinction
-      then ContentsContainerResult.Container
-      else ContentsContainerResult.BoundedVal
-
-/-- Self-division of bounded elements always reveals the container. -/
-theorem contents_div_contents_eq_container {D : Type} [DecidableEq D] (d : D) :
-    contentsSelfDiv (bounded' d) (bounded' d) = ContentsContainerResult.Container := by
-  simp [contentsSelfDiv, bounded']
+/-- Self-division of bounded elements with matching distinction reveals the container.
+This is a restatement of `zero_div_zero_same` from Basic.lean for clarity. -/
+theorem contents_reveal_container {D : Type} [DecidableEq D] (d : D) :
+    twoSortedDiv (bounded' d) (bounded' d) = DivResult.IsOne :=
+  zero_div_zero_same d
 
 -- ============================================================================
--- Uniqueness of the Split
+-- Absorber Characterization
 -- ============================================================================
-
-def originCompatible {D : Type} (classify : Zero' D → Bool) : Prop :=
-  classify origin' = true ∧ ∀ d : D, classify (bounded' d) = false
-
-/-- Any absorbing classification must match Origin|Bounded. -/
-theorem uniqueness_of_split {D : Type} [DecidableEq D]
-    (classify : Zero' D → Bool)
-    (_h_absorb : ∀ (f : D → D → D) (x : Zero' D),
-      classify x = true → ∀ y : Zero' D, classify (twoSortedOp f x y) = true)
-    (h_origin : classify origin' = true)
-    (h_bounded : ∀ d : D, classify (bounded' d) = false) :
-    originCompatible classify := by
-  exact ⟨h_origin, h_bounded⟩
+-- The real uniqueness result is `absorber_is_origin` below: if an element
+-- absorbs everything under every operation, it must be origin'.
+-- That theorem does the actual work. We do not claim a stronger uniqueness
+-- result than what the code proves.
 
 -- ============================================================================
 -- Sort Dichotomy
@@ -129,24 +107,9 @@ theorem sort_dichotomy {D : Type} (x : Zero' D) :
   | inl u => left; cases u; rfl
   | inr v => right; exact ⟨v.distinction, rfl⟩
 
--- ============================================================================
--- No Intermediate Sorts
--- ============================================================================
-
-def isAbsorbing {D : Type} [DecidableEq D] (f : D → D → D) (x : Zero' D) : Prop :=
-  ∀ y : Zero' D, twoSortedOp f x y = origin'
-
-/-- No middle sort: every element either absorbs everything or doesn't. -/
-theorem no_intermediate_sort {D : Type} [DecidableEq D]
-    (f : D → D → D) (x : Zero' D) :
-    isAbsorbing f x ∨ ¬ isAbsorbing f x := by
-  cases x with
-  | inl _ =>
-    left; intro y; simp [twoSortedOp, origin']
-  | inr v =>
-    right; intro h
-    have := h (bounded' v.distinction)
-    simp [twoSortedOp, origin', bounded'] at this
+-- (no_intermediate_sort was removed: it was P ∨ ¬P, i.e. excluded middle,
+-- not a structural result. The real content is in absorber_is_origin below,
+-- which proves that any element absorbing everything must be origin'.)
 
 -- ============================================================================
 -- Associativity
@@ -246,7 +209,7 @@ theorem monad_associativity {D : Type} (m : Zero' D)
   | inl u => cases u; simp [zBind, origin']
   | inr v => simp [zBind]
 
-/-- Origin is the zero of the monad. -/
+/-- Origin absorbs bind, the standard Option/Maybe behavior: `None >>= f = None`. -/
 theorem monad_origin_absorbs {D : Type} (f : D → Zero' D) :
     zBind (origin' : Zero' D) f = origin' := by
   simp [zBind, origin']
@@ -375,8 +338,14 @@ theorem sort_membership_exclusive {D : Type} (x : Zero' D) :
     · exact ⟨v.distinction, rfl⟩
 
 -- ============================================================================
--- Inseparability of 0 and 1
+-- Bounded Injectivity
 -- ============================================================================
+-- These theorems prove that bounded elements are uniquely determined by their
+-- distinction tag. The Bounded constructor is injective.
+--
+-- (The deeper claim — that 0 and 1 are inseparable, that you cannot have the
+-- mark without the sheet — lives in PROOF_OF_CONCEPT.md as questions, not here
+-- as theorems. The philosophy is ahead of the formalization. That's the point.)
 
 /-- Bounded elements are uniquely determined by their distinction. -/
 theorem bounded_determined_by_distinction {D : Type} (d₁ d₂ : D) :
