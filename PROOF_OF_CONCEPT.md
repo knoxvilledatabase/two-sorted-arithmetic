@@ -46,7 +46,9 @@ To argue against the whole being a necessary precondition, you must construct an
 
 Is this a theorem? Theorems are proven within systems. Can this be proven within a system, or is it the precondition for systems to exist?
 
-We used the symbol **𝒪** to represent the whole or *categorical origin* or undefined region in order to create a reusable symbol that all math can reference. 
+We used the symbol **𝒪** to represent the whole or *categorical origin* to make it thinkable.
+
+A finger pointing at the moon is not the moon. 
 
 ---
 
@@ -54,16 +56,21 @@ We used the symbol **𝒪** to represent the whole or *categorical origin* or un
 
 This concept operates at two levels. Steps 1–2 are *metatheoretic* or "undefined."
 
-1. **𝒪**, the undifferentiated whole, nature. The finger pointing at the moon is not the moon.
+1. **𝒪**, the undifferentiated whole or categorical origin of zero. 
+
 2. **The first distinction**, not a step that follows 𝒪, but the single act in which three things co-emerge simultaneously and inseparably:
    - **0**, the empty contents, absence represented
    - **1**, the container, the boundary that makes a symbol possible
    - **B**, the bounded domain, the space membership requires
 
    These are not sequential. You cannot have any one without the other two. 0 is not an element that arrives into an already-existing B. 0 is a co-founder of B. This is why "0 ∈ B" is pedagogically useful but logically incomplete, membership implies arrival after the domain existed. 0 did not arrive. 0 constituted.
+
 3. **Algebraic axioms**, the choices that structure B. The first structure requiring both 0 and 1 is the ring. Collapse them back together, the trivial ring where 0 = 1, and meaning disappears. Is that a coincidence? Or is it the original distinction, undone?
+
 4. **Number systems**, ℤ, ℚ, ℝ, ℂ, finite fields, p-adic numbers. Each a different realization of B under different axioms.
+
 5. **Operations**, division, limits, and others defined within each number system.
+
 6. **Expressions**, `0/0`, where categorical confirmation asks *which* `0` is present.
 
 Steps 3–6 are what formal mathematical systems can see and describe.
