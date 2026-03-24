@@ -8,9 +8,14 @@ import TwoSortedArith.Basic
 /-!
 # Two-Sorted Arithmetic: Domain Isomorphisms
 
-The two-sorted distinction (Origin | Bounded) appears identically in 17 independent
-formal systems. Each domain defines its own type alias and operation, but every one
-satisfies I1–I3 and admits a distinction-preserving morphism to arithmetic.
+Each of 17 domains is modeled as `Zero' D` with a domain-specific operation.
+The modeling claim is that each domain's boundary behavior fits the two-sorted
+envelope. The Lean code verifies that, given this modeling, I1-I3 hold and
+the distinction is preserved across morphisms.
+
+The connection between the model and the real domain (e.g., "SQL NULL behaves
+like Origin") is empirical, not proved here. What is proved: if you model it
+this way, the structure is consistent and composes.
 
 ## Domains
 
@@ -46,11 +51,16 @@ open TwoSortedArith
 -- ============================================================================
 -- Domain template
 -- ============================================================================
--- Each domain follows the same pattern:
---   1. Type alias (abbrev)
---   2. Domain operation (returns Origin when either argument is Origin)
---   3. I1, I2, I3 for the domain operation
---   4. Morphism to arithmetic (identity on the underlying type)
+-- Each domain is modeled as Zero' D with a domain-specific name and operation.
+-- This is a modeling choice: we claim the domain's boundary behavior fits the
+-- two-sorted envelope. The Lean code verifies internal consistency of that model.
+-- It does not prove the modeling is the only correct one.
+--
+-- Pattern per domain:
+--   1. Type alias (abbrev) — models the domain as Zero' D
+--   2. Domain operation — returns Origin when either argument is Origin
+--   3. I1, I2, I3 — verified for this domain's operation
+--   4. Morphism to arithmetic — identity on the underlying type
 --   5. Three-part isomorphism theorem
 
 -- ============================================================================

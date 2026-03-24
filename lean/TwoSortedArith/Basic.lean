@@ -12,8 +12,15 @@ A formalization of two-sorted arithmetic where zero decomposes into two
 distinct sorts: **Origin** (the categorical boundary, 𝒪) and **Bounded**
 (values inside a domain, 0_B).
 
-The key result: the interaction axioms — Origin absorbs every operation —
-are *forced*. No alternative total extension preserves the distinction.
+The key result: given the Origin|Bounded split, the interaction axioms —
+Origin absorbs every operation — follow by construction. The axioms I1 and I2
+are independent (neither implies the other), and any absorbing classification
+must match the Origin|Bounded split (`uniqueness_of_split` in Structure.lean).
+
+Note: the Lean code proves properties of the two-sorted model. The claim
+that real-world domains (division by zero, NaN, Russell's paradox) share
+this structure is empirical — each domain is modeled as `Zero' D` and
+verified to satisfy I1-I3 within that model.
 
 ## Main definitions
 
@@ -118,7 +125,6 @@ theorem interaction_I3 {D : Type} [DecidableEq D]
 inductive DivResult where
   | IsOrigin : DivResult
   | IsOne    : DivResult
-  | IsInfty  : DivResult
 deriving Repr, DecidableEq
 
 /-- Two-sorted division. Contents divided by contents reveals the container. -/
