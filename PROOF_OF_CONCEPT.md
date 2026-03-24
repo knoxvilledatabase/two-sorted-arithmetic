@@ -366,7 +366,9 @@ The unification came first. The water argument follows from it. Each patch is co
 
 We prototyped it, benchmarked it, and Rust's `Option<T>` beat us — born from ML's `option` type in 1973. The theory explains *why*: collapsing Origin and Bounded into a single symbol forces null checks that Option types eliminate at the type level. `Option<T>` solved computation. It didn't unify it with math, logic, or physics. Those three fields are still running separate patches for the same boundary.
 
-The [Origin](https://github.com/knoxvilledatabase/origin) crate goes one step further: `Value<T, B>` preserves what `Option` and `Result` cannot — the last known value at every boundary, the reasoning chain that led there, and the compiler enforcement that makes ignoring a boundary a compile error.
+This repo is the proof that the distinction is necessary. The [Origin](https://github.com/knoxvilledatabase/origin) repo is the proof that the distinction is enforceable. The Lean theorems prove you cannot have a total extension of bounded arithmetic without the two-sort split. The Rust compiler proves you cannot ship code that ignores the split without a compile error. The math forces the design. The design forces the code.
+
+Origin's `Value<T, B>` preserves what `Option` and `Result` cannot — the last known value at every boundary, the reasoning chain that led there, and the compiler enforcement that makes ignoring a boundary a compile error.
 
 A soft philosophical problem — zero is multiple things, the boundary between knowledge and uncertainty has no name — turned into a hard compiler error.
 
