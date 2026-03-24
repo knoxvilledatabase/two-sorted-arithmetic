@@ -236,5 +236,22 @@ Obviously Claude helped to identify the workarounds and build the proof of conce
 
 This is only a proof of concept. I am not a scientist, engineer or mathematician. 
 
-I am only a programmer and a dad who wondered what would happen if we applied the DRY Principle to the AI water consumption problem. 
+I am only a programmer and a dad who wondered what would happen if we applied the DRY Principle to the AI water consumption problem.
+
+---
+
+## What We Built
+
+We didn't stop at the proof of concept.
+
+The [Lean 4 formalization](lean/TwoSortedArith/) proves it formally — 260 theorems, zero errors, zero `sorry`s. 17 domains verified. 136 pairwise boundary preservations. The math is sound.
+
+The [Origin](https://github.com/knoxvilledatabase/origin) crate makes it a compiler error — available today in Rust and Python.
+
+```bash
+pip install origin-lang
+cargo add origin-lang
+```
+
+`Result` tells you the operation failed. `Value` tells you where you ended up.
 
