@@ -154,6 +154,22 @@ Algebra on arithmetic. Calculus on algebra. Analysis on calculus. Every floor of
 - Does physics have **renormalization** to dodge infinities?
 - Does computing have **NaN** to absorb invalid operations?
 
+### The same collapse, inside one library
+
+Mathlib, the largest formal mathematics library ever built, has at least a dozen distinct concepts all named or involving zero. Anyone can open the source and count the typeclasses.
+
+Five of them exist specifically because zero carries two jobs and the jobs keep colliding:
+
+- **MulZeroClass** states `0 * a = 0` and `a * 0 = 0` as axioms. That is the absorption behavior, I1 and I2. If Origin was a primitive, absorption would be structural, not axiomatic.
+- **0⁻¹ = 0** is a convention in any GroupWithZero or DivisionRing, chosen to make inverse a total function. If Origin and bounded zero were distinct types, no convention is needed. `origin'⁻¹ = origin'` by absorption. `bounded'(0)⁻¹` is a question for calculus.
+- **NeZero** is a typeclass asserting something is not zero. Required constantly because every division theorem must exclude zero from the denominator. If Origin was a type, the type system already knows `bounded'(d)` is never `origin'`.
+- **NoZeroDivisors** states `a * b = 0` implies `a = 0` or `b = 0`. The collision that produces zero divisors requires the absorbing element and the quantity to be the same symbol.
+- **WithZero** adjoins an absorbing zero to types that do not have one. If every bounded domain already knew its categorical origin, this construction would be unnecessary.
+
+Three others remain regardless: **AddZeroClass** (bounded zero as additive identity, still needs stating), **CharZero** (relationship between naturals and the ring, unrelated to the collapse), **ZeroHom** (morphisms preserving bounded zero, still needed).
+
+Five patches that dissolve. Three that remain. Not twelve to zero. Five to three.
+
 ---
 
 ## What a Symbol Cannot Do
