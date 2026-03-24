@@ -24,9 +24,9 @@ When mathematics reaches a boundary and writes "undefined," is it referring to t
 
 The best we could find, zero was born in India, not as a placeholder, but as a philosophical object with two faces.
 
-The Sanskrit tradition had words for both faces. *Śūnya*, void, absence, was the quantitative face. *Pūrṇa*, fullness, wholeness, was the ground. The philosophical tradition knew these were two aspects of one reality.
+The Sanskrit tradition had words for both faces. *Śūnya*, void, absence, was the quantitative face. *Pūrṇa*, fullness, wholeness, was the ground. Did the philosophical tradition know these to be two aspects of one reality.
 
-Did the Isha Upanishad state it directly?
+Did the Isha Upanishad not state it directly?
 
 > *That is whole. This is whole. From wholeness comes wholeness. When wholeness is taken from wholeness, wholeness remains.*
 
