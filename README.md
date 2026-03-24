@@ -49,7 +49,7 @@ But moving to Rust is the immediate band-aid fix for computation. It's still a p
 
 ---
 
-## What happens when you consolidate 97 functions into one method?
+## What happens when you consolidate all 97 functions into one method?
 
 When AI does math, simulates physics, reasons about logic, does it not do this in code?
 
