@@ -156,9 +156,29 @@ Algebra on arithmetic. Calculus on algebra. Analysis on calculus. Every floor of
 
 ### The same collapse, inside one library
 
-Mathlib, the largest formal mathematics library ever built, has at least a dozen distinct concepts all named or involving zero. Anyone can open the source and count the typeclasses.
+Mathlib, the largest formal mathematics library ever built, manages the conflation of zero with seventeen typeclasses. Anyone can open the source and count them:
 
-Five of them exist specifically because zero carries two jobs and the jobs keep colliding:
+- **Zero** — the type has an element called 0. No behavior.
+- **MulZeroClass** — `0 * a = 0` and `a * 0 = 0`. Absorption stated as axioms.
+- **MulZeroOneClass** — adds multiplicative identity to the above.
+- **SemigroupWithZero** — adds associativity.
+- **MonoidWithZero** — combines all of the above.
+- **GroupWithZero** — group plus absorbing zero. Where `0⁻¹ = 0` by convention.
+- **WithZero** — adjoins a zero to any type. Defined as `Option`.
+- **NeZero** — asserts `n ≠ 0`. Appears everywhere division or ordering is involved.
+- **NoZeroDivisors** — `a * b = 0 → a = 0 ∨ b = 0`. Required constantly in ring and field theory.
+- **nonZeroDivisors** — the submonoid of elements that aren't zero divisors. Used in localization.
+- **IsLeftCancelMulZero / IsRightCancelMulZero / IsCancelMulZero** — cancellation properties excluding zero.
+- **SMulWithZero** — scalar multiplication where `0 • a = 0` and `a • 0 = 0`.
+- **MulActionWithZero** — combines action with zero behavior.
+- **AddZeroClass** — `0 + a = a` and `a + 0 = a`. The additive identity.
+- **ZeroHom** — morphisms preserving zero.
+- **CharZero** — characteristic zero.
+- **Nontrivial** — `0 ≠ 1`. Required constantly alongside zero-related results.
+
+In Val α, three constructors — `origin`, `container`, `contents` — replace all seventeen. Not by reimplementing them. By making them unnecessary. The sort system carries what the typeclasses guard.
+
+Of these seventeen, five exist specifically because zero carries two jobs and the jobs keep colliding:
 
 - **MulZeroClass** states `0 * a = 0` and `a * 0 = 0` as axioms. That is the absorption behavior, I1 and I2. If Origin was a primitive, absorption would be structural, not axiomatic.
 - **0⁻¹ = 0** is a convention in any GroupWithZero or DivisionRing, chosen to make inverse a total function. If Origin and bounded zero were distinct types, no convention is needed. `origin'⁻¹ = origin'` by absorption. `bounded'(0)⁻¹` is a question for calculus.
