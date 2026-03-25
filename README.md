@@ -269,10 +269,17 @@ cargo add origin-lang
 | [FALSIFICATION.md](FALSIFICATION.md) | How to break it: the kill switch |
 | [PREDICTIONS.md](PREDICTIONS.md) | Novel predictions the theory makes |
 | [NEXT.md](NEXT.md) | What remains to be done |
-| `lean/TwoSortedArith/` | Mathlib-ready Lean 4 (971 lines, 3 files, one import chain) |
+| `lean/TwoSortedArith/` | Mathlib-ready Lean 4 (3 files, one import chain) |
+| `lean/TwoSortedArith/Foundation.lean` | Three primitives, four rules. Arithmetic from scratch. |
+| `lean/TwoSortedArith/*Benchmark.lean` | Six benchmarks against Mathlib's typeclasses |
+| `lean/TwoSortedArith/HasBoundary.lean` | One typeclass. Five Mathlib concepts derived from it. |
 | `lean/*.lean` | Original working proofs (4,125 lines, standalone for live.lean-lang.org) |
 | `packages/typescript/` | TypeScript prototype: 71% fewer branches |
 | `packages/python/` | Python prototype |
 | `packages/rust-python/` | Rust core + energy benchmark: 98.6% less energy per operation |
 | [Origin](https://github.com/knoxvilledatabase/origin) | The compiler that enforces it (separate repo) |
+
+## The Foundation
+
+[Foundation.lean](lean/TwoSortedArith/Foundation.lean) builds arithmetic from three primitives: `𝒪` (origin, the whole), `B` (container, the bucket), and `contents` (quantities, 0 through infinity). Four rules govern how they interact. Addition, multiplication, division, inverse, identities, associativity, commutativity, and distributivity all emerge from those rules without patches, conventions, or hypotheses. No `NeZero`. No `NoZeroDivisors`. No `0⁻¹ = 0` convention. The type prevents the pathologies that Mathlib spends twelve typeclasses managing. Everything proved in Lean 4. Nothing broke.
 
