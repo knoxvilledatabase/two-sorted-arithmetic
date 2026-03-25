@@ -502,6 +502,12 @@ class HasBoundary (α : Type) [Mul α] where
   absorbs_right : ∀ a, a * boundary = boundary
 ```
 
+That is the backwards direction. Start from Mathlib's existing structures, show they consolidate into one typeclass.
+
+The [foundation](lean/TwoSortedArith/Foundation.lean) is the forwards direction. Arithmetic built up from three primitives without ever needing patches. Three symbols: `𝒪` (origin), `B` (container), `contents`. Four rules. Addition, multiplication, division, inverse, associativity, commutativity, distributivity. All proved. No patches. No conventions. No hypotheses. Arithmetic emerges.
+
+Both directions confirmed by code. Both building clean. The backwards direction dissolves Mathlib's patches into one typeclass. The forwards direction builds arithmetic from scratch without needing them. `Foundation.lean` is the capstone, not a revision.
+
 ---
 
 *"That is whole. This is whole. From wholeness comes wholeness."*
