@@ -514,7 +514,9 @@ That is the backwards direction. Start from Mathlib's existing structures, show 
 
 The [foundation](lean/TwoSortedArith/Foundation.lean) is the forwards direction. Arithmetic built up from three primitives without ever needing patches. Three symbols: `𝒪` (origin), `B` (container), `contents`. Four rules. Addition, multiplication, division, inverse, associativity, commutativity, distributivity. All proved. No patches. No conventions. No hypotheses. Arithmetic emerges.
 
-Both directions confirmed by code. Both building clean. The backwards direction dissolves Mathlib's patches into one typeclass. The forwards direction builds arithmetic from scratch without needing them. `Foundation.lean` is the capstone, not a revision.
+The [algebra](lean/TwoSortedArith/RingField.lean) confirms it goes all the way: ring laws, field laws, additive inverse, multiplicative inverse, distributivity. All proved within contents. Can `Val α` be a field? No — origin and container are not field elements. Yes — the contents sub-sort is a field when α is. The field is the interior. The boundary is outside it by type.
+
+Both directions confirmed by code. Both building clean. The backwards direction dissolves Mathlib's patches into one typeclass. The forwards direction builds arithmetic from scratch without needing them — all the way to fields.
 
 ---
 
