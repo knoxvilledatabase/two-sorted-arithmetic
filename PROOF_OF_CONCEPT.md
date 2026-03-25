@@ -282,6 +282,27 @@ Mathlib already has the answer in `Gˣ`. The question is why `Gˣ` is not the de
 
 This is a demonstration on a subset of Mathlib, not a full refactoring. The claim is testable: attempt the refactoring on any other Mathlib file that uses `NeZero`, `NoZeroDivisors`, or the `0⁻¹ = 0` convention. If the same pattern holds, the finding generalizes. If it does not, the claim should be narrowed. The kill switch is live.
 
+### Four forward benchmarks: 28 to zero, proved by `rfl`
+
+The six benchmarks above worked backwards — starting from Mathlib's typeclasses and showing the patches dissolve. The four benchmarks below work forwards — starting from the seed and testing against standard mathematics.
+
+| Benchmark | `≠ 0` hypotheses (Standard) | `≠ 0` hypotheses (Seed) | Conventions | Seed proof |
+|---|---|---|---|---|
+| [Cramer's rule](lean/TwoSortedArith/CramerBenchmark.lean) | 8 | 0 | 1 | `rfl` |
+| [Limit of quotient](lean/TwoSortedArith/LimitBenchmark.lean) | 7 | 0 | 1 | `rfl` |
+| [Polynomial evaluation](lean/TwoSortedArith/PolyEvalBenchmark.lean) | 6 | 0 | 1 | `rfl` |
+| [Division ring inverse](lean/TwoSortedArith/DivisionRingBenchmark.lean) | 7 | 0 | 1 | `rfl` |
+
+28 hypothesis instances across 20 theorems in the collapsed model. Zero in the seed. Every seed proof is `rfl` — true by definition, requiring no proof at all.
+
+Not `simp`. Not `cases`. `rfl`. Both sides are literally the same thing by construction.
+
+The 28 hypotheses exist solely because `0` is doing two jobs. Remove the conflation and the obligations vanish. The proof is `rfl`.
+
+The [division ring benchmark](lean/TwoSortedArith/DivisionRingBenchmark.lean) hits the deepest level: the field axiom itself. "Every nonzero element has an inverse" becomes "every contents element has a contents inverse." No qualifier. The `≠ 0` was never about the mathematics of invertibility. It was about sort confusion — is this the boundary or a field element? In Val α the type answers that question. The axiom drops the qualifier.
+
+The field axiom is the factory. Remove the conflation from the factory and the product — the `≠ 0` hypothesis — stops being manufactured.
+
 ---
 
 ## What a Symbol Cannot Do
@@ -445,7 +466,7 @@ The two-sorted system has been verified to satisfy:
 - **Density**, B is closed, no gaps
 - **Stability**, under products, coproducts, quotients, and embeddings
 
-Every claim formally verified. [382 theorems, zero errors, zero `sorry`s.](PROOFS.md)
+Every claim formally verified. [428 theorems, zero errors, zero `sorry`s.](PROOFS.md)
 
 ---
 
@@ -483,7 +504,7 @@ Every test must pass because a failure would mean we changed the math instead of
 
 Every test passed.
 
-The 382 theorems verify how the boundary behaves. The law, you can't have a part without a whole, is why the boundary is there. 
+The 428 theorems verify how the boundary behaves. The law, you can't have a part without a whole, is why the boundary is there. 
 
 ---
 
@@ -491,7 +512,7 @@ The 382 theorems verify how the boundary behaves. The law, you can't have a part
 
 Can we build arithmetic from scratch using just 𝒪, B, and contents?
 
-Yes. All the way to fields — and beyond. Addition, multiplication, division, inverse, the ring laws, the field laws. Then ordered fields, vector spaces, polynomial rings, linear algebra, analysis and limits, topology, and category theory. 382 theorems from the seed. No patches. No conventions. No `≠ 0` hypotheses.
+Yes. All the way to fields — and beyond. Addition, multiplication, division, inverse, the ring laws, the field laws. Then ordered fields, vector spaces, polynomial rings, linear algebra, analysis and limits, topology, and category theory. 428 theorems from the seed. No patches. No conventions. No `≠ 0` hypotheses.
 
 The one honest finding: `Val α` as a whole type is not a field. Origin and container are not field elements. They are outside the field. But that is not a problem. That is the point. The field lives in contents where arithmetic belongs. Origin and container are the boundary and structure that arithmetic was always bumping into without knowing what they were.
 
@@ -507,7 +528,7 @@ The field is the fish. Origin is the ocean. You do not need the fish to contain 
 
 ## The Conclusion
 
-97 independent patches across four fields, all handling the same boundary, none of them unified. That's what we found. That's what the 382 theorems verify. That's what the 17-domain isomorphism proves: the absorbing element structure is the same in every case.
+97 independent patches across four fields, all handling the same boundary, none of them unified. That's what we found. That's what the 428 theorems verify. That's what the 17-domain isomorphism proves: the absorbing element structure is the same in every case.
 
 The unification came first. The water argument follows from it. Each patch is code. Each line of code is an operation. Each operation is energy. Each unit of energy is heat. Each unit of heat is water. Unify the patches and the cascade reverses.
 
@@ -534,7 +555,7 @@ The [foundation](lean/TwoSortedArith/Foundation.lean) is the forwards direction.
 
 The [algebra](lean/TwoSortedArith/RingField.lean) confirms it goes all the way: ring laws, field laws, additive inverse, multiplicative inverse, distributivity. All proved within contents. Can `Val α` be a field? No — origin and container are not field elements. Yes — the contents sub-sort is a field when α is. The field is the interior. The boundary is outside it by type.
 
-Both directions confirmed by code. Both building clean. The backwards direction dissolves Mathlib's patches into one typeclass. The forwards direction builds arithmetic from scratch without needing them — all the way through fields, ordered fields, vector spaces, polynomial rings, linear algebra, analysis, topology, and category theory. 382 theorems from the seed.
+Both directions confirmed by code. Both building clean. The backwards direction dissolves Mathlib's patches into one typeclass. The forwards direction builds arithmetic from scratch without needing them — all the way through fields, ordered fields, vector spaces, polynomial rings, linear algebra, analysis, topology, and category theory. 428 theorems from the seed.
 
 ---
 
