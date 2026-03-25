@@ -487,6 +487,24 @@ The 260 theorems verify how the boundary behaves. The law, you can't have a part
 
 ---
 
+## What It Means in Plain Terms
+
+Can we build arithmetic from scratch using just 𝒪, B, and contents?
+
+Yes. All the way to fields. Addition, multiplication, division, inverse, the ring laws, the field laws. All of it proved. No patches. No conventions. No `≠ 0` hypotheses.
+
+The one honest finding: `Val α` as a whole type is not a field. Origin and container are not field elements. They are outside the field. But that is not a problem. That is the point. The field lives in contents where arithmetic belongs. Origin and container are the boundary and structure that arithmetic was always bumping into without knowing what they were.
+
+Mathematics has been trying to build a field that contains its own boundary. That is why `NeZero` exists, to manually exclude the boundary from field theorems. That is why `0⁻¹ = 0` is a convention, to handle what happens when the boundary gets into a field operation.
+
+The three-primitive system says: do not put the boundary inside the field. Put it outside. Name it. Let the type carry it.
+
+When you do that, the field works cleanly. No exclusions needed. No conventions needed. The boundary is already outside by construction.
+
+The field is the fish. Origin is the ocean. You do not need the fish to contain the ocean. You need the ocean to be named so the fish knows where it ends.
+
+---
+
 ## The Conclusion
 
 97 independent patches across four fields, all handling the same boundary, none of them unified. That's what we found. That's what the 260 theorems verify. That's what the 17-domain isomorphism proves: the absorbing element structure is the same in every case.
