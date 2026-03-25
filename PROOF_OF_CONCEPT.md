@@ -224,15 +224,18 @@ We [tested this too](lean/TwoSortedArith/ZeroDivBenchmark.lean):
 
 In the two-sorted version, `bounded(a) * bounded(b) = bounded(a*b)`. The result is always bounded. It is never origin. The pathology cannot arise. The axiom becomes unnecessary. The constraint becomes a consequence of the type.
 
-### Three benchmarks, one finding
+### Four benchmarks, one finding
 
 | Benchmark | Axioms/Conventions Lost | Hypotheses Lost | Information Lost |
 |---|---|---|---|
 | [Gˣ vs G₀](lean/TwoSortedArith/NeZeroBenchmark.lean) | 0 | 5 | 0 |
 | [0⁻¹ = 0 convention](lean/TwoSortedArith/InvBenchmark.lean) | 1 | 1 | 0 |
 | [NoZeroDivisors](lean/TwoSortedArith/ZeroDivBenchmark.lean) | 1 | 4 | 0 |
+| [ZMod NeZero](lean/TwoSortedArith/ZModBenchmark.lean) | 0 | 8 | 0 |
 
 The hypotheses do not disappear. They move into the type. The axioms do not disappear. They become consequences. The conventions do not disappear. They become theorems. Zero information is lost in any case.
+
+The pattern extends from division (GroupWithZero) to modular arithmetic (ZMod). In ZMod, 100% of definitions and theorems carry `[NeZero n]`. In the two-sorted version, zero of them do.
 
 Mathlib already has the answer in `Gˣ`. The question is why `Gˣ` is not the default. Origin is the name for what `Gˣ` excludes.
 
