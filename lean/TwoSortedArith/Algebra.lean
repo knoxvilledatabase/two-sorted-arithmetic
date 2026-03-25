@@ -117,45 +117,41 @@ theorem val_mul_one {α : Type} (f : α → α → α) (one : α)
 -- ✓ Monoid laws hold. contents(1) is the identity.
 -- origin * 1 = origin (absorption). container * 1 = container (structural).
 
--- ---------- Zero absorption: contents(zero) absorbs within contents ----------
+-- ---------- Arithmetic zero: contents(0) is the zero of α, not an absorber ----------
 
-/-- contents(zero) absorbs within contents — NOT across all sorts.
-    This is the contents-level zero absorption. -/
+/-- contents(zero) is the arithmetic zero within contents.
+    This is α's own zero property, not absorption. -/
 theorem val_zero_mul_contents {α : Type} (f : α → α → α) (zero : α)
     (h : ∀ a : α, f zero a = zero) (a : α) :
     mul f (contents zero) (contents a) = contents zero := by
   simp [mul, h]
 
-/-- contents(zero) absorbs within contents from the right. -/
+/-- Same from the right. -/
 theorem val_mul_zero_contents {α : Type} (f : α → α → α) (zero : α)
     (h : ∀ a : α, f a zero = zero) (a : α) :
     mul f (contents a) (contents zero) = contents zero := by
   simp [mul, h]
 
-/-- contents(zero) does NOT absorb origin — origin absorbs IT.
-    This is the proof that the two absorptions are different. -/
+/-- contents(0) does NOT absorb origin — origin absorbs IT. -/
 theorem zero_contents_does_not_absorb_origin {α : Type} (f : α → α → α) (zero : α) :
     mul f (contents zero) origin = origin := by rfl
 
-/-- contents(zero) does NOT absorb container — container absorbs IT. -/
+/-- contents(0) does NOT absorb container — container is idempotent over it. -/
 theorem zero_contents_does_not_absorb_container {α : Type} (f : α → α → α) (zero : α) :
     mul f (contents zero) container = container := by rfl
 
--- ✓ Zero absorption holds at the contents level.
+-- CRITICAL OBSERVATION (from a build failure that caught an overclaim):
 --
--- CRITICAL OBSERVATION:
--- val_zero_mul proves: contents(0) * x = contents(0) for contents x.
--- But contents(0) * origin = origin (by absorption Rule 1).
--- And contents(0) * container = container (by Rule 3).
+-- These are three DIFFERENT behaviors, not three levels of "absorption":
 --
--- So contents(0) does NOT absorb everything — only other contents.
--- Origin absorbs everything. Container absorbs contents.
--- contents(0) only absorbs within its own sort.
+--   𝒪: ABSORPTION — the ocean eats the fish. Forced by the first principle.
+--   B: IDEMPOTENCE — structure of structure is structure. B × B = B.
+--   contents(0): ARITHMETIC ZERO — empty times anything is empty, within α.
 --
--- This is EXACTLY why MulZeroClass is two facts in one axiom:
--- Mathlib's 0*a = 0 conflates contents-zero-absorption (within contents)
--- with origin-absorption (across all sorts).
--- The three-primitive system makes them visibly different.
+-- Mathlib's zero_mul says 0 * a = 0 as if there is one behavior.
+-- There are three. Each at a different level. Each for a different reason.
+-- The collapsed symbol 0 hid this. The three-primitive type made it visible.
+-- The build failure made it undeniable.
 
 -- ---------- Distributivity ----------
 
@@ -184,14 +180,16 @@ theorem val_left_distrib {α : Type}
 -- Algebraic laws (proved directly, no typeclass machinery):
 --   ✓ Associativity (semigroup law)
 --   ✓ Identity (monoid law, contents(1) as identity)
---   ✓ Zero absorption (contents(0) absorbs within contents)
+--   ✓ Arithmetic zero (contents(0) is zero within contents)
 --   ✓ Distributivity (contents level)
 --
--- Critical finding confirmed:
---   contents(0) absorbs only within contents.
---   origin absorbs across all sorts.
---   MulZeroClass conflates both into one axiom.
---   The three-primitive system keeps them separate.
+-- Critical finding (from a build failure):
+--   Three different behaviors, not three levels of absorption:
+--     𝒪: absorption — forced by the first principle
+--     B: idempotence — structure of structure is structure
+--     contents(0): arithmetic zero — α's own zero property
+--   Mathlib's zero_mul conflates all three into one axiom.
+--   The three-primitive system makes them visibly different.
 --
 -- No extra axioms. No patches. No conventions.
 -- Val α inherits α's algebra and adds boundary structure on top.
