@@ -233,6 +233,14 @@ Mathlib's `MulZeroClass` states `0 * a = 0` as one axiom (`zero_mul`). But the [
 
 These are not the same operation. They look the same because `0` is both the empty contents and the container. Give B its own symbol and the two facts separate visibly.
 
+The [algebra file](lean/TwoSortedArith/Algebra.lean) goes further. When we tried to prove `contents(0)` absorbs all of `Val α`, the code refused. `contents(0) * origin = origin`, not `contents(0)`. The build failure revealed three levels of absorption, not one:
+
+- `𝒪` absorbs everything (including B and contents(0))
+- `B` absorbs contents (including contents(0))
+- `contents(0)` only absorbs other contents
+
+Mathlib's `zero_mul` says `0 * a = 0` as if there is one absorber. There are three, each at a different level. The code would not let us lie about it.
+
 Three symbols. Four rules. Every symbol has one job:
 
 ```
