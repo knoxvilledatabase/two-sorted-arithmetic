@@ -170,6 +170,66 @@ Three others remain regardless: **AddZeroClass** (bounded zero as additive ident
 
 Five patches that dissolve. Three that remain. Not twelve to zero. Five to three.
 
+### The benchmark
+
+We [tested this](lean/TwoSortedArith/NeZeroBenchmark.lean). Same theorems, two Lean files. One with Mathlib's collapsed G₀ (where zero and nonzero coexist). One with Mathlib's own Gˣ units type (where the type is the nonzero elements).
+
+|  | Collapsed (G₀) | Units (Gˣ) |
+|---|---|---|
+| ≠ 0 hypotheses | 5 | 0 |
+| Theorems needed | 6 | 2 |
+| Conventions (0⁻¹=0) | 1 | 0 |
+| Information lost | 0 | 0 |
+
+The hypotheses do not disappear. They move into the type. The deleted theorems do not lose information. The type carries it. The convention becomes unnecessary. There is no zero to invert.
+
+Mathlib already has `Gˣ`. Mathlib already has `WithZero`, which treats the absorbing zero as `none` in `Option`, where absorption is structural, not axiomatic.
+
+The question is why `Gˣ` is not the default. Why the safe version is opt-in and the collapsed version is standard.
+
+That is the same pattern as `Value<T, B>` vs `Result` in the [Origin](https://github.com/knoxvilledatabase/origin) crate. `Result` can carry context if you build a custom error type. But it is opt-in. `Value<T, B>` carries `last` by default. You cannot forget. The compiler will not let you.
+
+Same collapse. Same patch. Same opt-in workaround. From ancient arithmetic to modern proof assistants to production Rust code.
+
+Origin is the name for what `Gˣ` excludes.
+
+### The convention
+
+Mathlib defines `0⁻¹ = 0` by convention. The documentation says: "working with total functions has the advantage of not constantly having to check that x ≠ 0 when writing x⁻¹." A human chose that answer. Could have been anything. It is a decision made to keep the machinery running.
+
+We [tested this too](lean/TwoSortedArith/InvBenchmark.lean). Same theorem. Two files:
+
+|  | Collapsed | Two-Sorted |
+|---|---|---|
+| Conventions asserted | 1 | 0 |
+| ≠ 0 hypotheses | 1 | 0 |
+| `inv_zero` status | asserted | derived (absorption) |
+| `0/0` result | 0 (convention) | origin (absorption) |
+
+Both prove `inv_zero` with `rfl`. The Lean tactic is identical. The reason is different. Collapsed: `rfl` because a human defined `inv none = none`. Two-sorted: `rfl` because Origin absorbs. The same absorption that makes `origin * x = origin` makes `origin⁻¹ = origin`. Not a choice. A consequence.
+
+Mathlib's `0⁻¹ = 0` is not wrong. It is the right answer for the wrong reason. Same proof. Different ground.
+
+### The pathology
+
+Mathlib's `NoZeroDivisors` states `a * b = 0` implies `a = 0` or `b = 0`. This typeclass exists because in a collapsed type, the pathology of zero divisors must be excluded by axiom.
+
+We [tested this too](lean/TwoSortedArith/ZeroDivBenchmark.lean):
+
+|  | Collapsed | Two-Sorted |
+|---|---|---|
+| NoZeroDivisors axiom | 1 | 0 |
+| ≠ 0 hypotheses | 4 | 0 |
+| Can zero divisors occur? | must assert no | impossible by type |
+
+In the two-sorted version, `bounded(a) * bounded(b) = bounded(a*b)`. The result is always bounded. It is never origin. The pathology cannot arise. The axiom becomes unnecessary. The constraint becomes a consequence of the type.
+
+### Three benchmarks, one finding
+
+Three typeclasses. Three [benchmark files](lean/TwoSortedArith/). Same finding each time: the collapsed zero requires axioms, conventions, and hypotheses to manage pathologies that cannot arise in the two-sorted version. The code proves it. Anyone can run it.
+
+This is a demonstration on a subset of Mathlib, not a full refactoring. The claim is testable: attempt the refactoring on any other Mathlib file that uses `NeZero`, `NoZeroDivisors`, or the `0⁻¹ = 0` convention. If the same pattern holds, the finding generalizes. If it does not, the claim should be narrowed. The kill switch is live.
+
 ---
 
 ## What a Symbol Cannot Do
