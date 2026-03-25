@@ -226,7 +226,15 @@ In the two-sorted version, `bounded(a) * bounded(b) = bounded(a*b)`. The result 
 
 ### Three benchmarks, one finding
 
-Three typeclasses. Three [benchmark files](lean/TwoSortedArith/). Same finding each time: the collapsed zero requires axioms, conventions, and hypotheses to manage pathologies that cannot arise in the two-sorted version. The code proves it. Anyone can run it.
+| Benchmark | Axioms/Conventions Lost | Hypotheses Lost | Information Lost |
+|---|---|---|---|
+| [Gˣ vs G₀](lean/TwoSortedArith/NeZeroBenchmark.lean) | 0 | 5 | 0 |
+| [0⁻¹ = 0 convention](lean/TwoSortedArith/InvBenchmark.lean) | 1 | 1 | 0 |
+| [NoZeroDivisors](lean/TwoSortedArith/ZeroDivBenchmark.lean) | 1 | 4 | 0 |
+
+The hypotheses do not disappear. They move into the type. The axioms do not disappear. They become consequences. The conventions do not disappear. They become theorems. Zero information is lost in any case.
+
+Mathlib already has the answer in `Gˣ`. The question is why `Gˣ` is not the default. Origin is the name for what `Gˣ` excludes.
 
 This is a demonstration on a subset of Mathlib, not a full refactoring. The claim is testable: attempt the refactoring on any other Mathlib file that uses `NeZero`, `NoZeroDivisors`, or the `0⁻¹ = 0` convention. If the same pattern holds, the finding generalizes. If it does not, the claim should be narrowed. The kill switch is live.
 
