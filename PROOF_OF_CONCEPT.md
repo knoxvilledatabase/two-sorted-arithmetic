@@ -466,7 +466,7 @@ The two-sorted system has been verified to satisfy:
 - **Density**, B is closed, no gaps
 - **Stability**, under products, coproducts, quotients, and embeddings
 
-Every claim formally verified. [428 theorems, zero errors, zero `sorry`s.](PROOFS.md)
+Every claim formally verified. [508 theorems, zero errors, zero `sorry`s.](PROOFS.md)
 
 ---
 
@@ -504,7 +504,7 @@ Every test must pass because a failure would mean we changed the math instead of
 
 Every test passed.
 
-The 428 theorems verify how the boundary behaves. The law, you can't have a part without a whole, is why the boundary is there. 
+The 508 theorems verify how the boundary behaves. The law, you can't have a part without a whole, is why the boundary is there. 
 
 ---
 
@@ -512,7 +512,7 @@ The 428 theorems verify how the boundary behaves. The law, you can't have a part
 
 Can we build arithmetic from scratch using just 𝒪, B, and contents?
 
-Yes. All the way to fields — and beyond. Addition, multiplication, division, inverse, the ring laws, the field laws. Then ordered fields, vector spaces, polynomial rings, linear algebra, analysis and limits, topology, and category theory. 428 theorems from the seed. No patches. No conventions. No `≠ 0` hypotheses.
+Yes. All the way to fields — and beyond. Addition, multiplication, division, inverse, the ring laws, the field laws. Then ordered fields, vector spaces, polynomial rings, linear algebra, analysis and limits, topology, category theory, functional analysis, measure theory, and commutative algebra. 508 theorems from the seed. No patches. No conventions. No `≠ 0` hypotheses.
 
 The one honest finding: `Val α` as a whole type is not a field. Origin and container are not field elements. They are outside the field. But that is not a problem. That is the point. The field lives in contents where arithmetic belongs. Origin and container are the boundary and structure that arithmetic was always bumping into without knowing what they were.
 
@@ -528,7 +528,7 @@ The field is the fish. Origin is the ocean. You do not need the fish to contain 
 
 ## The Conclusion
 
-97 independent patches across four fields, all handling the same boundary, none of them unified. That's what we found. That's what the 428 theorems verify. That's what the 17-domain isomorphism proves: the absorbing element structure is the same in every case.
+97 independent patches across four fields, all handling the same boundary, none of them unified. That's what we found. That's what the 508 theorems verify. That's what the 17-domain isomorphism proves: the absorbing element structure is the same in every case.
 
 The unification came first. The water argument follows from it. Each patch is code. Each line of code is an operation. Each operation is energy. Each unit of energy is heat. Each unit of heat is water. Unify the patches and the cascade reverses.
 
@@ -555,7 +555,7 @@ The [foundation](lean/TwoSortedArith/Foundation.lean) is the forwards direction.
 
 The [algebra](lean/TwoSortedArith/RingField.lean) confirms it goes all the way: ring laws, field laws, additive inverse, multiplicative inverse, distributivity. All proved within contents. Can `Val α` be a field? No — origin and container are not field elements. Yes — the contents sub-sort is a field when α is. The field is the interior. The boundary is outside it by type.
 
-Both directions confirmed by code. Both building clean. The backwards direction dissolves Mathlib's patches into one typeclass. The forwards direction builds arithmetic from scratch without needing them — all the way through fields, ordered fields, vector spaces, polynomial rings, linear algebra, analysis, topology, and category theory. 428 theorems from the seed.
+Both directions confirmed by code. Both building clean. The backwards direction dissolves Mathlib's patches into one typeclass. The forwards direction builds arithmetic from scratch without needing them — all the way through fields, ordered fields, vector spaces, polynomial rings, linear algebra, analysis, topology, category theory, functional analysis, measure theory, and commutative algebra. 508 theorems from the seed.
 
 ---
 
@@ -563,7 +563,7 @@ Both directions confirmed by code. Both building clean. The backwards direction 
 
 The backwards direction — six benchmarks — measured the cost of the collapse in specific, countable ways. 18 hypotheses. 2 axioms. 1 convention. Real numbers from real code.
 
-The forwards direction — seven files, 122 theorems — showed why those costs exist and where they come from. Not 18 specific hypotheses. The factory that generates hypotheses of that type across all of mathematics. `≠ 0`. `det A ≠ 0`. `denominator ≠ 0`. `limit exists`. `morphism preserves structure`. All of them are the same guard against the same confusion. Contents being mistaken for boundary.
+The forwards direction — ten files, 202 theorems — showed why those costs exist and where they come from. Not 18 specific hypotheses. The factory that generates hypotheses of that type across all of mathematics. `≠ 0`. `det A ≠ 0`. `denominator ≠ 0`. `limit exists`. `morphism preserves structure`. `s ≠ 0` for localization. `measure ≠ 0`. All of them are the same guard against the same confusion. Contents being mistaken for boundary.
 
 In Val α that confusion is a type error. Not a proof obligation. A type error.
 
@@ -576,6 +576,9 @@ That is the consolidation. Not hypothesis by hypothesis. The class of hypotheses
 | Analysis | Indeterminate forms (0/0, 0·∞, ∞-∞) | Sort always determined. Value is α's problem. |
 | Topology | "Limit doesn't exist in the field" | Limit exists. It's origin. The boundary has a name. |
 | Category theory | Morphism preserves structure (per operation) | Universal. One proof covers all operations. |
+| Functional analysis | `‖T‖ ≠ 0` for operator invertibility | Structural. Operator on contents gives contents. |
+| Measure theory | `measure(S) = 0` vs boundary confusion | Disambiguated. `contents(0)` is measure zero. `origin` is boundary. |
+| Commutative algebra | `s ≠ 0` for localization | Structural. Contents / contents = contents. |
 
 The benchmarks showed 18 hypotheses move. The forwards direction showed the factory that produces those hypotheses doesn't exist.
 
@@ -743,7 +746,53 @@ Zero errors. First try.
   The category-theoretic punchline: Val α is the free monad that adds boundary structure to a type. Any function lifts uniquely, preserving all
   operations and all sort structure. "Three primitives. Four rules. Everything else is determined."
 
-Seven steps predicted. Seven steps tested. Seven steps clean. The seed held from ordered fields through category theory. Zero errors. Zero sorries. Zero new axioms needed.
+**8. Functional analysis.** Norms, bounded linear operators, completeness, inner products, spectral theory. The `≠ 0` dissolution extends from finite-dimensional (det ≠ 0) to infinite-dimensional (‖T‖ ≠ 0, eigenvalue ≠ 0).
+
+Zero errors. First try.
+
+  FunctionalAnalysis.lean — 30 theorems:
+
+  Norms: ‖contents x‖ = contents(normF x). Same absorption pattern. Triangle inequality, scalar norm — all within contents.
+
+  Bounded linear operators: T(contents x) = contents(f x). Same structure as valMap. Operator invertibility: no ≠ 0 at the sort level.
+
+  Completeness: Cauchy sequences in contents converge in contents. Completeness lifts from α.
+
+  Inner products and spectral theory: eigenvalues are contents. Never origin. The ≠ 0 dissolution extends to eigenvalue checks.
+
+**9. Measure theory.** Measures, null sets, countable additivity, almost everywhere, Radon-Nikodym, integration. The "measure zero vs boundary" confusion dissolves.
+
+Zero errors. First try.
+
+  MeasureTheory.lean — 24 theorems:
+
+  Null sets: measure(S) = contents(0), NOT origin. "Measure zero" and "boundary" are different sorts. The ambiguity that standard math hides behind a single symbol is resolved by the type.
+
+  Countable additivity: sums of contents measures are contents. Integration stays within contents at every step.
+
+  Almost everywhere: exception sets have contents(0) measure. Not origin. The implicit ≠ 0 in "a.e." theorems is structural.
+
+  Radon-Nikodym: dμ/dν is contents. No ≠ 0 hypothesis on ν. Same dissolution as Cramer's rule.
+
+  σ-finiteness: "finite measure" = contents. ∞ is a large contents value (a quantity), not origin (the boundary).
+
+**10. Commutative algebra.** Ideals, quotient rings, localization, prime ideals, integral domains, residue fields. The algebraic geometry foundation.
+
+Zero errors. First try.
+
+  CommAlgebra.lean — 26 theorems:
+
+  Ideals: membership lives in contents. Origin is outside every ideal. Closure under addition and multiplication within contents.
+
+  Quotient rings: quotient map preserves sort. Same structure as valMap. Commutes with ring operations.
+
+  Localization: a/s = contents(mulF a (invF s)). Always contents. No s ≠ 0 hypothesis. Same dissolution as everywhere.
+
+  Prime ideals and integral domains: contents × contents ≠ origin is structural. NoZeroDivisors typeclass unnecessary.
+
+  Residue fields: R/m within contents. The field structure at each point of Spec(R) is within contents.
+
+Ten steps predicted. Ten steps tested. Ten steps clean. The seed held from ordered fields through commutative algebra. Zero errors. Zero sorries. Zero new axioms needed.
 
 Each step was a benchmark. Each benchmark either confirmed or narrowed the claim. The kill switch was live at every level. It was never triggered.
 
