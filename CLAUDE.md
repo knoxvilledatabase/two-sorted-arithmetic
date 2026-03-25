@@ -63,3 +63,21 @@ Strip until it breaks. Then add the minimum to make it work.
 **Publish before you pitch.** `pip install origin-lang` working is more credible than any README. Make the install command real before writing the post. A live package signals "this is real." A GitHub link signals "this is a project."
 
 **Honesty is a strategy, not a concession.** Every time we made the argument more honest, it got stronger. The Python column says "opt-in" not "broken." The `divide` function says "demonstration, not domain rule." The energy claim says "Python to Rust, not the theory alone." Overclaiming loses the exact people you need to convince. The honest version wins every argument the inflated version loses.
+
+---
+
+## How to Continue
+
+Read [PROOF_OF_CONCEPT.md](PROOF_OF_CONCEPT.md) first. Then read [lean/TwoSortedArith/Foundation.lean](lean/TwoSortedArith/Foundation.lean). Then pick the next step from "What Remains" at the bottom of PROOF_OF_CONCEPT.md.
+
+**The seed:** `Val α` — three constructors (`origin`, `container`, `contents`), four rules.
+
+**The method:** Prove theorems that currently exist in Mathlib, but derive them from the seed instead of asserting them as axioms or typeclasses.
+
+**Test to failure:** For each theorem attempted, either it derives cleanly from the seed or it doesn't. If it doesn't, that's information — either the seed needs something added back, or the theorem genuinely requires structure the seed doesn't have.
+
+**The ones that derive cleanly become the evidence. The ones that break define the honest boundary of the claim.**
+
+Build each step as a new file in `lean/TwoSortedArith/`. All files must build clean with `lake build` from the `lean/` directory. Zero errors. Zero sorries. Zero overclaims. If a build fails, the failure is information — report what it means honestly.
+
+The kill switch is live at every level.
