@@ -538,5 +538,29 @@ Both directions confirmed by code. Both building clean. The backwards direction 
 
 ---
 
+## What Remains
+
+Ordered from easiest to hardest. Each step is testable. Each step either works or reveals where the claim needs narrowing.
+
+**1. Ordered fields and inequalities.** Prove `Val α` preserves ordering when α is ordered. Contents compare within contents. Origin and container are outside the ordering. Expected: straightforward, same pattern as ring and field.
+
+**2. Vector spaces and modules.** Prove scalar multiplication works with `Val α` scalars over a module. The field lives in contents, so scalar multiplication should work within contents. Expected: clean, same faithful embedding pattern.
+
+**3. Polynomial rings.** Prove `Val α[X]` (polynomials over `Val α`) works. Polynomial evaluation at origin should give origin by absorption. Evaluation at contents should give contents. Expected: moderate, may reveal new interactions between the three sorts and indeterminates.
+
+**4. Linear algebra.** Determinants, eigenvalues, matrix operations over `Val α`. The ≠ 0 checks in linear algebra (invertible matrices, nonzero determinants) should dissolve the same way NeZero dissolved. Expected: significant reduction in hypotheses. Test on a 2x2 case first.
+
+**5. Analysis and limits.** How does the three-primitive system interact with epsilon-delta limits? When a sequence of contents approaches the boundary, what happens? This is where L'Hôpital's rule lives — sort resolution in disguise. Expected: the hardest and most revealing test. May require new definitions for convergence across sorts.
+
+**6. Topology on Val α.** Define a topology where origin is a limit point, container is isolated, and contents carry α's topology. The boundary between contents and origin is the topological boundary of the field within its completion. Expected: deep, connects to compactification and Stone-Čech.
+
+**7. Category-theoretic formulation.** Express the three-primitive system as a category. Contents form a subcategory. Origin and container are distinguished objects. Morphisms preserve sort. Expected: the natural language for stating the universal property of the construction.
+
+**8. Full Mathlib integration.** Rewrite `GroupWithZero` and `DivisionRing` using `HasBoundary`. Measure the actual reduction in hypotheses across the dependency chain. Expected: years of work for the community. The benchmarks are the proof of concept. The integration is downstream.
+
+Each step is a benchmark. Each benchmark either confirms or narrows the claim. The kill switch is live at every level.
+
+---
+
 *"That is whole. This is whole. From wholeness comes wholeness."*
 — Isha Upanishad
