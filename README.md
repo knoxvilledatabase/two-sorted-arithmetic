@@ -273,6 +273,8 @@ cargo add origin-lang
 | `lean/TwoSortedArith/Foundation.lean` | Three primitives, four rules. Arithmetic from scratch. |
 | `lean/TwoSortedArith/*Benchmark.lean` | Six benchmarks against Mathlib's typeclasses |
 | `lean/TwoSortedArith/HasBoundary.lean` | One typeclass. Five Mathlib concepts derived from it. |
+| `lean/TwoSortedArith/Algebra.lean` | Faithful embedding + algebraic laws (semigroup, monoid, three behaviors) |
+| `lean/TwoSortedArith/RingField.lean` | Ring and field laws. The field lives inside contents. |
 | `lean/*.lean` | Original working proofs (4,125 lines, standalone for live.lean-lang.org) |
 | `packages/typescript/` | TypeScript prototype: 71% fewer branches |
 | `packages/python/` | Python prototype |
