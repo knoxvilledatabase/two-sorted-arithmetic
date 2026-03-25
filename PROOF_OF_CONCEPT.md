@@ -493,6 +493,15 @@ Origin's `Value<T, B>` preserves what `Option` and `Result` cannot — the last 
 
 A soft philosophical problem — zero is multiple things, the boundary between knowledge and uncertainty has no name — turned into a hard compiler error.
 
+The [minimalist solution](lean/TwoSortedArith/HasBoundary.lean): one typeclass, two axioms. The encounter with 𝒪, given one name. Five Mathlib concepts derived from it. Nothing broke.
+
+```lean
+class HasBoundary (α : Type) [Mul α] where
+  boundary : α
+  absorbs_left : ∀ a, boundary * a = boundary
+  absorbs_right : ∀ a, a * boundary = boundary
+```
+
 ---
 
 *"That is whole. This is whole. From wholeness comes wholeness."*
