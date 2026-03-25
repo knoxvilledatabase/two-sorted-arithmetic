@@ -224,7 +224,38 @@ We [tested this too](lean/TwoSortedArith/ZeroDivBenchmark.lean):
 
 In the two-sorted version, `bounded(a) * bounded(b) = bounded(a*b)`. The result is always bounded. It is never origin. The pathology cannot arise. The axiom becomes unnecessary. The constraint becomes a consequence of the type.
 
-### Four benchmarks, one finding
+### The hidden split
+
+Mathlib's `MulZeroClass` states `0 * a = 0` as one axiom (`zero_mul`). But the [three-primitive benchmark](lean/TwoSortedArith/ContainerBenchmark.lean) reveals this is two completely different facts wearing one symbol:
+
+- `contents(0) * contents(a) = contents(0)` — empty contents times anything is empty contents. Arithmetic. Happens entirely within contents.
+- `B * contents(a) = B` — the container absorbs contents. Structural. The bucket holding something is still a bucket.
+
+These are not the same operation. They look the same because `0` is both the empty contents and the container. Give B its own symbol and the two facts separate visibly.
+
+Three symbols. Four rules. Every symbol has one job:
+
+```
+𝒪 × anything = 𝒪              — the whole absorbs
+B × B = B                       — container of containers is container
+B × contents = B                — bucket holding something is still a bucket
+contents × contents = contents   — actual arithmetic
+```
+
+### The honest trade-off
+
+Does separation cost anything? We [tested addition](lean/TwoSortedArith/AddBenchmark.lean). `0 + 1 = 1` costs the same in both versions, `rfl` in both files. But the conclusion "the trade-off doesn't exist" was overclaiming.
+
+Addition genuinely needs zero in the type. You cannot do `0 + a = a` in `Gˣ` because `Gˣ` has no zero. The "separated" version for addition is still `WithZero α`, which is `Option α`, which is the collapsed type.
+
+The two jobs zero does are not symmetric:
+
+- The absorbing element is separable. Work in `Gˣ`. 18 hypotheses dissolve.
+- The additive identity is not separable. Zero must be in the type for addition to work.
+
+`WithZero Gˣ` serves both. `Gˣ` for the interior. `none` for the boundary AND the additive identity. Same value. Two jobs. But now understood, not conflated.
+
+### Six benchmarks, one finding
 
 | Benchmark | Axioms/Conventions Lost | Hypotheses Lost | Information Lost |
 |---|---|---|---|
@@ -232,10 +263,12 @@ In the two-sorted version, `bounded(a) * bounded(b) = bounded(a*b)`. The result 
 | [0⁻¹ = 0 convention](lean/TwoSortedArith/InvBenchmark.lean) | 1 | 1 | 0 |
 | [NoZeroDivisors](lean/TwoSortedArith/ZeroDivBenchmark.lean) | 1 | 4 | 0 |
 | [ZMod NeZero](lean/TwoSortedArith/ZModBenchmark.lean) | 0 | 8 | 0 |
+| [Three primitives](lean/TwoSortedArith/ContainerBenchmark.lean) | MulZeroClass split | 0 | 0 |
+| [Addition trade-off](lean/TwoSortedArith/AddBenchmark.lean) | 0 | 0 | 0 |
 
-The hypotheses do not disappear. They move into the type. The axioms do not disappear. They become consequences. The conventions do not disappear. They become theorems. Zero information is lost in any case.
+The hypotheses do not disappear. They move into the type. The axioms do not disappear. They become consequences. The conventions do not disappear. They become theorems. Zero information is lost in any case. The addition trade-off is zero: separation costs nothing for addition because addition still uses the collapsed type.
 
-The pattern extends from division (GroupWithZero) to modular arithmetic (ZMod). In ZMod, 100% of definitions and theorems carry `[NeZero n]`. In the two-sorted version, zero of them do.
+The [consolidation theorem](lean/TwoSortedArith/Consolidation.lean) unifies the first four benchmarks into one fact: the interior is closed under operations. Bounded in, bounded out. Origin only appears when origin goes in. Every dissolved hypothesis, axiom, and convention was a guard against a crossing that the type makes impossible.
 
 Mathlib already has the answer in `Gˣ`. The question is why `Gˣ` is not the default. Origin is the name for what `Gˣ` excludes.
 
