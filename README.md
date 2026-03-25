@@ -244,7 +244,7 @@ I am only a programmer and a dad who wondered what would happen if we applied th
 
 ## What We Built
 
-Does the [Lean 4 formalization](lean/TwoSortedArith/) prove it formally? 260 theorems, zero errors, zero `sorry`s. 17 domains verified. 136 pairwise boundary preservations.
+Does the [Lean 4 formalization](lean/TwoSortedArith/) prove it formally? 428 theorems, zero errors, zero `sorry`s. 17 domains verified. 136 pairwise boundary preservations.
 
 Is that math sound enough?
 
@@ -265,16 +265,26 @@ cargo add origin-lang
 |---|---|
 | [README.md](README.md) | The problem, the 97 patches, the DRY argument |
 | [PROOF_OF_CONCEPT.md](PROOF_OF_CONCEPT.md) | The proof of concept: zero's three jobs, axioms, cross-domain pattern |
-| [PROOFS.md](PROOFS.md) | 260 Lean 4 theorems, annotated |
+| [PROOFS.md](PROOFS.md) | 428 Lean 4 theorems, annotated |
 | [FALSIFICATION.md](FALSIFICATION.md) | How to break it: the kill switch |
 | [PREDICTIONS.md](PREDICTIONS.md) | Novel predictions the theory makes |
 | [NEXT.md](NEXT.md) | What remains to be done |
-| `lean/TwoSortedArith/` | Mathlib-ready Lean 4 (3 files, one import chain) |
+| **The seed** | |
 | `lean/TwoSortedArith/Foundation.lean` | Three primitives, four rules. Arithmetic from scratch. |
-| `lean/TwoSortedArith/*Benchmark.lean` | Six benchmarks against Mathlib's typeclasses |
-| `lean/TwoSortedArith/HasBoundary.lean` | One typeclass. Five Mathlib concepts derived from it. |
 | `lean/TwoSortedArith/Algebra.lean` | Faithful embedding + algebraic laws (semigroup, monoid, three behaviors) |
 | `lean/TwoSortedArith/RingField.lean` | Ring and field laws. The field lives inside contents. |
+| **The forwards direction** | |
+| `lean/TwoSortedArith/OrderedField.lean` | Ordered fields and inequalities within contents |
+| `lean/TwoSortedArith/VectorSpace.lean` | Scalar multiplication and module laws |
+| `lean/TwoSortedArith/PolyRing.lean` | Polynomial evaluation, origin propagation |
+| `lean/TwoSortedArith/LinearAlgebra.lean` | 2×2 determinants, Cayley-Hamilton, `det ≠ 0` dissolved |
+| `lean/TwoSortedArith/Analysis.lean` | Limits, convergence, indeterminate forms dissolve |
+| `lean/TwoSortedArith/Topology.lean` | One-point compactification, origin as limit point |
+| `lean/TwoSortedArith/Category.lean` | Functor, monad, universal property |
+| **The backwards direction** | |
+| `lean/TwoSortedArith/HasBoundary.lean` | One typeclass. Five Mathlib concepts derived from it. |
+| `lean/TwoSortedArith/*Benchmark.lean` | Ten benchmarks: 46 hypotheses → 0, all seed proofs `rfl` |
+| **Other** | |
 | `lean/*.lean` | Original working proofs (4,125 lines, standalone for live.lean-lang.org) |
 | `packages/typescript/` | TypeScript prototype: 71% fewer branches |
 | `packages/python/` | Python prototype |
@@ -283,5 +293,7 @@ cargo add origin-lang
 
 ## The Foundation
 
-[Foundation.lean](lean/TwoSortedArith/Foundation.lean) builds arithmetic from three primitives: `𝒪` (origin, the whole), `B` (container, the bucket), and `contents` (quantities, 0 through infinity). Four rules govern how they interact. Addition, multiplication, division, inverse, identities, associativity, commutativity, and distributivity all emerge from those rules without patches, conventions, or hypotheses. No `NeZero`. No `NoZeroDivisors`. No `0⁻¹ = 0` convention. The type prevents the pathologies that Mathlib spends twelve typeclasses managing. Everything proved in Lean 4. Nothing broke.
+[Foundation.lean](lean/TwoSortedArith/Foundation.lean) builds arithmetic from three primitives: `𝒪` (origin, the whole), `B` (container, the bucket), and `contents` (quantities, 0 through infinity). Four rules govern how they interact. Addition, multiplication, division, inverse, identities, associativity, commutativity, and distributivity all emerge from those rules without patches, conventions, or hypotheses. No `NeZero`. No `NoZeroDivisors`. No `0⁻¹ = 0` convention. The type prevents the pathologies that Mathlib spends twelve typeclasses managing.
+
+The forwards direction extends the seed through ordered fields, vector spaces, polynomial rings, linear algebra, analysis, topology, and category theory — 428 theorems from three constructors and four rules. The backwards direction benchmarks the seed against standard mathematics: 46 hypothesis instances across ten benchmarks, zero on the seed side, every seed proof `rfl`. Everything proved in Lean 4. Nothing broke.
 
