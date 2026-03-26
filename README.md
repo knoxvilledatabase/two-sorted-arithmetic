@@ -222,6 +222,10 @@ What would happen if AI understood the boundary across all fields and stopped ru
 - Within one language (NaN propagation vs traditional): 10% fewer cycles
 - Branch reduction: 71% fewer branches
 
+Every row in the table above is a branch instruction on silicon. A null check, a NaN propagation, an "undefined" handler — each one is a conditional branch that costs energy. 97 independent branch patterns means 97 independent energy costs at every inference.
+
+The 98.6% reduction came from fixing ONE patch (Python → Rust's `Option<T>`). The table has 97.
+
 ### What we haven't measured
 
 When AI reasons, does it not cross field boundaries? Does a physics simulation not use math which uses logic which runs in computation? What if unified handling eliminated those transitions?
@@ -230,7 +234,7 @@ A model trained on all 97 patches holds all 97 simultaneously as weights. Every 
 
 Would fewer boundary confusions mean fewer hallucinations? Would learning one pattern instead of 97 reduce training compute? Would the savings compound across layers?
 
-We don't know. Nobody does. Nobody's tested it.
+We don't know. Nobody does. Nobody's tested it. That's the $48 billion cooling market question stated as a testable hypothesis.
 
 ---
 
