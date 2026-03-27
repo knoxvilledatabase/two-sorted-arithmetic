@@ -127,6 +127,8 @@ The shepherd never made that mistake. He knew the difference between the ground,
 
 ## What Did the Collapse Do to Operations?
 
+Is zero having an identity crisis?
+
 ### Division: `0 ÷ 0`
 
 **Standard behavior:** Undefined.
