@@ -30,7 +30,7 @@ A stop sign, a red traffic light, and a "road closed" barrier have different cau
 
 **1.** We traced zero back through antiquity and found it's at least three things collapsed into one symbol.
 
-**2.** We developed a [proof of concept](PROOF_OF_CONCEPT.md) to see what happens when we uncollapse them.
+**2.** We went [back to the beginning](PROOF_OF_CONCEPT.md) to see what arithmetic looked like before the collapse.
 
 **3.** Claude [prototyped it](packages/typescript/src/comparison.ts). 71% fewer branches.
 
@@ -268,7 +268,7 @@ cargo add origin-lang
 | Path | What it does |
 |---|---|
 | [README.md](README.md) | The problem, the 97 patches, the DRY argument |
-| [PROOF_OF_CONCEPT.md](PROOF_OF_CONCEPT.md) | The proof of concept: zero's three jobs, axioms, cross-domain pattern |
+| [PROOF_OF_CONCEPT.md](PROOF_OF_CONCEPT.md) | The journey: before math, the collapse, the consequences, looking through the original lens |
 | [DISCOVERY.md](DISCOVERY.md) | Why the answer was always true: the philosophy behind the proof |
 | [PROOFS.md](PROOFS.md) | 509 Lean 4 theorems, annotated |
 | [FALSIFICATION.md](FALSIFICATION.md) | How to break it: the kill switch |
