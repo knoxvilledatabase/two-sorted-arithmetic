@@ -143,7 +143,7 @@ If I have no apples in my hand and I divide it by no apples in my hand, how many
 
 **Standard behavior:** Undefined/indeterminate.
 
-**Through the original lens:** Same thing, different notation. Does the empty symbol operating on itself reveal one symbol?
+**Through the original lens:** How is this not two marks, each claiming to represent the absence of marking?
 
 ### Factorial: `0!`
 
