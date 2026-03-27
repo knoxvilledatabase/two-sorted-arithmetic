@@ -125,9 +125,9 @@ What arrived in Europe? Was zero a pure placeholder? What happened to the other 
 
 Did zero become one symbol that meant multiple things?
 
-The shepherd's three things, the ground, the hand, and the apple, became one symbol. The ground and the hand and the absence of apple, all written "0." Was this one mark asked to do three jobs?
+Did the shepherd's three things, the ground, the hand, and the apple, become one symbol "0".
 
-The shepherd never made that mistake. He knew the difference between no apples and no hand.
+The shepherd never made that mistake. He knew the difference between the ground, his hand and no apples.
 
 ## What the Collapse Did to Operations
 
