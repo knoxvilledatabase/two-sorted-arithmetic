@@ -169,7 +169,7 @@ Is L'Hôpital asking "which zero am I holding?" or have symbols stopped making s
 
 **Standard behavior:** Undefined. The limit gives −∞.
 
-**Through the original lens:** What power produces no symbols? Calculus handles it. What power produces the ground? Is that the same question?
+**Through the original lens:** If I put a dot on a sheet of paper, could I fit that sheet of paper inside that dot? 
 
 ### Division by zero: `1 ÷ 0`
 
