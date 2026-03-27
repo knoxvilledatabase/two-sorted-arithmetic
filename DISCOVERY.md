@@ -24,7 +24,7 @@ Or was it always three?
 
 **𝒪 (Origin)** is the ground. Not a number. Not a symbol. Not inside any formal system. The precondition for formal systems to exist. The whole that remains whole when wholeness is taken from wholeness. The ocean. Can you name it without the name becoming a finger pointing at it rather than the thing itself?
 
-**Container (B)** is one symbol existing. The empty bucket. The mark that represents absence. If you picture a zero in your mind, how many symbols are you holding? One. The container exists. Is this not structural zero, the boundary that makes the emptiness visible?
+**Container** is one symbol existing. The empty bucket. The mark that represents absence. If you picture a zero in your mind, how many symbols are you holding? One. The container exists. Is this not structural zero, the boundary that makes the emptiness visible?
 
 **Contents (0)** is the quantity. No apples. Arithmetic zero. The additive identity. It lives inside the bounded domain. Subject to operations. The fish, not the ocean.
 

@@ -249,14 +249,14 @@ In the sort-aware version, `bounded(a) * bounded(b) = bounded(a*b)`. The result 
 Mathlib's `MulZeroClass` states `0 * a = 0` as one axiom (`zero_mul`). But the [three-primitive benchmark](lean/OriginalArith/ContainerBenchmark.lean) reveals this is two completely different facts wearing one symbol:
 
 - `contents(0) * contents(a) = contents(0)` — empty contents times anything is empty contents. Arithmetic. Happens entirely within contents.
-- `B * contents(a) = B` — the container absorbs contents. Structural. The bucket holding something is still a bucket.
+- `container * contents(a) = container` — the container absorbs contents. Structural. The bucket holding something is still a bucket.
 
-These are not the same operation. They look the same because `0` is both the empty contents and the container. Give B its own symbol and the two facts separate visibly.
+These are not the same operation. They look the same because `0` is both the empty contents and the container. Give container its own name and the two facts separate visibly.
 
 The [algebra file](lean/OriginalArith/Algebra.lean) goes further. When we tried to prove `contents(0)` absorbs all of `Val α`, the code refused. `contents(0) * origin = origin`, not `contents(0)`. The build failure revealed three different behaviors, not three levels of one:
 
 - `𝒪`: **absorption** — the ocean eats the fish. Forced by the first principle.
-- `B`: **idempotence** — structure of structure is structure. `B × B = B`.
+- `container`: **idempotence** — structure of structure is structure. `container × container = container`.
 - `contents(0)`: **arithmetic zero** — empty times anything is empty, within α.
 
 Mathlib's `zero_mul` says `0 * a = 0` as if there is one behavior. There are three, each for a different reason. The code would not let us conflate them.
@@ -264,10 +264,10 @@ Mathlib's `zero_mul` says `0 * a = 0` as if there is one behavior. There are thr
 Three symbols. Four rules. Every symbol has one job:
 
 ```
-𝒪 × anything = 𝒪              — the whole absorbs
-B × B = B                       — container of containers is container
-B × contents = B                — bucket holding something is still a bucket
-contents × contents = contents   — actual arithmetic
+𝒪 × anything = 𝒪                       — the whole absorbs
+container × container = container       — structure of structure is structure
+container × contents  = container       — bucket holding something is still a bucket
+contents × contents   = contents        — actual arithmetic
 ```
 
 ### The honest trade-off
@@ -530,7 +530,7 @@ The 508 theorems verify how the boundary behaves. The law, you can't have a part
 
 ## What It Means in Plain Terms
 
-Can we build arithmetic from scratch using just 𝒪, B, and contents?
+Can we build arithmetic from scratch using just 𝒪, container, and contents?
 
 Yes. All the way to fields — and beyond. Addition, multiplication, division, inverse, the ring laws, the field laws. Then ordered fields, vector spaces, polynomial rings, linear algebra, analysis and limits, topology, category theory, functional analysis, measure theory, and commutative algebra. 508 theorems from the seed. No patches. No conventions. No `≠ 0` hypotheses.
 
@@ -571,7 +571,7 @@ class HasBoundary (α : Type) [Mul α] where
 
 That is the backwards direction. Start from Mathlib's existing structures, show they consolidate into one typeclass.
 
-The [foundation](lean/OriginalArith/Foundation.lean) is the forwards direction. Arithmetic built up from three primitives without ever needing patches. Three symbols: `𝒪` (origin), `B` (container), `contents`. Four rules. Addition, multiplication, division, inverse, associativity, commutativity, distributivity. All proved. No patches. No conventions. No hypotheses. Arithmetic emerges.
+The [foundation](lean/OriginalArith/Foundation.lean) is the forwards direction. Arithmetic built up from three primitives without ever needing patches. Three constructors: `origin`, `container`, `contents`. Four rules. Addition, multiplication, division, inverse, associativity, commutativity, distributivity. All proved. No patches. No conventions. No hypotheses. Arithmetic emerges.
 
 The [algebra](lean/OriginalArith/RingField.lean) confirms it goes all the way: ring laws, field laws, additive inverse, multiplicative inverse, distributivity. All proved within contents. Can `Val α` be a field? No — origin and container are not field elements. Yes — the contents sub-sort is a field when α is. The field is the interior. The boundary is outside it by type.
 
