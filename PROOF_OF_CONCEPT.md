@@ -514,7 +514,7 @@ Obviously the insight isn't new.
 
 We formalized the theory in [Lean 4](lean/), a proof assistant that accepts or rejects proofs mechanically. The machine doesn't care how clever you sound. Either the types check or they don't.
 
-- [382 theorems](PROOFS.md). Zero errors. Zero `sorry`s.
+- [508 theorems](PROOFS.md). Zero errors. Zero `sorry`s.
 - 17 domains tested as modeled. 136 pairwise boundary preservations verified.
 - Built prototypes in [TypeScript](packages/typescript/src/index.ts) and [Python](packages/python/src/two_sorted/__init__.py). 71% fewer branches. 10% faster in JavaScript.
 - Built a [Rust core](packages/rust-python/src/lib.rs). Measured [actual energy consumption](packages/rust-python/energy_benchmark.py) on Apple Silicon. 98.6% less energy per operation.
