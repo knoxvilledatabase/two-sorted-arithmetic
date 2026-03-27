@@ -163,7 +163,7 @@ Is L'Hôpital asking "which zero am I holding?" Is it resolving the count — or
 
 **Standard behavior:** Defined. `0 × 0 = 0`. No indeterminacy.
 
-**Through the original lens:** Which zero? No apples times no apples stays in the hand. But can you multiply a bug by the air?
+**Through the original lens:** Which zero? No apples times no apples stays in the hand.
 
 ### Logarithm: `log(0)`
 
