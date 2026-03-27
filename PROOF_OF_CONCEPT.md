@@ -87,7 +87,7 @@ Did others see the original lens?
 
 **Plotinus (~250 CE).** The One precedes being. Cannot be named without distortion. Never connected to arithmetic.
 
-**Spencer-Brown (1969).** *"A universe comes into being when a space is severed."* The mark and the unmarked co-emerge. Ground → container → contents.
+**Spencer-Brown (1969).** *"A universe comes into being when a space is severed."* The mark and the unmarked co-emerge.
 
 **IEEE 754 (1985).** NaN propagation rules ARE the interaction axioms: `NaN + x = NaN` (I1), `x + NaN = NaN` (I2). The computing industry built the original lens into every floating-point chip on earth without connecting it to the mathematics.
 
