@@ -159,9 +159,9 @@ Is the answer "undefined" or "which zero?"
 
 **Standard behavior:** The limit may or may not exist. Depends on the function.
 
-**Through the original lens:** Approaching no symbols? Calculus handles it. That's what limits were built for. But is the fish becoming the ocean or are we getting tired of counting fish?
+**Through the original lens:** Does the limit exist to the point that you no longer have the capacity to count any more symbols? Is the fish becoming the ocean or are we running out of the ability to count more fish?
 
-Is L'Hopital asking "which zero am I holding?"
+Is L'Hopital asking "which zero am I holding?" Is this the count running out, or are the symbols no longer making symbols?
 
 ### Multiplication: `0 × 0`
 
