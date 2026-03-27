@@ -137,10 +137,10 @@ The shepherd never made that mistake. He knew the difference between the ground,
 
 **The problem:** Two rules collide. `x ÷ x = 1` for all x ≠ 0. But `0` has no multiplicative inverse. Which rule wins? What happens when one symbol carries two roles?
 
-**Through the original lens:** Which zero is dividing which zero? 
+**Through the original lens:** Which zero is dividing which zero?
 
-Contents(0) ÷ contents(0) has a limit — L'Hopital or context resolves it. 
-Origin ÷ anything = origin — absorption, not arithmetic. 
+No apples ÷ no apples? L'Hopital or context resolves it.
+The ground ÷ anything? The ocean absorbs.
 
 Is the answer "undefined" or "which zero?"
 
@@ -148,39 +148,37 @@ Is the answer "undefined" or "which zero?"
 
 **Standard behavior:** Undefined/indeterminate.
 
-**Through the original lens:** Same thing, different notation. The bucket operating on itself reveals the bucket.
+**Through the original lens:** Same thing, different notation. Does the bucket operating on itself reveal the bucket?
 
 ### Factorial: `0!`
 
 **Standard behavior:** Defined. `0! = 1` by convention.
 
-**Through the original lens:** It is not a convention. It is the container. `0 ÷ 0 = 1`, `0^0 = 1`, `0! = 1` — three notations, one fact. The Lean 4 proof `self_operation_universality` confirms: these are not three conventions but one theorem.
+**Through the original lens:** Is it a convention? Or is the bucket still there? How many ways can you arrange an empty bucket? `0 ÷ 0 = 1`, `0^0 = 1`, `0! = 1` — three notations, one bucket?
 
 ### Limits: `lim(x→0)`
 
-Approaching the number zero? Calculus handles it. That is what limits were built for. Approaching the ground? The limit apparatus does not apply. You are at the edge of math itself.
+Approaching no apples? Calculus handles it. That's what limits were built for. Approaching the ground? Does the map have an edge?
 
-Is L'Hopital's rule sort resolution in disguise? Determining which sort of zero you are holding, expressed in the language of calculus rather than types?
-
-When L'Hopital resolves an indeterminate form, it is performing categorical confirmation — determining whether the zeros involved are the same sort, without having the vocabulary to say so.
+Is L'Hopital asking "which zero am I holding?"
 
 ### Multiplication: `0 × 0`
 
 **Standard behavior:** Defined. `0 × 0 = 0`. No indeterminacy.
 
-**Through the original lens:** Not undefined, but which zero? If the ground touches it, it absorbs. If it is just numbers, it stays a number. Three different behaviors wearing one notation.
+**Through the original lens:** Which zero? Does the ocean absorb it? Do apples stay apples? Three different behaviors wearing one notation?
 
 ### Logarithm: `log(0)`
 
 **Standard behavior:** Undefined. The limit gives −∞.
 
-**Through the original lens:** What power produces zero? That is a math question — calculus handles it. What power produces the whole? That is not a math question. The conflation made them look like the same problem.
+**Through the original lens:** What power produces no more symbols? What power produces the origin? Did the collapse make them look like the same problem?
 
 ### Division by zero: `1 ÷ 0`
 
 **Standard behavior:** Undefined.
 
-**Through the original lens:** Which zero is the divisor? If it is the number zero, calculus handles it — the limit approaches ±∞. If it is the ground, you are dividing by the whole. The ocean absorbs the fish.
+**Through the original lens:** Which zero is the divisor? Is it no apples? Does the counting get tired — the limit approaching ±∞? Is it the ground? Does the ocean absorb the fish?
 
 ## What the Collapse Did to Domains
 
