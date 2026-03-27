@@ -77,6 +77,22 @@ When mathematics put 𝒪 inside the number system and called it zero, did it as
 
 ---
 
+## Every Quantity Is Its Own Bound
+
+Is 3 not bounded at 3? Is the quantity not its own limit? Is 3 not what keeps it from being 2 or 4 or anything else?
+
+Is contents(3) not bounded at 3? Is contents(0) not bounded at zero — the quantity that stops at nothing? Is every number not its own edge?
+
+Then what is 𝒪? Is 𝒪 not the unbounded? No edge. No limit. No quantity. The whole that has no bound because it is not a quantity at all.
+
+Did the collapse confuse the smallest bound with the unbounded? Did mathematics take contents(0) — bounded at zero, the most minimal limit — and mistake it for 𝒪 — no bound at all?
+
+The smallest bound mistaken for no bound. The quantity zero mistaken for the ground. One bucket holding nothing mistaken for no bucket at all.
+
+Is that not the collapse stated as precisely as it can be stated?
+
+---
+
 ## The Infinity Mirror
 
 Do zero and one together create the infinity mirror effect of mathematics? Not zero alone. Not one alone. The relationship between them?
