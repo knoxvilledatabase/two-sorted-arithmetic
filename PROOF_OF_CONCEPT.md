@@ -135,7 +135,11 @@ Is zero having an identity crisis?
 
 **The problem:** Two rules collide. `x ÷ x = 1` for all x ≠ 0. But `0` has no multiplicative inverse. Which rule wins? What happens when one symbol carries two roles?
 
-**Through the original lens:** Which zero is dividing which zero? If it is the empty hand divided by the empty hand — L'Hôpital or context resolves it. If the ground is involved — the ocean absorbs. Is the answer "undefined" or "which zero?"
+**Through the original lens:** Which zero is dividing which zero? 
+
+If the contents of the empty hand is divided by the contents of the empty hand don't I still have a hand? 
+
+Is the answer "undefined" or "which zero?"
 
 ### Exponentiation: `0 ^ 0`
 
