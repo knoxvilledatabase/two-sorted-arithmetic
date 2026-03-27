@@ -20,17 +20,17 @@ What would we find?
 
 If we go back to a time before math, a shepherd is holding an apple.
 
-Obviously the shepherd knows he is holding the apple. He eats the apple. Now his hand has no apples.
+Obviously the shepherd knows he's holding the apple. He eats the apple. Now his hand has no apples.
 
-The shepherd did not have a symbol to represent "no apples." He did not need one. He could feel the difference between holding something and holding nothing.
+This shepherd didn't have a symbol to represent "no apples." He didn't need one. He could feel the difference between holding something and holding nothing.
 
 But the hand is still there. One hand. Zero apples. The hand did not disappear because the apple did.
 
 The shepherd already knew three things without naming any of them:
 
-The **ground** he stands on. He did not make it. He cannot hold it. It was there before him and will be there after.
+The **ground** he stands on. He didn't make it. He can't hold it. It was there before him and will be there after.
 
-The **hand** itself. One hand. Whether holding something or nothing. It persists when holding no apples.
+The **hand** itself. One hand. Whether holding an apple or not.
 
 The **apple**, or the absence of apple. The quantity. What changes when the hand opens.
 
