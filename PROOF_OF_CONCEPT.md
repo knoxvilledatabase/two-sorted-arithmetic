@@ -174,13 +174,13 @@ Is L'Hopital asking "which zero am I holding?"
 
 **Standard behavior:** Undefined. The limit gives −∞.
 
-**Through the original lens:** What power produces no more symbols? What power produces the origin? Did the collapse make them look like the same problem?
+**Through the original lens:** What power produces no more symbols?
 
 ### Division by zero: `1 ÷ 0`
 
 **Standard behavior:** Undefined.
 
-**Through the original lens:** Which zero is the divisor? Is it no apples? Does the counting get tired — the limit approaching ±∞? Is it the ground? Does the ocean absorb the fish?
+**Through the original lens:** Which zero is the divisor? 
 
 ## What the Collapse Did to Domains
 
