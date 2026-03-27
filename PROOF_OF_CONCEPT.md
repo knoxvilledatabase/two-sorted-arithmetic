@@ -50,9 +50,9 @@ For thousands of years, humans counted without zero. The shepherd knew about emp
 
 Until 628 CE.
 
-## What the Shepherd Already Knew
+## How Did the Shepherd Know?
 
-Was the original distinction ever lost? Was it ever hidden? Was it not in every hand that ever held something and then held nothing?
+The original lens was never lost, it was never hidden. Was it not in every hand that ever held something and then held nothing?
 
 Was zero ever one thing? Or was it always at least three:
 
