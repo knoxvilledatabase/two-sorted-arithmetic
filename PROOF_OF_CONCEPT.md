@@ -10,7 +10,7 @@ Has the number zero always been doing at least three jobs at the same time?
 
 First job: representing quantity like "no apples".
 
-Second job: A symbol or container like an empty bucket.
+Second job: The container, the empty bucket that holds the quantity.
 
 Third job: The categorical origin of the domain it belongs to.
 
@@ -82,7 +82,7 @@ Does the number zero operate at two levels?
 
 2. **The first distinction**, not a step that follows 𝒪, but the single act in which three things co-emerge simultaneously and inseparably:
    - **0**, the empty contents like "no apples"
-   - **1**, the container, the boundary that makes a symbol possible. Is the number zero not one symbol?
+   - **1**, the container, the bucket that holds the quantity. Is the number zero not one bucket holding nothing?
    - **B**, the bounded domain where mathematics takes place
 
    Are these sequential? Can you have any one without the other two? Is 0 not an element that arrives into an already-existing B? Is 0 not a co-founder of B?
@@ -105,13 +105,13 @@ What if 𝒪 sat below arithmetic as the precondition for all mathematical symbo
 
 Was zero ever one thing? Or was it always at least three:
 
-- **𝒪**, ground (origin). The finger pointing at the moon. 
-- **1**, container. The part. One symbol exists.
-- **0**, contents. The symbol's quantity is empty or "no apples"
+- **𝒪**, ground (origin). The finger pointing at the moon.
+- **container**, the bucket. Holds symbols. Does not care what is inside. One bucket, always.
+- **contents**, the quantities inside the bucket. "0" = quantity zero. "7" = quantity seven. Each symbol is a quantity, not a bucket.
 
 Are the container and the contents complementary opposites, needing each other to exist?
 
-Is `a × b = c` not 1 container times 1 container equals 1 container?
+Is `a × b = c` not 1 bucket holding `a` times 1 bucket holding `b` equals 1 bucket holding `a × b`?
 
 ---
 

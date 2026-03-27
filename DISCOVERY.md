@@ -24,9 +24,9 @@ Or was it always three?
 
 **𝒪 (Origin)** is the ground. Not a number. Not a symbol. Not inside any formal system. The precondition for formal systems to exist. The whole that remains whole when wholeness is taken from wholeness. The ocean. Can you name it without the name becoming a finger pointing at it rather than the thing itself?
 
-**Container** is one symbol existing. The empty bucket. The mark that represents absence. If you picture a zero in your mind, how many symbols are you holding? One. The container exists. Is this not structural zero, the boundary that makes the emptiness visible?
+**Container** is the bucket. It holds symbols. It does not care what is inside. One bucket, always. If you picture a zero in your mind, how many buckets are you holding? One. The bucket is still there even when it is empty. Is this not what persists when the quantity inside is nothing?
 
-**Contents (0)** is the quantity. No apples. Arithmetic zero. The additive identity. It lives inside the bounded domain. Subject to operations. The fish, not the ocean.
+**Contents** are the quantities inside the bucket. Each symbol is a quantity. "0" inside the bucket means quantity zero. "7" inside the bucket means quantity seven. The quantities do not care about the bucket. The bucket does not care about the quantities. Contents are the fish, not the ocean.
 
 Were these three collapsed into one symbol? Is that collapse the root of 97 patches across mathematics, logic, computation, and physics?
 
@@ -229,7 +229,7 @@ One. The container exists.
 It cannot. "Undefined" is exhaustion given a name. The counting stopped. It did not reach the ground.
 
 **"Could I take a picture of nothing?"**
-No. Nothing requires a frame. The empty container requires one symbol. The picture of nothing is one picture. Nothing is always nothing of something.
+No. Nothing requires a frame. The empty bucket is still one bucket. The picture of nothing is one picture. Nothing is always nothing of something.
 
 **"Is a/b = c not one container divided by one container equals one container?"**
 Yes. At the structural level, every expression is containers operating on containers. The arithmetic happens inside the containers. The child was counting containers. The teacher was counting contents. Both were right.
