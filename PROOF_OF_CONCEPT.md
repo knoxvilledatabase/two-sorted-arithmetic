@@ -85,7 +85,7 @@ Did others see the original lens?
 
 **Euclid (~300 BCE).** *"The whole is greater than the part."* The category distinction. Never applied to zero specifically.
 
-**Plotinus (~250 CE).** The One precedes being. Cannot be named without distortion. Never connected to arithmetic.
+**Plotinus (~250 CE).** *"The One is all things and no one of them."* Never connected to arithmetic.
 
 **Spencer-Brown (1969).** *"A universe comes into being when a space is severed."* The mark and the unmarked co-emerge.
 
