@@ -135,7 +135,7 @@ Is zero having an identity crisis?
 
 **The problem:** Two rules collide. `x ÷ x = 1` for all x ≠ 0. But `0` has no multiplicative inverse. Which rule wins? What happens when one symbol carries two roles?
 
-**Through the original lens:** Which zero is dividing which zero? 
+**Through the original lens:** Which zero? 
 
 If I have no apples in my hand and I divide it by no apples in my hand, how many apples do I have in my hand, undefined or just no apples? 
 
