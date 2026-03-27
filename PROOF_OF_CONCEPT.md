@@ -137,48 +137,45 @@ The shepherd never made that mistake. He knew the difference between the ground,
 
 **The problem:** Two rules collide. `x ÷ x = 1` for all x ≠ 0. But `0` has no multiplicative inverse. Which rule wins? What happens when one symbol carries two roles?
 
-**Through the original lens:** Which zero is dividing which zero?
-
-How can symbols generate anything other than symbols?
-
-Is the answer "undefined" or "which zero?"
+**Through the original lens:** Which zero is dividing which zero? If it is the empty hand divided by the empty hand — L'Hôpital or context resolves it. If the ground is involved — the ocean absorbs. Is the answer "undefined" or "which zero?"
 
 ### Exponentiation: `0 ^ 0`
 
 **Standard behavior:** Undefined/indeterminate.
 
-**Through the original lens:** Same thing, different notation. Does the bucket operating on itself reveal the bucket?
+**Through the original lens:** Same thing, different notation. Does the empty hand operating on itself reveal the hand? Is that not 1?
 
 ### Factorial: `0!`
 
-**Standard behavior:** Defined. `0! = 1` by convention. Which zero are they talking about?
+**Standard behavior:** Defined. `0! = 1` by convention.
 
-**Through the original lens:** Is it a convention? Or is it what's left when the contents are gone? The bucket. `0 ÷ 0 = 1`, `0^0 = 1`, `0! = 1` — three notations, one bucket?
+**Through the original lens:** Is it a convention? Or is it what remains when the symbols are gone — the hand itself? `0 ÷ 0 = 1`, `0^0 = 1`, `0! = 1` — three notations. Is that not one fact?
 
 ### Limits: `lim(x→0)`
 
 **Standard behavior:** The limit may or may not exist. Depends on the function.
 
-**Through the original lens:** Does the limit exist to the point that you no longer have the capacity to count any more symbols? Is the fish becoming the ocean or are we running out of the ability to count more fish?
+**Through the original lens:** Approaching the number zero? Calculus handles it. That is what limits were built for. Approaching the ground? Does the limit apparatus apply to the ground?
 
-Is L'Hopital asking "which zero am I holding?" Is this the count running out, or are the symbols no longer making symbols?
+Is L'Hôpital asking "which zero am I holding?" Is it resolving the count — or recognizing that the symbols have stopped making symbols?
 
 ### Multiplication: `0 × 0`
 
 **Standard behavior:** Defined. `0 × 0 = 0`. No indeterminacy.
 
-**Through the original lens:** Which zero? Can you multiply a fish by the ocean?
+**Through the original lens:** Which zero? No symbols times no symbols stays in the hand. But can you multiply a bug by the air?
+
 ### Logarithm: `log(0)`
 
 **Standard behavior:** Undefined. The limit gives −∞.
 
-**Through the original lens:** What power produces no more symbols?
+**Through the original lens:** What power produces no symbols? Calculus handles it. What power produces the ground? Is that the same question?
 
 ### Division by zero: `1 ÷ 0`
 
 **Standard behavior:** Undefined.
 
-**Through the original lens:** Which zero is the divisor? 
+**Through the original lens:** Which zero is the divisor? If it is no symbols — the limit approaches ±∞. If it is the ground — the ocean absorbs the fish. Is that not two different questions wearing one symbol?
 
 ## What the Collapse Did to Domains
 
