@@ -175,7 +175,7 @@ Is L'Hôpital asking "which zero am I holding?" or have symbols stopped making s
 
 **Standard behavior:** Undefined.
 
-**Through the original lens:** Which zero is the divisor? If it is no symbols — the limit approaches ±∞. If it is the ground — the ocean absorbs the fish. Is that not two different questions wearing one symbol?
+**Through the original lens:** Which zero is the divisor? If it is no symbols, the limit approaches ±∞ or are we asking if the ocean absorbs the fish? Is that not two different questions wearing one symbol?
 
 ## What Did the Collapse Do Across Domains?
 
