@@ -255,19 +255,19 @@ These are not the same operation. They look the same because `0` is both the emp
 
 The [algebra file](lean/OriginalArith/Algebra.lean) goes further. When we tried to prove `contents(0)` absorbs all of `Val α`, the code refused. `contents(0) * origin = origin`, not `contents(0)`. The build failure revealed three different behaviors, not three levels of one:
 
-- `𝒪`: **absorption** — the ocean eats the fish. Forced by the first principle.
+- `𝒪`: **absorption** — the ocean eats the fish. `origin × anything = origin`.
 - `container`: **idempotence** — structure of structure is structure. `container × container = container`.
-- `contents(0)`: **arithmetic zero** — empty times anything is empty, within α.
+- `contents(a)`: **arithmetic** — the main event. `contents(a) × contents(b) = contents(a × b)`. One container in, one container out, the value inside is what changes.
 
 Mathlib's `zero_mul` says `0 * a = 0` as if there is one behavior. There are three, each for a different reason. The code would not let us conflate them.
 
-Three symbols. Four rules. Every symbol has one job:
+Three constructors. Four rules. Every sort has one job:
 
 ```
-𝒪 × anything = 𝒪                       — the whole absorbs
-container × container = container       — structure of structure is structure
-container × contents  = container       — bucket holding something is still a bucket
-contents × contents   = contents        — actual arithmetic
+contents(a) × contents(b) = contents(a × b)   — arithmetic inside containers
+container × container      = container          — empty bucket × empty bucket
+container × contents(a)    = container          — empty bucket absorbs contents
+origin × anything          = origin             — the boundary absorbs
 ```
 
 ### The honest trade-off
