@@ -55,7 +55,7 @@ Strip until it breaks. Then add the minimum to make it work.
 - [README.md](README.md) is for the engineer who asks "what does this do for me?"
 - [PROOF_OF_CONCEPT.md](PROOF_OF_CONCEPT.md) is for the person who asks "why does this work?"
 - [PROOFS.md](PROOFS.md) is for the person who asks "prove it"
-- [Origin README](https://github.com/knoxvilledatabase/origin) is for the developer who wants to use it today
+- [Origin README](https://github.com/knoxvilledatabase/origin-lang) is for the developer who wants to use it today
 - [RESEARCH.md](https://github.com/knoxvilledatabase/origin/blob/main/RESEARCH.md) is for the AI safety researcher
 
 **Show, don't describe.** A code block with `# still here` pointing at a preserved value beats any paragraph explaining what `last` does. Three implementations side by side beat a prose argument about type system differences. Demonstration wins over explanation every time.

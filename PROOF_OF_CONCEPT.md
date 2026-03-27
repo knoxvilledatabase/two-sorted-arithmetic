@@ -207,7 +207,7 @@ Mathlib already has `Gˣ`. Mathlib already has `WithZero`, which treats the abso
 
 The question is why `Gˣ` is not the default. Why the safe version is opt-in and the collapsed version is standard.
 
-That is the same pattern as `Value<T, B>` vs `Result` in the [Origin](https://github.com/knoxvilledatabase/origin) crate. `Result` can carry context if you build a custom error type. But it is opt-in. `Value<T, B>` carries `last` by default. You cannot forget. The compiler will not let you.
+That is the same pattern as `Value<T, B>` vs `Result` in the [Origin](https://github.com/knoxvilledatabase/origin-lang) crate. `Result` can carry context if you build a custom error type. But it is opt-in. `Value<T, B>` carries `last` by default. You cannot forget. The compiler will not let you.
 
 Same collapse. Same patch. Same opt-in workaround. From ancient arithmetic to modern proof assistants to production Rust code.
 
@@ -554,7 +554,7 @@ The unification came first. The water argument follows from it. Each patch is co
 
 We prototyped it, benchmarked it, and Rust's `Option<T>` beat us — born from ML's `option` type in 1973. The theory explains *why*: collapsing Origin and Bounded into a single symbol forces null checks that Option types eliminate at the type level. `Option<T>` solved computation. It didn't unify it with math, logic, or physics. Those three fields are still running separate patches for the same boundary.
 
-This repo is the proof that the distinction is necessary. The [Origin](https://github.com/knoxvilledatabase/origin) repo is the proof that the distinction is enforceable. The Lean theorems prove you cannot have a total extension of bounded arithmetic without the two-sort split. The Rust compiler proves you cannot ship code that ignores the split without a compile error. The math forces the design. The design forces the code.
+This repo is the proof that the distinction is necessary. The [Origin](https://github.com/knoxvilledatabase/origin-lang) repo is the proof that the distinction is enforceable. The Lean theorems prove you cannot have a total extension of bounded arithmetic without the two-sort split. The Rust compiler proves you cannot ship code that ignores the split without a compile error. The math forces the design. The design forces the code.
 
 Origin's `Value<T, B>` preserves what `Option` and `Result` cannot — the last known value at every boundary, the reasoning chain that led there, and the compiler enforcement that makes ignoring a boundary a compile error.
 

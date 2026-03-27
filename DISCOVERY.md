@@ -310,7 +310,7 @@ The philosophers pointed at the moon for 2,500 years. Did the proof that the fin
 
 The [formal proof](PROOF_OF_CONCEPT.md): 508 Lean 4 theorems. Three constructors, four rules. Arithmetic from scratch through commutative algebra. 46 hypotheses dissolve to zero. Every seed proof is `rfl`, true by construction. The mathematics.
 
-The [enforcement](https://github.com/knoxvilledatabase/origin): `origin-lang` on crates.io and PyPI. Three sorts at the application layer. 192 Rust tests, 37 Python tests, 15 adversarial tests, 12 property-based tests. The compiler makes ignoring a boundary an error.
+The [enforcement](https://github.com/knoxvilledatabase/origin-lang): `origin-lang` on crates.io and PyPI. Three sorts at the application layer. 192 Rust tests, 37 Python tests, 15 adversarial tests, 12 property-based tests. The compiler makes ignoring a boundary an error.
 
 The [compiler](origin-mlir/): Four rules from Foundation.lean running as MLIR compiler passes. Origin absorption eliminates dead code. Contents closure preserves sort at zero overhead. StableHLO bridge working against real JAX IR.
 

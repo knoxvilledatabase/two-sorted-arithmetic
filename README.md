@@ -252,7 +252,7 @@ Does the [Lean 4 formalization](lean/TwoSortedArith/) prove it formally? 508 the
 
 Is that math sound enough?
 
-The [Origin](https://github.com/knoxvilledatabase/origin) crate makes it a compiler error, available today in Rust and Python.
+The [Origin](https://github.com/knoxvilledatabase/origin-lang) crate makes it a compiler error, available today in Rust and Python.
 
 ```bash
 pip install origin-lang
@@ -296,7 +296,7 @@ cargo add origin-lang
 | `packages/typescript/` | TypeScript prototype: 71% fewer branches |
 | `packages/python/` | Python prototype |
 | `packages/rust-python/` | Rust core + energy benchmark: 98.6% less energy per operation |
-| [Origin](https://github.com/knoxvilledatabase/origin) | The compiler that enforces it (separate repo) |
+| [Origin](https://github.com/knoxvilledatabase/origin-lang) | The compiler that enforces it (separate repo) |
 
 ## The Foundation
 
