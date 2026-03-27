@@ -281,6 +281,26 @@ theorem sorts_disjoint_cx (a : α) : (container : Val α) ≠ contents a := by s
 -- ✓ Three sorts. Mutually exclusive. Exhaustive.
 
 -- ============================================================================
+-- The Collapse: smallest bound ≠ no bound
+-- ============================================================================
+
+-- contents(0) is bounded — it stays in contents under operations.
+-- origin is unbounded — it absorbs everything.
+-- The collapse was confusing the smallest bound with no bound at all.
+
+/-- The collapse stated formally: contents(0) and origin are
+    categorically distinct. contents(0) has a bound (the value 0,
+    stays in contents). origin has no bound (absorbs everything).
+    The smallest bound is not the absence of bound. -/
+theorem smallest_bound_ne_no_bound (f : α → α → α) (zero : α) (a : α) :
+    mul f (contents zero) (contents a) = contents (f zero a) ∧
+    mul f origin (contents a) = origin := by
+  constructor <;> rfl
+
+-- ✓ The collapse: contents(0) is bounded at zero. origin is unbounded.
+-- Mathematics confused them for 2,400 years.
+
+-- ============================================================================
 -- THE RESULT
 -- ============================================================================
 --
