@@ -44,7 +44,7 @@ The Babylonians needed a way to write "nothing in this column" for their positio
 
 The Greeks had no zero at all. Euclid (~300 BCE) built geometry from lengths, areas, volumes. You cannot have a length of nothing. But Euclid had a principle that gestures at something deeper: *"the whole is greater than the part."*
 
-Is it not possible there is a deeper reading? Not that the whole is a bigger part. But that the whole is a *different category* entirely? Can you have a part without a whole?
+Is it possible there's a deeper reading? Not that the whole is a bigger part. But that the whole is a *different category* entirely? Can you have a part without a whole?
 
 For thousands of years, humans counted without zero. The shepherd knew about empty hands. The Babylonians had a placeholder. The Greeks had the principle. But nobody gave emptiness arithmetic properties.
 
