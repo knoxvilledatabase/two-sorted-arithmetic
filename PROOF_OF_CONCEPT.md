@@ -113,7 +113,7 @@ Was it not Brahmagupta's *Brāhmasphuṭasiddhānta* (628 CE) who gave zero its 
 
 When Brahmagupta formalized the arithmetic, did only *śūnya* make it into the rules? What happened to *pūrṇa*, did it stay only in the philosophy?
 
-Were the two faces that the Upanishadic tradition held together collapsed? One entering mathematics without the other?
+Were the two faces that the Upanishadic tradition held together collapsed? Entering mathematics as the symbol 0?
 
 What if Brahmagupta was right about origin, the ground dividing itself yields the ground, and later mathematicians rejected it because they confused origin with contents?
 
