@@ -151,9 +151,9 @@ Is the answer "undefined" or "which zero?"
 
 ### Factorial: `0!`
 
-**Standard behavior:** Defined. `0! = 1` by convention.
+**Standard behavior:** Defined. `0! = 1` by convention. Which zero are they talking about?
 
-**Through the original lens:** Is it a convention? Or is the bucket still there? How many ways can you arrange an empty bucket? `0 ÷ 0 = 1`, `0^0 = 1`, `0! = 1` — three notations, one bucket?
+**Through the original lens:** Is it a convention? Or is it what's left when the contents are gone? The bucket. `0 ÷ 0 = 1`, `0^0 = 1`, `0! = 1` — three notations, one bucket?
 
 ### Limits: `lim(x→0)`
 
