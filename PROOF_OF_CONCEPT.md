@@ -148,7 +148,7 @@ Is the answer "undefined" or "which zero?"
 
 **Standard behavior:** Undefined/indeterminate.
 
-**Through the original lens:** Same thing, different notation. The emptiness operating on itself reveals the container. That is 1.
+**Through the original lens:** Same thing, different notation. The bucket operating on itself reveals the bucket.
 
 ### Factorial: `0!`
 
