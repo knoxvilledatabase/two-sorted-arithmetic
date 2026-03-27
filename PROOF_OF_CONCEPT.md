@@ -139,8 +139,7 @@ The shepherd never made that mistake. He knew the difference between the ground,
 
 **Through the original lens:** Which zero is dividing which zero?
 
-No apples ÷ no apples? L'Hopital or context resolves it.
-The ground ÷ anything? The ocean absorbs.
+How can symbols generate anything other than symbols?
 
 Is the answer "undefined" or "which zero?"
 
