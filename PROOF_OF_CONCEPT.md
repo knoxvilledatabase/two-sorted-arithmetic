@@ -184,7 +184,7 @@ Algebra on arithmetic. Calculus on algebra. Analysis on calculus. Every floor of
 - Does physics have **renormalization** to dodge infinities?
 - Does computing have **NaN** to absorb invalid operations?
 
-### The same collapse, across domains
+### Did the collapse spread across domains? 
 
 The empty set `∅` is the oldest two-faced zero. It contains *nothing* yet *is* one thing. From inside B, ∅ is the empty container, the additive identity of sets under union. From outside, ∅ is the first distinction, the boundary the entire set hierarchy is built on.
 
