@@ -149,7 +149,7 @@ The shepherd never made that mistake. He knew the difference between the ground,
 
 **Standard behavior:** Defined. `0! = 1` by convention.
 
-**Through the original lens:** Is it a convention? Or is it what remains when the symbols are gone — the hand itself? `0 ÷ 0 = 1`, `0^0 = 1`, `0! = 1` — three notations. Is that not one fact?
+**Through the original lens:** Is it a convention? Or is it what remains when the apples are gone — the hand itself? `0 ÷ 0 = 1`, `0^0 = 1`, `0! = 1` — three notations. Is that not one fact?
 
 ### Limits: `lim(x→0)`
 
