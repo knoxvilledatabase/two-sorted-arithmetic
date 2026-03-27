@@ -174,7 +174,7 @@ Mathlib, the largest formal mathematics library ever built, manages the conflati
 - **AddZeroClass** — `0 + a = a` and `a + 0 = a`. The additive identity.
 - **ZeroHom** — morphisms preserving zero.
 - **CharZero** — characteristic zero.
-- **Nontrivial** — `0 ≠ 1`. Required constantly alongside zero-related results.
+- **Nontrivial** — `0 ≠ 1`. Required constantly alongside zero-related results. In Val α this is structural: origin, container, and contents are different constructors. They cannot be equal by construction. The trivial ring where 0 = 1 cannot arise because the type keeps the two faces distinct.
 
 In Val α, three constructors — `origin`, `container`, `contents` — replace all seventeen. Not by reimplementing them. By making them unnecessary. The sort system carries what the typeclasses guard.
 
@@ -601,6 +601,8 @@ That is the consolidation. Not hypothesis by hypothesis. The class of hypotheses
 | Commutative algebra | `s ≠ 0` for localization | Structural. Contents / contents = contents. |
 
 The benchmarks showed 18 hypotheses move. The forwards direction showed the factory that produces those hypotheses doesn't exist. Sort-aware code eliminates the factory. The type carries what the hypotheses guarded.
+
+A hallucination is a boundary value dressed as contents. The model reached the edge of what it knows and produced a confident answer instead of acknowledging that the counting stopped. The sort system names the boundary. The unnamed boundary is where hallucinations live.
 
 ---
 
