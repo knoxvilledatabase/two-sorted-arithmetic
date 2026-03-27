@@ -123,8 +123,6 @@ What arrived in Europe? Was zero a pure placeholder? What happened to the other 
 
 Did zero become one symbol that meant multiple things?
 
-Did the shepherd's three things, the ground, the hand, and the apple, become the symbol 0?
-
 The shepherd never made that mistake. He knew the difference between the ground, his hand and no apples.
 
 ## What Did the Collapse Do to Operations?
