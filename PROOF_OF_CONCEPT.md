@@ -77,7 +77,7 @@ And two interaction axioms for the ground:
 
 I3 (`f(𝒪, 𝒪) = 𝒪`) is redundant. It follows from I1 or I2 alone.
 
-## This Isn't New
+## Is This New?
 
 Others saw the original lens:
 
