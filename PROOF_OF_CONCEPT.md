@@ -173,7 +173,7 @@ Is L'Hôpital asking "which zero am I holding?" Is it resolving the count — or
 
 **Through the original lens:** Which zero is the divisor? If it is no symbols — the limit approaches ±∞. If it is the ground — the ocean absorbs the fish. Is that not two different questions wearing one symbol?
 
-## What the Collapse Did to Domains
+## What Did the Collapse Do Across Domains?
 
 Is mathematics not built on top of itself?
 
