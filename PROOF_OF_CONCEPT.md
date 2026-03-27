@@ -1,10 +1,14 @@
 # Proof of Concept: Original Arithmetic
 
-*The [README](README.md) asked the question. This is what we found when we looked through the original lens. [DISCOVERY](DISCOVERY.md) asks why the answer was always true.*
+*The [README](README.md) asked the question. What would happen if we went back to the beginning? [DISCOVERY](DISCOVERY.md) asks why the answer was always true.*
 
 ---
 
 ## Preface
+
+What would happen if we went back to the beginning?
+
+Before the patches. Before the conventions. Before "undefined." Before zero was asked to do three jobs at once.
 
 Has the number zero always been doing at least three jobs at the same time?
 
