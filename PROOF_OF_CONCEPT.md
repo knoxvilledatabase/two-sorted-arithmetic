@@ -600,7 +600,7 @@ That is the consolidation. Not hypothesis by hypothesis. The class of hypotheses
 | Measure theory | `measure(S) = 0` vs boundary confusion | Disambiguated. `contents(0)` is measure zero. `origin` is boundary. |
 | Commutative algebra | `s ≠ 0` for localization | Structural. Contents / contents = contents. |
 
-The benchmarks showed 18 hypotheses move. The forwards direction showed the factory that produces those hypotheses doesn't exist.
+The benchmarks showed 18 hypotheses move. The forwards direction showed the factory that produces those hypotheses doesn't exist. Sort-aware code eliminates the factory. The type carries what the hypotheses guarded.
 
 ---
 
