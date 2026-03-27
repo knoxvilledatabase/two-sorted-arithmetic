@@ -194,7 +194,7 @@ What happens when 0 = 1? When the two faces of the mirror merge? Does all of mat
 
 Does mathematics require `0 ≠ 1` as an explicit axiom (`Nontrivial` in Lean 4 Mathlib) to prevent this?
 
-In the three-sort system, is this structural? Are container and contents different constructors? Can they be equal by construction? Can the mirror collapse when the type system keeps the two faces distinct?
+In original arithmetic, is this structural? Are container and contents different constructors? Can they be equal by construction? Can the mirror collapse when the type system keeps the two faces distinct?
 
 Do you need to assert `0 ≠ 1`? Or do the types already know?
 
@@ -244,11 +244,13 @@ Can a fish create anything other than fish?
 
 Can the leaf become the tree?
 
-Can a bug also be the thing that creates all bugs?
+Can a bug also be what created it?
 
-Is 0 also 1? Is one bucket holding zero contents not one and zero at the same time?
+Is 0 also 1? Is one bucket holding zero contents
+not one and zero at the same time?
 
-Does every attempt to answer these concede the three-sort distinction?
+Does every attempt to answer these concede
+the original distinction?
 
 ---
 

@@ -37,6 +37,6 @@ One counterexample kills the claim.
 
 ## Current Status
 
-Seventeen domains tested as modeled by the three-sort type system. Zero non-isomorphic pairs found. 136 pairwise boundary preservations verified. Five novel predictions confirmed. Six additional domains verified in exhaustive testing. Two negative tests confirm what *doesn't* work. The kill switch has not been triggered.
+Seventeen domains tested as modeled by original arithmetic. Zero non-isomorphic pairs found. 136 pairwise boundary preservations verified. Five novel predictions confirmed. Six additional domains verified in exhaustive testing. Two negative tests confirm what *doesn't* work. The kill switch has not been triggered.
 
 The invitation remains open.

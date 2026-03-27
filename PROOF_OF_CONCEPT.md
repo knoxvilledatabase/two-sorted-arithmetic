@@ -1,6 +1,6 @@
 # Proof of Concept: Original Arithmetic
 
-*The [README](README.md) asked the question. This is the proof of concept we built to answer it. [DISCOVERY](DISCOVERY.md) asks why the answer was always true.*
+*The [README](README.md) asked the question. This is what we found when we looked through the original lens. [DISCOVERY](DISCOVERY.md) asks why the answer was always true.*
 
 ---
 
@@ -453,7 +453,7 @@ The claim is isomorphism of the absorbing element structure, not of the full dom
 | Topology | Separation | Topological spaces | Indiscrete topology | Weaken axioms |
 | Proof Theory | Cut elimination | Formal proofs | Cut-requiring proofs | Restrict rules |
 
-Seventeen domains tested as modeled by the three-sort type system. Zero non-isomorphic pairs found. 136 pairwise boundary preservations verified. Five novel predictions confirmed. The kill switch has not been triggered.
+Seventeen domains tested as modeled by original arithmetic. Zero non-isomorphic pairs found. 136 pairwise boundary preservations verified. Five novel predictions confirmed. The kill switch has not been triggered.
 
 *Physics candidates (renormalization, GR singularities) are structurally motivated analogies, not formally verified. See [NEXT.md](NEXT.md).*
 
@@ -473,7 +473,7 @@ The boundary does not dissolve when you climb above it, and it does not dissolve
 
 ## Structural Properties
 
-The three-sort system has been verified to satisfy:
+Original arithmetic has been verified to satisfy:
 
 - **Monad laws**, Origin|Bounded is a proper monad
 - **Initial algebra**, the universal absorbing construction
