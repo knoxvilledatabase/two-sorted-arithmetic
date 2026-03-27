@@ -1,6 +1,6 @@
 # Called Shots
 
-Five domains predicted by the two-sorted arithmetic *before* Lean verification. All five confirmed. Zero failures.
+Five domains predicted by original arithmetic *before* Lean verification. All five confirmed. Zero failures.
 
 | # | Domain | Prediction | Boundary maps to | Lean theorem | Date verified | Status |
 |---|--------|-----------|-----------------|-------------|---------------|--------|
@@ -17,7 +17,7 @@ Girard found 𝒪 twice:
 - **1972**, Girard's paradox (`Type : Type` produces inconsistency in type theory)
 - **1987**, Linear logic (the `!` modality marks the boundary between bounded and inexhaustible resources)
 
-Both are the same sort conflict: `girards_paradox_is_sort_conflict` and `exponential_boundary_is_sort_conflict` reduce to `interaction_I3`. The two-sorted arithmetic connects what Girard himself didn't.
+Both are the same sort conflict: `girards_paradox_is_sort_conflict` and `exponential_boundary_is_sort_conflict` reduce to `interaction_I3`. Original arithmetic connects what Girard himself didn't.
 
 ## Structural Results
 

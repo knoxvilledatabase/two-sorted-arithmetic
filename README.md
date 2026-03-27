@@ -1,4 +1,4 @@
-# Two-Sorted Arithmetic: A Proof of Concept for the Unification of Undefined within AI
+# Original Arithmetic: A Proof of Concept for the Unification of Undefined within AI
 
 ---
 

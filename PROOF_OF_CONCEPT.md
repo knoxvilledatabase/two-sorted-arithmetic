@@ -1,4 +1,4 @@
-# Proof of Concept: A Two-Sorted Arithmetic
+# Proof of Concept: Original Arithmetic
 
 *The [README](README.md) asked the question. This is the proof of concept we built to answer it.*
 
@@ -219,7 +219,7 @@ Mathlib defines `0⁻¹ = 0` by convention. The documentation says: "working wit
 
 We [tested this too](lean/TwoSortedArith/InvBenchmark.lean). Same theorem. Two files:
 
-|  | Collapsed | Two-Sorted |
+|  | Collapsed | Sort-Aware |
 |---|---|---|
 | Conventions asserted | 1 | 0 |
 | ≠ 0 hypotheses | 1 | 0 |
@@ -236,13 +236,13 @@ Mathlib's `NoZeroDivisors` states `a * b = 0` implies `a = 0` or `b = 0`. This t
 
 We [tested this too](lean/TwoSortedArith/ZeroDivBenchmark.lean):
 
-|  | Collapsed | Two-Sorted |
+|  | Collapsed | Sort-Aware |
 |---|---|---|
 | NoZeroDivisors axiom | 1 | 0 |
 | ≠ 0 hypotheses | 4 | 0 |
 | Can zero divisors occur? | must assert no | impossible by type |
 
-In the two-sorted version, `bounded(a) * bounded(b) = bounded(a*b)`. The result is always bounded. It is never origin. The pathology cannot arise. The axiom becomes unnecessary. The constraint becomes a consequence of the type.
+In the sort-aware version, `bounded(a) * bounded(b) = bounded(a*b)`. The result is always bounded. It is never origin. The pathology cannot arise. The axiom becomes unnecessary. The constraint becomes a consequence of the type.
 
 ### The hidden split
 
@@ -412,7 +412,7 @@ IEEE 754 defined two kinds of NaN: Quiet NaN (propagates silently, Origin) and S
 
 ### Rust's `Option<T>`
 
-The two-sorted distinction implemented as a language feature. `None` is Origin. `Some(value)` is Bounded. Pattern matching enforces the interaction axioms at compile time. Zero runtime cost. Zero null checks.
+The sort-aware distinction implemented as a language feature. `None` is Origin. `Some(value)` is Bounded. Pattern matching enforces the interaction axioms at compile time. Zero runtime cost. Zero null checks.
 
 ML introduced this in 1973. Rust, Haskell, and Swift prove it works at the language level. What about the languages that didn't? Which ones are running most of the world's AI inference workloads? How long has the answer been available?
 
@@ -452,7 +452,7 @@ The claim is isomorphism of the absorbing element structure, not of the full dom
 | Topology | Separation | Topological spaces | Indiscrete topology | Weaken axioms |
 | Proof Theory | Cut elimination | Formal proofs | Cut-requiring proofs | Restrict rules |
 
-Seventeen domains tested as modeled by the two-sorted type system. Zero non-isomorphic pairs found. 136 pairwise boundary preservations verified. Five novel predictions confirmed. The kill switch has not been triggered.
+Seventeen domains tested as modeled by the three-sort type system. Zero non-isomorphic pairs found. 136 pairwise boundary preservations verified. Five novel predictions confirmed. The kill switch has not been triggered.
 
 *Physics candidates (renormalization, GR singularities) are structurally motivated analogies, not formally verified. See [NEXT.md](NEXT.md).*
 
@@ -472,7 +472,7 @@ The boundary does not dissolve when you climb above it, and it does not dissolve
 
 ## Structural Properties
 
-The two-sorted system has been verified to satisfy:
+The three-sort system has been verified to satisfy:
 
 - **Monad laws**, Origin|Bounded is a proper monad
 - **Initial algebra**, the universal absorbing construction

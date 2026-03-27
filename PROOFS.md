@@ -30,7 +30,7 @@ Zero errors means all 248 new theorems verified.
 
 ## Core (1–9)
 
-Origin ≠ Bounded, interaction axioms I1–I3, two-sorted division, self-stability, master theorem `two_sorted_arithmetic_is_well_formed`. All pass.
+Origin ≠ Bounded, interaction axioms I1–I3, sort-aware division, self-stability, master theorem `two_sorted_arithmetic_is_well_formed`. All pass.
 
 ## Morphism (10–14)
 
