@@ -24,7 +24,7 @@ Obviously the shepherd knows he's holding the apple. He eats the apple. Now his 
 
 This shepherd didn't have a symbol to represent "no apples." He didn't need one. He could feel the difference between holding something and holding nothing.
 
-But the hand is still there. One hand. Zero apples. The hand didn't disappear because the apple did.
+But his hand was still there. One hand. Zero apples. The hand didn't disappear because the apple did.
 
 The shepherd already knew three things without naming any of them:
 
@@ -32,7 +32,7 @@ The **ground** he stands on. He didn't make it. He can't hold it. It was there b
 
 The **hand** itself. One hand. Whether holding an apple or not.
 
-The **apple**, or the absence of apple. The quantity. What changes when the hand opens.
+The **apple**, or the absence of an apple. The quantity. What changes when the hand opens.
 
 The shepherd never confused these. No apples is not no hand.
 
@@ -66,9 +66,8 @@ What happens when these three interact?
 
 ```
 contents(a) × contents(b) = contents(a × b)   — arithmetic inside containers
-container × container      = container          — empty bucket × empty bucket
-container × contents(a)    = container          — empty bucket absorbs contents
-origin × anything          = origin             — the ground absorbs
+container × container      = container          — empty bucket × empty bucket leaves an empty bucket
+origin × anything          = origin             — the ground absorbs. The ocean absorbs the fish.
 ```
 
 And two interaction axioms for the ground:
@@ -80,7 +79,7 @@ I3 (`f(𝒪, 𝒪) = 𝒪`) is redundant. It follows from I1 or I2 alone.
 
 ## This Isn't New
 
-Others saw pieces of the original distinction:
+Others saw the original lens:
 
 **The Isha Upanishad (~800 BCE).** Described the ground: wholeness that remains whole. Never formalized it.
 
@@ -88,11 +87,11 @@ Others saw pieces of the original distinction:
 
 **Plotinus (~250 CE).** The One precedes being. Cannot be named without distortion. Never connected to arithmetic.
 
-**Spencer-Brown (1969).** *"A universe comes into being when a space is severed."* The mark and the unmarked co-emerge. Ground → container → contents. Never formalized the three sorts. Never connected to zero's collapse.
+**Spencer-Brown (1969).** *"A universe comes into being when a space is severed."* The mark and the unmarked co-emerge. Ground → container → contents.
 
-**IEEE 754 (1985).** NaN propagation rules ARE the interaction axioms: `NaN + x = NaN` (I1), `x + NaN = NaN` (I2). The computing industry built the original distinction into every floating-point chip on earth without connecting it to the mathematics.
+**IEEE 754 (1985).** NaN propagation rules ARE the interaction axioms: `NaN + x = NaN` (I1), `x + NaN = NaN` (I2). The computing industry built the original lens into every floating-point chip on earth without connecting it to the mathematics.
 
-**Rust (2015).** `Option<T>` separates `None` (origin) from `Some(value)` (contents). ML introduced this in 1973. The answer was already there.
+**Rust (2015).** `Option<T>` separates `None` (origin) from `Some(value)` (contents). ML introduced this in 1973.
 
 Obviously the insight is not new.
 
@@ -104,7 +103,7 @@ Obviously the insight is not new.
 
 The best we could find, zero was born in India, not as a placeholder, but as a philosophical object with two faces.
 
-The Sanskrit tradition had words for both faces. *Śūnya*, void, absence, was the quantitative face. *Pūrṇa*, fullness, wholeness, was the ground. Did the philosophical tradition know these to be two aspects of one reality?
+The Sanskrit tradition had words for both faces. *Śūnya*, void, absence, was the quantitative face. *Pūrṇa*, fullness, wholeness, was the ground.
 
 The Isha Upanishad stated it directly:
 
@@ -112,11 +111,11 @@ The Isha Upanishad stated it directly:
 
 Was it not Brahmagupta's *Brāhmasphuṭasiddhānta* (628 CE) who gave zero its operational rules and the problematic cases? Did he not write that `0 ÷ 0 = 0`, a rule that later mathematicians rejected?
 
-When Brahmagupta formalized the arithmetic, did only *śūnya* make it into the rules? What happened to *pūrṇa*? Did it stay only in the philosophy?
+When Brahmagupta formalized the arithmetic, did only *śūnya* make it into the rules? What happened to *pūrṇa*, did it stay only in the philosophy?
 
-Were the two faces that the Upanishadic tradition held together split? One entering mathematics without the other?
+Were the two faces that the Upanishadic tradition held together collapsed? One entering mathematics without the other?
 
-What if Brahmagupta was right about origin — the ground dividing itself yields the ground — and later mathematicians rejected it because they confused origin with contents?
+What if Brahmagupta was right about origin, the ground dividing itself yields the ground, and later mathematicians rejected it because they confused origin with contents?
 
 ## The Journey West
 
@@ -126,7 +125,7 @@ What arrived in Europe? Was zero a pure placeholder? What happened to the other 
 
 Did zero become one symbol that meant multiple things?
 
-The shepherd's three things — the ground, the hand, and the apple — became one symbol. The ground and the hand and the absence of apple, all written "0." One mark asked to do three jobs.
+The shepherd's three things, the ground, the hand, and the apple, became one symbol. The ground and the hand and the absence of apple, all written "0." Was this one mark asked to do three jobs?
 
 The shepherd never made that mistake. He knew the difference between no apples and no hand.
 
