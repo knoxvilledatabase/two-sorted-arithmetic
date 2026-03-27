@@ -143,7 +143,7 @@ If I have no apples in my hand and I divide it by no apples in my hand, how many
 
 **Standard behavior:** Undefined/indeterminate.
 
-**Through the original lens:** Same thing, different notation. Does the empty hand operating on itself reveal the hand? Is that not 1?
+**Through the original lens:** Same thing, different notation. Does the empty symbol operating on itself reveal one symbol?
 
 ### Factorial: `0!`
 
