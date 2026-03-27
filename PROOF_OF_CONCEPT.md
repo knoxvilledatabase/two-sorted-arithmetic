@@ -139,8 +139,6 @@ Is zero having an identity crisis?
 
 If I have no apples in my hand and I divide it by no apples in my hand, how many apples do I have in my hand, undefined or just no apples? 
 
-Is the answer "undefined" or "which zero?"
-
 ### Exponentiation: `0 ^ 0`
 
 **Standard behavior:** Undefined/indeterminate.
