@@ -129,7 +129,7 @@ Did the shepherd's three things, the ground, the hand, and the apple, become the
 
 The shepherd never made that mistake. He knew the difference between the ground, his hand and no apples.
 
-## What the Collapse Did to Operations
+## What Did the Collapse Do to Operations?
 
 ### Division: `0 ÷ 0`
 
