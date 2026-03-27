@@ -76,26 +76,27 @@ A finger pointing at the moon is not the moon.
 
 ## The Order of Emergence
 
-Does the number zero operate at two levels?
+Does the number zero operate at three levels?
 
-1. **𝒪**, the undifferentiated whole or categorical origin of zero. The finger pointing at the moon is not the moon.
+1. **𝒪**, the undifferentiated whole or categorical origin. The finger pointing at the moon is not the moon. The ground that every formal system stands on but cannot contain.
 
-2. **The first distinction**, not a step that follows 𝒪, but the single act in which three things co-emerge simultaneously and inseparably:
-   - **0**, the empty contents like "no apples"
-   - **1**, the container, the bucket that holds the quantity. Is the number zero not one bucket holding nothing?
-   - **B**, the bounded domain where mathematics takes place
+2. **The first distinction**, not a step that follows 𝒪, but a single act in which two things co-emerge simultaneously and inseparably:
+   - **container**, the bucket that holds quantities. One bucket holding nothing is still one bucket.
+   - **contents(0)**, the quantity zero inside the bucket. No apples. The emptiness that the bucket holds.
 
-   Are these sequential? Can you have any one without the other two? Is 0 not an element that arrives into an already-existing B? Is 0 not a co-founder of B?
+   Are these sequential? Can you have the empty bucket without the bucket? Can you have the quantity zero without something to hold it? The container and the contents co-emerge. Neither exists without the other.
 
-3. **Algebraic axioms**, the choices that structure B. The first structure requiring both 0 and 1 is the ring. Collapse them back together, the trivial ring where 0 = 1, and meaning disappears. Is that a coincidence? Or is it the original distinction, undone?
+3. **The bounded domain (B)** emerges from having containers with contents. Once the distinction exists, the space where arithmetic takes place exists. B is not a third co-equal thing alongside the container and the contents. B is the consequence of the distinction. The space that the mirror runs inside.
 
-4. **Number systems**, ℤ, ℚ, ℝ, ℂ, finite fields, p-adic numbers. Each a different realization of B under different axioms.
+4. **Algebraic axioms**, the choices that structure B. The first structure requiring both 0 and 1 is the ring. Collapse them back together, the trivial ring where 0 = 1, and meaning disappears. Is that a coincidence? Or is it the original distinction, undone?
 
-5. **Operations**, division, limits, and others defined within each number system.
+5. **Number systems**, ℤ, ℚ, ℝ, ℂ, finite fields, p-adic numbers. Each a different realization of B under different axioms.
 
-6. **Expressions**, `0/0`, where categorical confirmation asks *which* `0` is present.
+6. **Operations**, division, limits, and others defined within each number system.
 
-Steps 3–6 are what formal mathematical systems can see and describe.
+7. **Expressions**, `0/0`, where the question becomes *which* `0` is present. Which level? Origin, container, or contents?
+
+Steps 4–7 are what formal mathematical systems can see and describe.
 
 What if 𝒪 sat below arithmetic as the precondition for all mathematical symbols?
 
