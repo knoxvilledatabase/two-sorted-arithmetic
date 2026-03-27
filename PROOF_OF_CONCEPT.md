@@ -137,7 +137,12 @@ The shepherd never made that mistake. He knew the difference between the ground,
 
 **The problem:** Two rules collide. `x ÷ x = 1` for all x ≠ 0. But `0` has no multiplicative inverse. Which rule wins? What happens when one symbol carries two roles?
 
-**Through the original lens:** Which zero is dividing which zero? Contents(0) ÷ contents(0) has a limit — L'Hopital or context resolves it. Origin ÷ anything = origin — absorption, not arithmetic. The answer is not "undefined." The answer is "which zero?"
+**Through the original lens:** Which zero is dividing which zero? 
+
+Contents(0) ÷ contents(0) has a limit — L'Hopital or context resolves it. 
+Origin ÷ anything = origin — absorption, not arithmetic. 
+
+Is the answer "undefined" or "which zero?"
 
 ### Exponentiation: `0 ^ 0`
 
