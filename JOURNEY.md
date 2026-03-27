@@ -158,6 +158,26 @@ Approaching the number zero? Calculus handles it. That is what limits were built
 
 Is L'Hopital's rule sort resolution in disguise? Determining which sort of zero you are holding, expressed in the language of calculus rather than types?
 
+When L'Hopital resolves an indeterminate form, it is performing categorical confirmation — determining whether the zeros involved are the same sort, without having the vocabulary to say so.
+
+### Multiplication: `0 × 0`
+
+**Standard behavior:** Defined. `0 × 0 = 0`. No indeterminacy.
+
+**Through the original lens:** Not undefined, but which zero? If the ground touches it, it absorbs. If it is just numbers, it stays a number. Three different behaviors wearing one notation.
+
+### Logarithm: `log(0)`
+
+**Standard behavior:** Undefined. The limit gives −∞.
+
+**Through the original lens:** What power produces zero? That is a math question — calculus handles it. What power produces the whole? That is not a math question. The conflation made them look like the same problem.
+
+### Division by zero: `1 ÷ 0`
+
+**Standard behavior:** Undefined.
+
+**Through the original lens:** Which zero is the divisor? If it is the number zero, calculus handles it — the limit approaches ±∞. If it is the ground, you are dividing by the whole. The ocean absorbs the fish.
+
 ## What the Collapse Did to Domains
 
 Is mathematics not built on top of itself?
@@ -185,6 +205,46 @@ IEEE 754's NaN propagation rules *are* the interaction axioms:
 IEEE 754 defined two kinds of NaN: Quiet NaN (propagates silently, Origin) and Signaling NaN (triggers an exception within B, Bounded). The computing industry built the original distinction into every floating-point chip on earth.
 
 Rust's `Option<T>` is the original distinction implemented as a language feature. `None` is Origin. `Some(value)` is Bounded. Pattern matching enforces the interaction axioms at compile time. ML introduced this in 1973. The answer was already there.
+
+### The Isomorphism Claim
+
+The claim is isomorphism of the absorbing element structure, not of the full domains. Division by zero and Russell's paradox are not the same problem. They have the same *boundary shape* — an operation leaving its domain and hitting an absorber that satisfies I1-I3.
+
+**Kill switch:** Prove any two of these boundaries have structurally different absorbing behavior. One counterexample kills the claim.
+
+| Case | Operation | Domain | Boundary | Standard Response |
+|---|---|---|---|---|
+| Arithmetic | Division | Field ℝ | Zero as divisor | Mark undefined |
+| Computation | Halting | Turing machines | Self-reference | Undecidability |
+| Set Theory | Set membership | Naive set theory | All sets | Categorical restriction |
+| Logic/Provability | Provability | Formal systems | Gödel sentence | Incompleteness |
+| Truth Values | Truth predicate | Propositions | Liar sentence | Paradox |
+| Category Theory | Hom-functor | Objects with morphisms | Initial object | Structural axiom |
+| Modal Logic | Modal evaluation | Possible worlds | Kripke frame | Frame axiom |
+| Topos Theory | Internal evaluation | Internal objects | The topos itself | Containment axiom |
+| HoTT | Universe membership | Types in a universe | Type : Type | Universe tower |
+| Linear Logic | Resource consumption | Linear resources | ! modality | ! promotion |
+| IEEE 754 | Float arithmetic | Binary ℝ | Invalid operations | Two-sorted NaN |
+| SQL NULL | Any operation | Relational databases | NULL value | Three-valued logic |
+| Lambda Calculus | Application | λ-terms | Non-termination (Ω) | Divergence |
+| Measure Theory | Measure assignment | σ-algebra | Non-measurable sets | Restrict domain |
+| Game Theory | Equilibrium solving | Strategic games | No pure equilibrium | Mixed strategies |
+| Topology | Separation | Topological spaces | Indiscrete topology | Weaken axioms |
+| Proof Theory | Cut elimination | Formal proofs | Cut-requiring proofs | Restrict rules |
+
+Seventeen domains tested as modeled by original arithmetic. Zero non-isomorphic pairs found. 136 pairwise boundary preservations verified. Five novel predictions confirmed. The kill switch has not been triggered.
+
+*Physics candidates (renormalization, GR singularities) are structurally motivated analogies, not formally verified. See [NEXT.md](NEXT.md).*
+
+One person, Girard, found 𝒪 twice — once in type theory in 1972, once in resource logic in 1987 — without connecting them. The boundary is invisible even to the person standing closest to it.
+
+### Level Invariance
+
+The boundary reappears at every level of abstraction sufficient to encounter it.
+
+Set theory hits 𝒪 through proper classes. Topos theory, which *contains* set theory, hits the same boundary from above. HoTT built an infinite tower of universes because 𝒪 cannot be internalized at any level. Linear logic redesigned the rules of logic itself — resources consumed by use — and the boundary reappeared as the ! modality.
+
+The boundary does not dissolve when you climb above it, and it does not dissolve when you change the rules of the game entirely.
 
 ---
 
