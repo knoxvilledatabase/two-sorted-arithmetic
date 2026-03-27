@@ -79,7 +79,7 @@ I3 (`f(𝒪, 𝒪) = 𝒪`) is redundant. It follows from I1 or I2 alone.
 
 ## Is This New?
 
-Others saw the original lens:
+Did others see the original lens?
 
 **The Isha Upanishad (~800 BCE).** Described the ground: wholeness that remains whole. Never formalized it.
 
