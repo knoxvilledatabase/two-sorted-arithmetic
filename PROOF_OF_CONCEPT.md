@@ -54,8 +54,6 @@ Until 628 CE.
 
 The original lens was never lost, it was never hidden. Was it not in every hand that ever held something and then held nothing?
 
-Was zero ever one thing? Or was it always at least three:
-
 - **𝒪**, ground (origin). The ground the shepherd stands on. A finger pointing at the moon is not the moon.
 - **container**, the hand. The bucket. Holds quantities. Does not care what is inside. One bucket, always.
 - **contents**, the apple or its absence. The quantities inside the bucket. Each symbol being a representation of quantity.
