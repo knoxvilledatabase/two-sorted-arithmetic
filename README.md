@@ -269,6 +269,7 @@ cargo add origin-lang
 |---|---|
 | [README.md](README.md) | The problem, the 97 patches, the DRY argument |
 | [PROOF_OF_CONCEPT.md](PROOF_OF_CONCEPT.md) | The proof of concept: zero's three jobs, axioms, cross-domain pattern |
+| [DISCOVERY.md](DISCOVERY.md) | Why the answer was always true: the philosophy behind the proof |
 | [PROOFS.md](PROOFS.md) | 508 Lean 4 theorems, annotated |
 | [FALSIFICATION.md](FALSIFICATION.md) | How to break it: the kill switch |
 | [PREDICTIONS.md](PREDICTIONS.md) | Novel predictions the theory makes |

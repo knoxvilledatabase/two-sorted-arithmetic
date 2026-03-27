@@ -1,6 +1,6 @@
 # Proof of Concept: Original Arithmetic
 
-*The [README](README.md) asked the question. This is the proof of concept we built to answer it.*
+*The [README](README.md) asked the question. This is the proof of concept we built to answer it. [DISCOVERY](DISCOVERY.md) asks why the answer was always true.*
 
 ---
 
