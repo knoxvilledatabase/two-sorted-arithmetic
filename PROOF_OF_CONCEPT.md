@@ -153,9 +153,9 @@ Is zero having an identity crisis?
 
 **Standard behavior:** The limit may or may not exist. Depends on the function.
 
-**Through the original lens:** Approaching the number zero? Calculus handles it. That is what limits were built for. Approaching the ground? Does the limit apparatus apply to the ground?
+**Through the original lens:** Approaching the number zero? Calculus handles it. That is what limits were built for.
 
-Is L'Hôpital asking "which zero am I holding?" Is it resolving the count — or recognizing that the symbols have stopped making symbols?
+Is L'Hôpital asking "which zero am I holding?" or have symbols stopped making symbols?
 
 ### Multiplication: `0 × 0`
 
