@@ -163,7 +163,7 @@ Is L'Hôpital asking "which zero am I holding?" or have symbols stopped making s
 
 **Standard behavior:** Defined. `0 × 0 = 0`. No indeterminacy.
 
-**Through the original lens:** Which zero? No apples times no apples stays in the hand.
+**Through the original lens:** Which zero? Are we multiplying a fish by the ocean, the part by the whole? 
 
 ### Logarithm: `log(0)`
 
