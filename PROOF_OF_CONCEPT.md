@@ -137,7 +137,7 @@ Is zero having an identity crisis?
 
 **Through the original lens:** Which zero is dividing which zero? 
 
-If the contents of the empty hand is divided by the contents of the empty hand don't I still have a hand? 
+If I have no apples in my hand and I divide it by no apples in my hand, how many apples do I have in my hand, undefined or just no apples? 
 
 Is the answer "undefined" or "which zero?"
 
