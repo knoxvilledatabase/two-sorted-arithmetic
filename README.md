@@ -24,21 +24,19 @@ After looking at the problem through this lens, we saw an opportunity. We notice
 
 If your codebase needed the same function, would you write it 97 different ways?
 
-A stop sign, a red traffic light, and a "road closed" barrier have different causes but the same interface, don't proceed. Would you write a separate handler for each one?
-
 ## The Journey
 
-**1.** We traced zero back through antiquity and found it's at least three things collapsed into one symbol.
+**1.** We traced through antiquity searching for the root of the problem.
 
-**2.** We went [back to the beginning](PROOF_OF_CONCEPT.md) to see what arithmetic looked like before the collapse. Did we find the original lens?
+**2.** We went all the way [back to the beginning](PROOF_OF_CONCEPT.md) to get a better understanding and finally found what we were searching for.
 
-**3.** Claude [prototyped it](packages/typescript/src/comparison.ts). 71% fewer branches.
+**3.** Claude Code took what we learned and [prototyped it](packages/typescript/src/comparison.ts). 71% fewer branches.
 
 **4.** Claude [tested it against Rust](packages/rust-python/energy_benchmark.py). Rust already had the answer.
 
 ## Did Rust already solve this?
 
-Yes. It's called `Option<T>`. We measured 98.6% less energy per operation on Apple Silicon.
+Yes, sort of. It's called `Option<T>`. We measured 98.6% less energy per operation on Apple Silicon.
 
 | | Python | Rust |
 |---|---|---|
