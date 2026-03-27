@@ -156,7 +156,7 @@ Algebra on arithmetic. Calculus on algebra. Analysis on calculus. Every floor of
 
 ### The same collapse, inside one library
 
-Mathlib, the largest formal mathematics library ever built, manages the conflation of zero with seventeen typeclasses. Anyone can open the source and count them:
+How many typeclasses does Mathlib, the largest formal mathematics library ever built, use to manage zero? Anyone can open the source and count them:
 
 - **Zero** — the type has an element called 0. No behavior.
 - **MulZeroClass** — `0 * a = 0` and `a * 0 = 0`. Absorption stated as axioms.
@@ -176,7 +176,7 @@ Mathlib, the largest formal mathematics library ever built, manages the conflati
 - **CharZero** — characteristic zero.
 - **Nontrivial** — `0 ≠ 1`. Required constantly alongside zero-related results. In Val α this is structural: origin, container, and contents are different constructors. They cannot be equal by construction. The trivial ring where 0 = 1 cannot arise because the type keeps the two faces distinct.
 
-In Val α, three constructors — `origin`, `container`, `contents` — replace all seventeen. Not by reimplementing them. By making them unnecessary. The sort system carries what the typeclasses guard.
+What if three constructors — `origin`, `container`, `contents` — could do what seventeen typeclasses do? Not by reimplementing them. By making them unnecessary. The sort system carries what the typeclasses guard.
 
 Of these seventeen, five exist specifically because zero carries two jobs and the jobs keep colliding:
 
