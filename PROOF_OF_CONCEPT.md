@@ -151,8 +151,6 @@ If I have no apples in my hand and I divide it by no apples in my hand, how many
 
 **Through the original lens:** How many ways are there for no apples in my hand to be no apples in my hand? 
 
-How many symbols does it take to make 0?
-
 ### Limits: `lim(x→0)`
 
 **Standard behavior:** The limit may or may not exist. Depends on the function.
