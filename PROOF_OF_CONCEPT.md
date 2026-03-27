@@ -167,8 +167,7 @@ Is L'Hopital asking "which zero am I holding?" Is this the count running out, or
 
 **Standard behavior:** Defined. `0 × 0 = 0`. No indeterminacy.
 
-**Through the original lens:** Which zero? Does the ocean absorb it? Do apples stay apples? Three different behaviors wearing one notation?
-
+**Through the original lens:** Which zero? Can you multiply a fish by the ocean?
 ### Logarithm: `log(0)`
 
 **Standard behavior:** Undefined. The limit gives −∞.
