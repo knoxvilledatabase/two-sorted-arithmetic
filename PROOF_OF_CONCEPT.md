@@ -58,7 +58,7 @@ Was zero ever one thing? Or was it always at least three:
 
 - **𝒪**, ground (origin). The ground the shepherd stands on. A finger pointing at the moon is not the moon.
 - **container**, the hand. The bucket. Holds quantities. Does not care what is inside. One bucket, always.
-- **contents**, the apple or its absence. The quantities inside the bucket. Each symbol is a quantity, not a bucket.
+- **contents**, the apple or its absence. The quantities inside the bucket. Each symbol being a representation of quantity.
 
 Is `a × b = c` not 1 bucket holding `a` times 1 bucket holding `b` equals 1 bucket holding `a × b`?
 
@@ -66,7 +66,7 @@ What happens when these three interact?
 
 ```
 contents(a) × contents(b) = contents(a × b)   — arithmetic inside containers
-container × container      = container          — empty bucket × empty bucket leaves an empty bucket
+container × container      = container          — the hand × the hand = the hand. The bucket that holds apples is still a bucket.
 origin × anything          = origin             — the ground absorbs. The ocean absorbs the fish.
 ```
 
