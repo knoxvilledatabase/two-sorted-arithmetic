@@ -149,7 +149,9 @@ If I have no apples in my hand and I divide it by no apples in my hand, how many
 
 **Standard behavior:** Defined. `0! = 1` by convention.
 
-**Through the original lens:** Is it a convention? Or is it what remains when the apples are gone — the hand itself? `0 ÷ 0 = 1`, `0^0 = 1`, `0! = 1` — three notations. Is that not one fact?
+**Through the original lens:** How many ways are there for no apples in my hand to be no apples in my hand? 
+
+How many symbols does it take to make 0?
 
 ### Limits: `lim(x→0)`
 
