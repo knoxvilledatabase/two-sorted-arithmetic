@@ -81,7 +81,7 @@ I3 (`f(𝒪, 𝒪) = 𝒪`) is redundant. It follows from I1 or I2 alone.
 
 Did others see the original lens?
 
-**The Isha Upanishad (~800 BCE).** Described the ground: wholeness that remains whole. Never formalized it.
+**The Isha Upanishad (~800 BCE).** "When wholeness is taken from wholeness, wholeness remains." Never formalized it.
 
 **Euclid (~300 BCE).** *"The whole is greater than the part."* The category distinction. Never applied to zero specifically.
 
