@@ -3,7 +3,7 @@ Copyright (c) 2024-2026 Knox Database. All rights reserved.
 Released under MIT license.
 Authors: Knox Database
 -/
-import TwoSortedArith.Basic
+import OriginalArith.Basic
 
 /-!
 # Two-Sorted Arithmetic: Structural Properties
@@ -52,9 +52,9 @@ confirms the two-sorted system sits in a well-understood algebraic framework.
 * `bad_map_fails_distinction` — mapping Origin to Bounded breaks the distinction.
 -/
 
-namespace TwoSortedArith
+namespace OriginalArith
 
-open TwoSortedArith
+open OriginalArith
 
 -- ============================================================================
 -- Morphism Composition / Transitivity
@@ -394,4 +394,4 @@ theorem bad_map_fails_distinction {D : Type} [DecidableEq D] (d₀ : D) :
   intro ⟨h, _⟩
   simp [badMap, origin', bounded'] at h
 
-end TwoSortedArith
+end OriginalArith

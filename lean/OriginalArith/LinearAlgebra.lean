@@ -3,7 +3,7 @@ Copyright (c) 2024-2026 Knox Database. All rights reserved.
 Released under MIT license.
 Authors: Knox Database
 -/
-import TwoSortedArith.RingField
+import OriginalArith.RingField
 
 /-!
 # Linear Algebra over Val α: The 2×2 Case

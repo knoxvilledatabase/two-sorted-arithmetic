@@ -48,7 +48,7 @@ verified to satisfy I1-I3 within that model.
 * [two-sorted arithmetic](https://github.com/knoxvilledatabase/two-sorted-arithmetic)
 -/
 
-namespace TwoSortedArith
+namespace OriginalArith
 
 -- ============================================================================
 -- Core Types
@@ -244,4 +244,4 @@ theorem two_sorted_arithmetic_is_well_formed {D : Type} [DecidableEq D]
   · exact interaction_I2 f (bounded' d)
   · exact origin_div_origin
 
-end TwoSortedArith
+end OriginalArith

@@ -3,7 +3,7 @@ Copyright (c) 2024-2026 Knox Database. All rights reserved.
 Released under MIT license.
 Authors: Knox Database
 -/
-import TwoSortedArith.Basic
+import OriginalArith.Basic
 
 /-!
 # Consolidation: Four Benchmarks, One Principle
@@ -30,9 +30,9 @@ Every dissolved hypothesis, axiom, and convention was a guard against a
 crossing from Interior to Origin that the type makes impossible.
 -/
 
-namespace TwoSortedArith
+namespace OriginalArith
 
-open TwoSortedArith
+open OriginalArith
 
 -- ============================================================================
 -- The principle: bounded operations stay bounded
@@ -124,4 +124,4 @@ theorem consolidation {D : Type} [DecidableEq D] (f : D → D → D) (a b : D) :
   · simp [twoSortedOp, origin']
   · simp [bounded', origin']
 
-end TwoSortedArith
+end OriginalArith

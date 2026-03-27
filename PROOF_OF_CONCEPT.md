@@ -192,7 +192,7 @@ Five patches that dissolve. Three that remain. Not twelve to zero. Five to three
 
 ### The benchmark
 
-We [tested this](lean/TwoSortedArith/NeZeroBenchmark.lean). Same theorems, two Lean files. One with Mathlib's collapsed G₀ (where zero and nonzero coexist). One with Mathlib's own Gˣ units type (where the type is the nonzero elements).
+We [tested this](lean/OriginalArith/NeZeroBenchmark.lean). Same theorems, two Lean files. One with Mathlib's collapsed G₀ (where zero and nonzero coexist). One with Mathlib's own Gˣ units type (where the type is the nonzero elements).
 
 |  | Collapsed (G₀) | Units (Gˣ) |
 |---|---|---|
@@ -217,7 +217,7 @@ Origin is the name for what `Gˣ` excludes.
 
 Mathlib defines `0⁻¹ = 0` by convention. The documentation says: "working with total functions has the advantage of not constantly having to check that x ≠ 0 when writing x⁻¹." A human chose that answer. Could have been anything. It is a decision made to keep the machinery running.
 
-We [tested this too](lean/TwoSortedArith/InvBenchmark.lean). Same theorem. Two files:
+We [tested this too](lean/OriginalArith/InvBenchmark.lean). Same theorem. Two files:
 
 |  | Collapsed | Sort-Aware |
 |---|---|---|
@@ -234,7 +234,7 @@ Mathlib's `0⁻¹ = 0` is not wrong. It is the right answer for the wrong reason
 
 Mathlib's `NoZeroDivisors` states `a * b = 0` implies `a = 0` or `b = 0`. This typeclass exists because in a collapsed type, the pathology of zero divisors must be excluded by axiom.
 
-We [tested this too](lean/TwoSortedArith/ZeroDivBenchmark.lean):
+We [tested this too](lean/OriginalArith/ZeroDivBenchmark.lean):
 
 |  | Collapsed | Sort-Aware |
 |---|---|---|
@@ -246,14 +246,14 @@ In the sort-aware version, `bounded(a) * bounded(b) = bounded(a*b)`. The result 
 
 ### The hidden split
 
-Mathlib's `MulZeroClass` states `0 * a = 0` as one axiom (`zero_mul`). But the [three-primitive benchmark](lean/TwoSortedArith/ContainerBenchmark.lean) reveals this is two completely different facts wearing one symbol:
+Mathlib's `MulZeroClass` states `0 * a = 0` as one axiom (`zero_mul`). But the [three-primitive benchmark](lean/OriginalArith/ContainerBenchmark.lean) reveals this is two completely different facts wearing one symbol:
 
 - `contents(0) * contents(a) = contents(0)` — empty contents times anything is empty contents. Arithmetic. Happens entirely within contents.
 - `B * contents(a) = B` — the container absorbs contents. Structural. The bucket holding something is still a bucket.
 
 These are not the same operation. They look the same because `0` is both the empty contents and the container. Give B its own symbol and the two facts separate visibly.
 
-The [algebra file](lean/TwoSortedArith/Algebra.lean) goes further. When we tried to prove `contents(0)` absorbs all of `Val α`, the code refused. `contents(0) * origin = origin`, not `contents(0)`. The build failure revealed three different behaviors, not three levels of one:
+The [algebra file](lean/OriginalArith/Algebra.lean) goes further. When we tried to prove `contents(0)` absorbs all of `Val α`, the code refused. `contents(0) * origin = origin`, not `contents(0)`. The build failure revealed three different behaviors, not three levels of one:
 
 - `𝒪`: **absorption** — the ocean eats the fish. Forced by the first principle.
 - `B`: **idempotence** — structure of structure is structure. `B × B = B`.
@@ -272,7 +272,7 @@ contents × contents = contents   — actual arithmetic
 
 ### The honest trade-off
 
-Does separation cost anything? We [tested addition](lean/TwoSortedArith/AddBenchmark.lean). `0 + 1 = 1` costs the same in both versions, `rfl` in both files. But the conclusion "the trade-off doesn't exist" was overclaiming.
+Does separation cost anything? We [tested addition](lean/OriginalArith/AddBenchmark.lean). `0 + 1 = 1` costs the same in both versions, `rfl` in both files. But the conclusion "the trade-off doesn't exist" was overclaiming.
 
 Addition genuinely needs zero in the type. You cannot do `0 + a = a` in `Gˣ` because `Gˣ` has no zero. The "separated" version for addition is still `WithZero α`, which is `Option α`, which is the collapsed type.
 
@@ -287,16 +287,16 @@ The two jobs zero does are not symmetric:
 
 | Benchmark | Axioms/Conventions Lost | Hypotheses Lost | Information Lost |
 |---|---|---|---|
-| [Gˣ vs G₀](lean/TwoSortedArith/NeZeroBenchmark.lean) | 0 | 5 | 0 |
-| [0⁻¹ = 0 convention](lean/TwoSortedArith/InvBenchmark.lean) | 1 | 1 | 0 |
-| [NoZeroDivisors](lean/TwoSortedArith/ZeroDivBenchmark.lean) | 1 | 4 | 0 |
-| [ZMod NeZero](lean/TwoSortedArith/ZModBenchmark.lean) | 0 | 8 | 0 |
-| [Three primitives](lean/TwoSortedArith/ContainerBenchmark.lean) | MulZeroClass split | 0 | 0 |
-| [Addition trade-off](lean/TwoSortedArith/AddBenchmark.lean) | 0 | 0 | 0 |
+| [Gˣ vs G₀](lean/OriginalArith/NeZeroBenchmark.lean) | 0 | 5 | 0 |
+| [0⁻¹ = 0 convention](lean/OriginalArith/InvBenchmark.lean) | 1 | 1 | 0 |
+| [NoZeroDivisors](lean/OriginalArith/ZeroDivBenchmark.lean) | 1 | 4 | 0 |
+| [ZMod NeZero](lean/OriginalArith/ZModBenchmark.lean) | 0 | 8 | 0 |
+| [Three primitives](lean/OriginalArith/ContainerBenchmark.lean) | MulZeroClass split | 0 | 0 |
+| [Addition trade-off](lean/OriginalArith/AddBenchmark.lean) | 0 | 0 | 0 |
 
 The hypotheses do not disappear. They move into the type. The axioms do not disappear. They become consequences. The conventions do not disappear. They become theorems. Zero information is lost in any case. The addition trade-off is zero: separation costs nothing for addition because addition still uses the collapsed type.
 
-The [consolidation theorem](lean/TwoSortedArith/Consolidation.lean) unifies the first four benchmarks into one fact: the interior is closed under operations. Bounded in, bounded out. Origin only appears when origin goes in. Every dissolved hypothesis, axiom, and convention was a guard against a crossing that the type makes impossible.
+The [consolidation theorem](lean/OriginalArith/Consolidation.lean) unifies the first four benchmarks into one fact: the interior is closed under operations. Bounded in, bounded out. Origin only appears when origin goes in. Every dissolved hypothesis, axiom, and convention was a guard against a crossing that the type makes impossible.
 
 Mathlib already has the answer in `Gˣ`. The question is why `Gˣ` is not the default. Origin is the name for what `Gˣ` excludes.
 
@@ -308,10 +308,10 @@ The six benchmarks above worked backwards — starting from Mathlib's typeclasse
 
 | Benchmark | `≠ 0` hypotheses (Standard) | `≠ 0` hypotheses (Seed) | Conventions | Seed proof |
 |---|---|---|---|---|
-| [Cramer's rule](lean/TwoSortedArith/CramerBenchmark.lean) | 8 | 0 | 1 | `rfl` |
-| [Limit of quotient](lean/TwoSortedArith/LimitBenchmark.lean) | 7 | 0 | 1 | `rfl` |
-| [Polynomial evaluation](lean/TwoSortedArith/PolyEvalBenchmark.lean) | 6 | 0 | 1 | `rfl` |
-| [Division ring inverse](lean/TwoSortedArith/DivisionRingBenchmark.lean) | 7 | 0 | 1 | `rfl` |
+| [Cramer's rule](lean/OriginalArith/CramerBenchmark.lean) | 8 | 0 | 1 | `rfl` |
+| [Limit of quotient](lean/OriginalArith/LimitBenchmark.lean) | 7 | 0 | 1 | `rfl` |
+| [Polynomial evaluation](lean/OriginalArith/PolyEvalBenchmark.lean) | 6 | 0 | 1 | `rfl` |
+| [Division ring inverse](lean/OriginalArith/DivisionRingBenchmark.lean) | 7 | 0 | 1 | `rfl` |
 
 28 hypothesis instances across 20 theorems in the collapsed model. Zero in the seed. Every seed proof is `rfl` — true by definition, requiring no proof at all.
 
@@ -319,7 +319,7 @@ Not `simp`. Not `cases`. `rfl`. Both sides are literally the same thing by const
 
 The 28 hypotheses exist solely because `0` is doing two jobs. Remove the conflation and the obligations vanish. The proof is `rfl`.
 
-The [division ring benchmark](lean/TwoSortedArith/DivisionRingBenchmark.lean) hits the deepest level: the field axiom itself. "Every nonzero element has an inverse" becomes "every contents element has a contents inverse." No qualifier. The `≠ 0` was never about the mathematics of invertibility. It was about sort confusion — is this the boundary or a field element? In Val α the type answers that question. The axiom drops the qualifier.
+The [division ring benchmark](lean/OriginalArith/DivisionRingBenchmark.lean) hits the deepest level: the field axiom itself. "Every nonzero element has an inverse" becomes "every contents element has a contents inverse." No qualifier. The `≠ 0` was never about the mathematics of invertibility. It was about sort confusion — is this the boundary or a field element? In Val α the type answers that question. The axiom drops the qualifier.
 
 The field axiom is the factory. Remove the conflation from the factory and the product — the `≠ 0` hypothesis — stops being manufactured.
 
@@ -560,7 +560,7 @@ Origin's `Value<T, B>` preserves what `Option` and `Result` cannot — the last 
 
 A soft philosophical problem — zero is multiple things, the boundary between knowledge and uncertainty has no name — turned into a hard compiler error.
 
-The [minimalist solution](lean/TwoSortedArith/HasBoundary.lean): one typeclass, two axioms. The encounter with 𝒪, given one name. Five Mathlib concepts derived from it. Nothing broke.
+The [minimalist solution](lean/OriginalArith/HasBoundary.lean): one typeclass, two axioms. The encounter with 𝒪, given one name. Five Mathlib concepts derived from it. Nothing broke.
 
 ```lean
 class HasBoundary (α : Type) [Mul α] where
@@ -571,9 +571,9 @@ class HasBoundary (α : Type) [Mul α] where
 
 That is the backwards direction. Start from Mathlib's existing structures, show they consolidate into one typeclass.
 
-The [foundation](lean/TwoSortedArith/Foundation.lean) is the forwards direction. Arithmetic built up from three primitives without ever needing patches. Three symbols: `𝒪` (origin), `B` (container), `contents`. Four rules. Addition, multiplication, division, inverse, associativity, commutativity, distributivity. All proved. No patches. No conventions. No hypotheses. Arithmetic emerges.
+The [foundation](lean/OriginalArith/Foundation.lean) is the forwards direction. Arithmetic built up from three primitives without ever needing patches. Three symbols: `𝒪` (origin), `B` (container), `contents`. Four rules. Addition, multiplication, division, inverse, associativity, commutativity, distributivity. All proved. No patches. No conventions. No hypotheses. Arithmetic emerges.
 
-The [algebra](lean/TwoSortedArith/RingField.lean) confirms it goes all the way: ring laws, field laws, additive inverse, multiplicative inverse, distributivity. All proved within contents. Can `Val α` be a field? No — origin and container are not field elements. Yes — the contents sub-sort is a field when α is. The field is the interior. The boundary is outside it by type.
+The [algebra](lean/OriginalArith/RingField.lean) confirms it goes all the way: ring laws, field laws, additive inverse, multiplicative inverse, distributivity. All proved within contents. Can `Val α` be a field? No — origin and container are not field elements. Yes — the contents sub-sort is a field when α is. The field is the interior. The boundary is outside it by type.
 
 Both directions confirmed by code. Both building clean. The backwards direction dissolves Mathlib's patches into one typeclass. The forwards direction builds arithmetic from scratch without needing them — all the way through fields, ordered fields, vector spaces, polynomial rings, linear algebra, analysis, topology, category theory, functional analysis, measure theory, and commutative algebra. 508 theorems from the seed.
 

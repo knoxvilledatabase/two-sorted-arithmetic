@@ -248,7 +248,7 @@ I am only a programmer and a dad who wondered what would happen if we applied th
 
 ## What We Built
 
-Does the [Lean 4 formalization](lean/TwoSortedArith/) prove it formally? 508 theorems, zero errors, zero `sorry`s. 17 domains verified. 136 pairwise boundary preservations.
+Does the [Lean 4 formalization](lean/OriginalArith/) prove it formally? 508 theorems, zero errors, zero `sorry`s. 17 domains verified. 136 pairwise boundary preservations.
 
 Is that math sound enough?
 
@@ -274,23 +274,23 @@ cargo add origin-lang
 | [PREDICTIONS.md](PREDICTIONS.md) | Novel predictions the theory makes |
 | [NEXT.md](NEXT.md) | What remains to be done |
 | **The seed** | |
-| `lean/TwoSortedArith/Foundation.lean` | Three primitives, four rules. Arithmetic from scratch. |
-| `lean/TwoSortedArith/Algebra.lean` | Faithful embedding + algebraic laws (semigroup, monoid, three behaviors) |
-| `lean/TwoSortedArith/RingField.lean` | Ring and field laws. The field lives inside contents. |
+| `lean/OriginalArith/Foundation.lean` | Three primitives, four rules. Arithmetic from scratch. |
+| `lean/OriginalArith/Algebra.lean` | Faithful embedding + algebraic laws (semigroup, monoid, three behaviors) |
+| `lean/OriginalArith/RingField.lean` | Ring and field laws. The field lives inside contents. |
 | **The forwards direction** | |
-| `lean/TwoSortedArith/OrderedField.lean` | Ordered fields and inequalities within contents |
-| `lean/TwoSortedArith/VectorSpace.lean` | Scalar multiplication and module laws |
-| `lean/TwoSortedArith/PolyRing.lean` | Polynomial evaluation, origin propagation |
-| `lean/TwoSortedArith/LinearAlgebra.lean` | 2×2 determinants, Cayley-Hamilton, `det ≠ 0` dissolved |
-| `lean/TwoSortedArith/Analysis.lean` | Limits, convergence, indeterminate forms dissolve |
-| `lean/TwoSortedArith/Topology.lean` | One-point compactification, origin as limit point |
-| `lean/TwoSortedArith/Category.lean` | Functor, monad, universal property |
-| `lean/TwoSortedArith/FunctionalAnalysis.lean` | Norms, operators, completeness, spectral theory |
-| `lean/TwoSortedArith/MeasureTheory.lean` | Measures, null sets, Radon-Nikodym, integration |
-| `lean/TwoSortedArith/CommAlgebra.lean` | Ideals, localization, prime ideals, integral domains |
+| `lean/OriginalArith/OrderedField.lean` | Ordered fields and inequalities within contents |
+| `lean/OriginalArith/VectorSpace.lean` | Scalar multiplication and module laws |
+| `lean/OriginalArith/PolyRing.lean` | Polynomial evaluation, origin propagation |
+| `lean/OriginalArith/LinearAlgebra.lean` | 2×2 determinants, Cayley-Hamilton, `det ≠ 0` dissolved |
+| `lean/OriginalArith/Analysis.lean` | Limits, convergence, indeterminate forms dissolve |
+| `lean/OriginalArith/Topology.lean` | One-point compactification, origin as limit point |
+| `lean/OriginalArith/Category.lean` | Functor, monad, universal property |
+| `lean/OriginalArith/FunctionalAnalysis.lean` | Norms, operators, completeness, spectral theory |
+| `lean/OriginalArith/MeasureTheory.lean` | Measures, null sets, Radon-Nikodym, integration |
+| `lean/OriginalArith/CommAlgebra.lean` | Ideals, localization, prime ideals, integral domains |
 | **The backwards direction** | |
-| `lean/TwoSortedArith/HasBoundary.lean` | One typeclass. Five Mathlib concepts derived from it. |
-| `lean/TwoSortedArith/*Benchmark.lean` | Ten benchmarks: 46 hypotheses → 0, all seed proofs `rfl` |
+| `lean/OriginalArith/HasBoundary.lean` | One typeclass. Five Mathlib concepts derived from it. |
+| `lean/OriginalArith/*Benchmark.lean` | Ten benchmarks: 46 hypotheses → 0, all seed proofs `rfl` |
 | **Other** | |
 | `lean/*.lean` | Original working proofs (4,125 lines, standalone for live.lean-lang.org) |
 | `packages/typescript/` | TypeScript prototype: 71% fewer branches |
@@ -300,7 +300,7 @@ cargo add origin-lang
 
 ## The Foundation
 
-[Foundation.lean](lean/TwoSortedArith/Foundation.lean) builds arithmetic from three primitives: `𝒪` (origin, the whole), `B` (container, the bucket), and `contents` (quantities, 0 through infinity). Four rules govern how they interact. Addition, multiplication, division, inverse, identities, associativity, commutativity, and distributivity all emerge from those rules without patches, conventions, or hypotheses. No `NeZero`. No `NoZeroDivisors`. No `0⁻¹ = 0` convention. The type prevents the pathologies that Mathlib spends twelve typeclasses managing.
+[Foundation.lean](lean/OriginalArith/Foundation.lean) builds arithmetic from three primitives: `𝒪` (origin, the whole), `B` (container, the bucket), and `contents` (quantities, 0 through infinity). Four rules govern how they interact. Addition, multiplication, division, inverse, identities, associativity, commutativity, and distributivity all emerge from those rules without patches, conventions, or hypotheses. No `NeZero`. No `NoZeroDivisors`. No `0⁻¹ = 0` convention. The type prevents the pathologies that Mathlib spends twelve typeclasses managing.
 
 The forwards direction extends the seed through ordered fields, vector spaces, polynomial rings, linear algebra, analysis, topology, category theory, functional analysis, measure theory, and commutative algebra — 508 theorems from three constructors and four rules. The backwards direction benchmarks the seed against standard mathematics: 46 hypothesis instances across ten benchmarks, zero on the seed side, every seed proof `rfl`. Everything proved in Lean 4. Nothing broke.
 

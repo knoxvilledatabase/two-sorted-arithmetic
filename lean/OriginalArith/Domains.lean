@@ -3,7 +3,7 @@ Copyright (c) 2024-2026 Knox Database. All rights reserved.
 Released under MIT license.
 Authors: Knox Database
 -/
-import TwoSortedArith.Basic
+import OriginalArith.Basic
 
 /-!
 # Two-Sorted Arithmetic: Domain Isomorphisms
@@ -44,9 +44,9 @@ this way, the structure is consistent and composes.
   property of `morphism` itself, not a claim about specific domain pairings.
 -/
 
-namespace TwoSortedArith
+namespace OriginalArith
 
-open TwoSortedArith
+open OriginalArith
 
 -- ============================================================================
 -- Domain template
@@ -309,4 +309,4 @@ theorem morphism_always_preserves {D₁ D₂ : Type} (f : D₁ → D₂) :
     preservesDistinction (morphism f) :=
   morphism_preserves_distinction_general f
 
-end TwoSortedArith
+end OriginalArith

@@ -68,7 +68,7 @@ Strip until it breaks. Then add the minimum to make it work.
 
 ## How to Continue
 
-Read [PROOF_OF_CONCEPT.md](PROOF_OF_CONCEPT.md) first. Then read [lean/TwoSortedArith/Foundation.lean](lean/TwoSortedArith/Foundation.lean). Then pick the next step from "What Remains" at the bottom of PROOF_OF_CONCEPT.md.
+Read [PROOF_OF_CONCEPT.md](PROOF_OF_CONCEPT.md) first. Then read [lean/OriginalArith/Foundation.lean](lean/OriginalArith/Foundation.lean). Then pick the next step from "What Remains" at the bottom of PROOF_OF_CONCEPT.md.
 
 **The seed:** `Val α` — three constructors (`origin`, `container`, `contents`), four rules.
 
@@ -78,6 +78,6 @@ Read [PROOF_OF_CONCEPT.md](PROOF_OF_CONCEPT.md) first. Then read [lean/TwoSorted
 
 **The ones that derive cleanly become the evidence. The ones that break define the honest boundary of the claim.**
 
-Build each step as a new file in `lean/TwoSortedArith/`. All files must build clean with `lake build` from the `lean/` directory. Zero errors. Zero sorries. Zero overclaims. If a build fails, the failure is information — report what it means honestly.
+Build each step as a new file in `lean/OriginalArith/`. All files must build clean with `lake build` from the `lean/` directory. Zero errors. Zero sorries. Zero overclaims. If a build fails, the failure is information — report what it means honestly.
 
 The kill switch is live at every level.
