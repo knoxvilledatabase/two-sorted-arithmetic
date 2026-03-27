@@ -250,14 +250,14 @@ Does the [Lean 4 formalization](lean/OriginalArith/) prove it formally? 509 theo
 
 Is that math sound enough?
 
-The [Origin](https://github.com/knoxvilledatabase/origin-lang) crate makes it a compiler error, available today in Rust and Python.
+[origin-lang](https://github.com/knoxvilledatabase/origin-lang) — your model's uncertainty never reaches production in a float field someone forgot to check. The compiler catches it. Available today in Rust and Python.
 
 ```bash
 pip install origin-lang
 cargo add origin-lang
 ```
 
-`Result` tells you the operation failed. `Value` tells you where you ended up.
+[origin-mlir](https://github.com/knoxvilledatabase/origin-mlir) — the compiler proves your patches are unnecessary and eliminates dead subgraphs. The four rules running as MLIR passes against real JAX IR.
 
 ---
 
@@ -295,7 +295,8 @@ cargo add origin-lang
 | `packages/typescript/` | TypeScript prototype: 71% fewer branches |
 | `packages/python/` | Python prototype |
 | `packages/rust-python/` | Rust core + energy benchmark: 98.6% less energy per operation |
-| [Origin](https://github.com/knoxvilledatabase/origin-lang) | The compiler that enforces it (separate repo) |
+| [origin-lang](https://github.com/knoxvilledatabase/origin-lang) | The compiler that enforces it |
+| [origin-mlir](https://github.com/knoxvilledatabase/origin-mlir) | Four rules as MLIR compiler passes |
 
 ## The Foundation
 
