@@ -248,7 +248,7 @@ I am only a programmer and a dad who wondered what would happen if we applied th
 
 ## What We Built
 
-Does the [Lean 4 formalization](lean/OriginalArith/) prove it formally? 508 theorems, zero errors, zero `sorry`s. 17 domains verified. 136 pairwise boundary preservations.
+Does the [Lean 4 formalization](lean/OriginalArith/) prove it formally? 509 theorems, zero errors, zero `sorry`s. 17 domains verified. 136 pairwise boundary preservations.
 
 Is that math sound enough?
 
@@ -270,7 +270,7 @@ cargo add origin-lang
 | [README.md](README.md) | The problem, the 97 patches, the DRY argument |
 | [PROOF_OF_CONCEPT.md](PROOF_OF_CONCEPT.md) | The proof of concept: zero's three jobs, axioms, cross-domain pattern |
 | [DISCOVERY.md](DISCOVERY.md) | Why the answer was always true: the philosophy behind the proof |
-| [PROOFS.md](PROOFS.md) | 508 Lean 4 theorems, annotated |
+| [PROOFS.md](PROOFS.md) | 509 Lean 4 theorems, annotated |
 | [FALSIFICATION.md](FALSIFICATION.md) | How to break it: the kill switch |
 | [PREDICTIONS.md](PREDICTIONS.md) | Novel predictions the theory makes |
 | [NEXT.md](NEXT.md) | What remains to be done |
@@ -303,5 +303,5 @@ cargo add origin-lang
 
 [Foundation.lean](lean/OriginalArith/Foundation.lean) builds arithmetic from three primitives: `origin` (the whole), `container` (the bucket), and `contents` (quantities, 0 through infinity). Four rules govern how they interact. Addition, multiplication, division, inverse, identities, associativity, commutativity, and distributivity all emerge from those rules without patches, conventions, or hypotheses. No `NeZero`. No `NoZeroDivisors`. No `0⁻¹ = 0` convention. The type prevents the pathologies that Mathlib spends twelve typeclasses managing.
 
-The forwards direction extends the seed through ordered fields, vector spaces, polynomial rings, linear algebra, analysis, topology, category theory, functional analysis, measure theory, and commutative algebra — 508 theorems from three constructors and four rules. The backwards direction benchmarks the seed against standard mathematics: 46 hypothesis instances across ten benchmarks, zero on the seed side, every seed proof `rfl`. Everything proved in Lean 4. Nothing broke.
+The forwards direction extends the seed through ordered fields, vector spaces, polynomial rings, linear algebra, analysis, topology, category theory, functional analysis, measure theory, and commutative algebra — 509 theorems from three constructors and four rules. The backwards direction benchmarks the seed against standard mathematics: 46 hypothesis instances across ten benchmarks, zero on the seed side, every seed proof `rfl`. Everything proved in Lean 4. Nothing broke.
 

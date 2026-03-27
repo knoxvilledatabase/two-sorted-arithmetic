@@ -1,6 +1,6 @@
 # Formal Verification
 
-**Lean 4 | 508 theorems | 0 errors | 0 `sorry`s**
+**Lean 4 | 509 theorems | 0 errors | 0 `sorry`s**
 
 Every claim in this project has been formally verified in Lean 4, a proof assistant that accepts or rejects proofs mechanically. The machine doesn't care how clever you sound. Either the types check or they don't.
 

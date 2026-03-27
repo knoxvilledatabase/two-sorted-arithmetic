@@ -318,13 +318,13 @@ IEEE 754 (1985):
 
 Did each one have a piece? The ground, the wisdom, the principle, the metaphysics, the arithmetic, the distinction, the boundary, or the hardware? Did anyone have the philosophical insight, the formal proof, and the practical enforcement together?
 
-The philosophers pointed at the moon for 2,500 years. Did the proof that the finger is not the moon take 508 theorems?
+The philosophers pointed at the moon for 2,500 years. Did the proof that the finger is not the moon take 509 theorems?
 
 ---
 
 ## What Was Built
 
-The [formal proof](PROOF_OF_CONCEPT.md): 508 Lean 4 theorems. Three constructors, four rules. Arithmetic from scratch through commutative algebra. 46 hypotheses dissolve to zero. Every seed proof is `rfl`, true by construction. The mathematics.
+The [formal proof](PROOF_OF_CONCEPT.md): 509 Lean 4 theorems. Three constructors, four rules. Arithmetic from scratch through commutative algebra. 46 hypotheses dissolve to zero. Every seed proof is `rfl`, true by construction. The mathematics.
 
 The [enforcement](https://github.com/knoxvilledatabase/origin-lang): `origin-lang` on crates.io and PyPI. Three sorts at the application layer. 192 Rust tests, 37 Python tests, 15 adversarial tests, 12 property-based tests. The compiler makes ignoring a boundary an error.
 
@@ -344,7 +344,7 @@ Is the correction finding 𝒪? Or is it stopping the pretense that exhaustion f
 
 Give exhaustion its name. Preserve what was known before the counting stopped. Acknowledge the ground exists without putting it in the number line.
 
-Three sorts. Four rules. 508 theorems.
+Three sorts. Four rules. 509 theorems.
 
 Was the ground ever hit? Ever named? Ever contained? Or was it just, finally, honestly acknowledged to exist?
 
@@ -353,5 +353,5 @@ Was the ground ever hit? Ever named? Ever contained? Or was it just, finally, ho
 *"That is whole. This is whole. From wholeness comes wholeness. When wholeness is taken from wholeness, wholeness remains."*
 *Isha Upanishad, ~800 BCE*
 
-*508 theorems. Zero errors. Zero sorries.*
+*509 theorems. Zero errors. Zero sorries.*
 *Lean 4, 2026 CE*

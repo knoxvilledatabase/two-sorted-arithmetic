@@ -487,7 +487,7 @@ The three-sort system has been verified to satisfy:
 - **Density**, B is closed, no gaps
 - **Stability**, under products, coproducts, quotients, and embeddings
 
-Every claim formally verified. [508 theorems, zero errors, zero `sorry`s.](PROOFS.md)
+Every claim formally verified. [509 theorems, zero errors, zero `sorry`s.](PROOFS.md)
 
 ---
 
@@ -515,7 +515,7 @@ Obviously the insight isn't new.
 
 We formalized the theory in [Lean 4](lean/), a proof assistant that accepts or rejects proofs mechanically. The machine doesn't care how clever you sound. Either the types check or they don't.
 
-- [508 theorems](PROOFS.md). Zero errors. Zero `sorry`s.
+- [509 theorems](PROOFS.md). Zero errors. Zero `sorry`s.
 - 17 domains tested as modeled. 136 pairwise boundary preservations verified.
 - Built prototypes in [TypeScript](packages/typescript/src/index.ts) and [Python](packages/python/src/two_sorted/__init__.py). 71% fewer branches. 10% faster in JavaScript.
 - Built a [Rust core](packages/rust-python/src/lib.rs). Measured [actual energy consumption](packages/rust-python/energy_benchmark.py) on Apple Silicon. 98.6% less energy per operation.
@@ -525,7 +525,7 @@ Every test must pass because a failure would mean we changed the math instead of
 
 Every test passed.
 
-The 508 theorems verify how the boundary behaves. The law, you can't have a part without a whole, is why the boundary is there. 
+The 509 theorems verify how the boundary behaves. The law, you can't have a part without a whole, is why the boundary is there. 
 
 ---
 
@@ -533,7 +533,7 @@ The 508 theorems verify how the boundary behaves. The law, you can't have a part
 
 Can we build arithmetic from scratch using just 𝒪, container, and contents?
 
-Yes. All the way to fields — and beyond. Addition, multiplication, division, inverse, the ring laws, the field laws. Then ordered fields, vector spaces, polynomial rings, linear algebra, analysis and limits, topology, category theory, functional analysis, measure theory, and commutative algebra. 508 theorems from the seed. No patches. No conventions. No `≠ 0` hypotheses.
+Yes. All the way to fields — and beyond. Addition, multiplication, division, inverse, the ring laws, the field laws. Then ordered fields, vector spaces, polynomial rings, linear algebra, analysis and limits, topology, category theory, functional analysis, measure theory, and commutative algebra. 509 theorems from the seed. No patches. No conventions. No `≠ 0` hypotheses.
 
 The one honest finding: `Val α` as a whole type is not a field. Origin and container are not field elements. They are outside the field. But that is not a problem. That is the point. The field lives in contents where arithmetic belongs. Origin and container are the boundary and structure that arithmetic was always bumping into without knowing what they were.
 
@@ -549,7 +549,7 @@ The field is the fish. Origin is the ocean. You do not need the fish to contain 
 
 ## The Conclusion
 
-97 independent patches across four fields, all handling the same boundary, none of them unified. That's what we found. That's what the 508 theorems verify. That's what the 17-domain isomorphism proves: the absorbing element structure is the same in every case.
+97 independent patches across four fields, all handling the same boundary, none of them unified. That's what we found. That's what the 509 theorems verify. That's what the 17-domain isomorphism proves: the absorbing element structure is the same in every case.
 
 The unification came first. The water argument follows from it. Each patch is code. Each line of code is an operation. Each operation is energy. Each unit of energy is heat. Each unit of heat is water. Unify the patches and the cascade reverses.
 
@@ -576,7 +576,7 @@ The [foundation](lean/OriginalArith/Foundation.lean) is the forwards direction. 
 
 The [algebra](lean/OriginalArith/RingField.lean) confirms it goes all the way: ring laws, field laws, additive inverse, multiplicative inverse, distributivity. All proved within contents. Can `Val α` be a field? No — origin and container are not field elements. Yes — the contents sub-sort is a field when α is. The field is the interior. The boundary is outside it by type.
 
-Both directions confirmed by code. Both building clean. The backwards direction dissolves Mathlib's patches into one typeclass. The forwards direction builds arithmetic from scratch without needing them — all the way through fields, ordered fields, vector spaces, polynomial rings, linear algebra, analysis, topology, category theory, functional analysis, measure theory, and commutative algebra. 508 theorems from the seed.
+Both directions confirmed by code. Both building clean. The backwards direction dissolves Mathlib's patches into one typeclass. The forwards direction builds arithmetic from scratch without needing them — all the way through fields, ordered fields, vector spaces, polynomial rings, linear algebra, analysis, topology, category theory, functional analysis, measure theory, and commutative algebra. 509 theorems from the seed.
 
 ---
 
