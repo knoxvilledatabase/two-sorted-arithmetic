@@ -234,31 +234,21 @@ Does the bird that knows it did not make the trees pretend to make trees? Does t
 
 ---
 
-## The Child's Questions
+## Do These Questions Have More Than One Answer?
 
-A child who could not get past zero asked questions that the formal system cannot answer from within itself:
+Can you have an empty bucket without a bucket?
 
-**"If I picture a zero in my mind, how many symbols am I holding?"**
-One. The container exists.
+Is a bucket with no apples still a bucket?
 
-**"How can a group of symbols be undefined?"**
-It cannot. "Undefined" is exhaustion given a name. The counting stopped. It did not reach the ground.
+Can a fish create anything other than fish?
 
-**"Could I take a picture of nothing?"**
-No. Nothing requires a frame. The empty bucket is still one bucket. The picture of nothing is one picture. Nothing is always nothing of something.
+Can the leaf become the tree?
 
-**"Is a/b = c not one container divided by one container equals one container?"**
-Yes. At the structural level, every expression is containers operating on containers. The arithmetic happens inside the containers. The child was counting containers. The teacher was counting contents. Both were right.
+Can a bug also be the thing that creates all bugs?
 
-**"How can symbols create anything other than symbols?"**
-They cannot. Contents operating on contents produces contents. The bounded domain is closed under its own operations. When mathematics writes "undefined," it means the operation reached the boundary. Not that symbols stopped being symbols.
+Is 0 also 1? Is one bucket holding zero contents not one and zero at the same time?
 
-**"Can a bug also be what created it?"**
-No. A bug exists inside a system. It is created by the system's rules. It cannot be what created those rules. Zero was asked to be both the bug and the system that created the bug. Both the number and the ground the number stands on. That is the collapse in one question.
-
-Are these questions unanswerable from the collapsed framework? Does every attempt to answer them concede the three-sort distinction?
-
-The teacher had a PhD and seventeen typeclasses. The child had three questions. Who was counting what?
+Does every attempt to answer these concede the three-sort distinction?
 
 ---
 
