@@ -158,7 +158,9 @@ Is the answer "undefined" or "which zero?"
 
 ### Limits: `lim(x→0)`
 
-Approaching no symbols? Calculus handles it. That's what limits were built for. But is the fish becoming the ocean or are we getting tired of counting fish?
+**Standard behavior:** Defined. The foundation of calculus.
+
+**Through the original lens:** Approaching no symbols? Calculus handles it. That's what limits were built for. But is the fish becoming the ocean or are we getting tired of counting fish?
 
 Is L'Hopital asking "which zero am I holding?"
 
