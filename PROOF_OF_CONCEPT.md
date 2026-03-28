@@ -129,21 +129,21 @@ The shepherd never made that mistake. He knew the difference between the ground,
 
 Is zero having an identity crisis?
 
-### Multiplication: `0 × 0`
-
-**Standard behavior:** Defined. `0 × 0 = 0`. No indeterminacy.
-
-**Through the original lens:** Which zero? Are we multiplying by a quantity of zero or by the categorical origin? 
-
 ### Division: `0 ÷ 0`
 
 **Standard behavior:** Undefined.
 
 **The problem:** Two rules collide. `x ÷ x = 1` for all x ≠ 0. But `0` has no multiplicative inverse. Which rule wins? What happens when one symbol carries two roles?
 
-**Through the original lens:** Which zero? 
+**Through the original lens:** Which zero?
 
-If I have no apples in my hand and I divide it by no apples in my hand, how many apples do I have in my hand, undefined or just no apples? 
+If I have no apples in my hand and I divide it by no apples in my hand, how many apples do I have in my hand, undefined or just no apples?
+
+### Factorial: `0!`
+
+**Standard behavior:** Defined. `0! = 1` by convention.
+
+**Through the original lens:** How many ways are there for no apples in my hand to be no apples in my hand?
 
 ### Exponentiation: `0 ^ 0`
 
@@ -151,11 +151,17 @@ If I have no apples in my hand and I divide it by no apples in my hand, how many
 
 **Through the original lens:** How is this not two marks, each claiming to represent the absence of marking?
 
-### Factorial: `0!`
+### Division by zero: `1 ÷ 0`
 
-**Standard behavior:** Defined. `0! = 1` by convention.
+**Standard behavior:** Undefined.
 
-**Through the original lens:** How many ways are there for no apples in my hand to be no apples in my hand? 
+**Through the original lens:** Which zero is the divisor? Are we asking what is a fish divided by the ocean or a bug divided by the air?
+
+### Multiplication: `0 × 0`
+
+**Standard behavior:** Defined. `0 × 0 = 0`. No indeterminacy.
+
+**Through the original lens:** Which zero? Are we multiplying by a quantity of zero or by the categorical origin?
 
 ### Limits: `lim(x→0)`
 
@@ -170,12 +176,6 @@ Is L'Hôpital asking "which zero am I holding?" or have symbols stopped making s
 **Standard behavior:** Undefined. The limit gives −∞.
 
 **Through the original lens:** If I put a dot on a sheet of paper, could I fit that sheet of paper inside that dot? 
-
-### Division by zero: `1 ÷ 0`
-
-**Standard behavior:** Undefined.
-
-**Through the original lens:** Which zero is the divisor? Are we asking what is a fish divided by the ocean or a bug divided by the air? 
 
 ## What Did the Collapse Do Across Domains?
 
