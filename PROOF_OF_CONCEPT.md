@@ -129,6 +129,12 @@ The shepherd never made that mistake. He knew the difference between the ground,
 
 Is zero having an identity crisis?
 
+### Multiplication: `0 × 0`
+
+**Standard behavior:** Defined. `0 × 0 = 0`. No indeterminacy.
+
+**Through the original lens:** Which zero? Are we multiplying by a quantity of zero or by the categorical origin? 
+
 ### Division: `0 ÷ 0`
 
 **Standard behavior:** Undefined.
@@ -158,12 +164,6 @@ If I have no apples in my hand and I divide it by no apples in my hand, how many
 **Through the original lens:** Approaching the number zero? Calculus handles it. That is what limits were built for.
 
 Is L'Hôpital asking "which zero am I holding?" or have symbols stopped making symbols?
-
-### Multiplication: `0 × 0`
-
-**Standard behavior:** Defined. `0 × 0 = 0`. No indeterminacy.
-
-**Through the original lens:** Which zero? Are we multiplying by a quantity of zero or by the categorical origin? 
 
 ### Logarithm: `log(0)`
 
