@@ -24,17 +24,15 @@ Obviously the shepherd knows he's holding the apple. He eats the apple. Now his 
 
 This shepherd didn't have a symbol to represent "no apples." He didn't need one. He could feel the difference between holding something and holding nothing.
 
-But his hand was still there. One hand. Zero apples. The hand didn't disappear because the apple did.
-
 The shepherd already knew three things without naming any of them:
 
 The **ground** he stands on. He didn't make it. He can't hold it. It was there before him and will be there after.
 
 The **hand** itself. One hand. Whether holding an apple or not.
 
-The **apple**, or the absence of an apple. The quantity. What changes when the hand opens.
+The **apple**, or the absence of an apple. The quantity.
 
-The shepherd never confused these. No apples is not no hand.
+The shepherd never confused these.
 
 ## The Count
 
