@@ -36,7 +36,7 @@ The shepherd never confused these.
 
 ## The Count
 
-People started counting. Sheep, grain, days. They needed marks. Scratches on bone. Stones in a pile. One mark for each thing.
+People started counting. Sheep, grain, days. They needed marks. Scratches on bone. Stones in a pile. One mark led to the next.
 
 The Babylonians needed a way to write "nothing in this column" for their positional number system. They made a placeholder symbol. Not a number. A gap marker. It said "the count is empty here" without claiming to be a quantity itself.
 
