@@ -40,7 +40,7 @@ People started counting. Sheep, grain, days. They needed marks. Scratches on bon
 
 The Babylonians needed a way to write "nothing in this column" for their positional number system. They made a placeholder symbol. Not a number. A gap marker. It said "the count is empty here" without claiming to be a quantity itself.
 
-The Greeks had no zero at all. Euclid (~300 BCE) built geometry from lengths, areas, volumes. You cannot have a length of nothing. But Euclid had a principle that gestures at something deeper: *"the whole is greater than the part."*
+Did the Greeks have no zero at all? Euclid (~300 BCE) built geometry from lengths, areas, volumes. Can you have a length of nothing? But Euclid had a principle that gestures at something deeper: *"the whole is greater than the part."*
 
 Is it possible there's a deeper reading? Not that the whole is a bigger part. But that the whole is a *different category* entirely? Can you have a part without a whole?
 
@@ -50,7 +50,9 @@ Until 628 CE.
 
 ## How Did the Shepherd Know?
 
-The original lens was never lost, it was never hidden. Was it not in every hand that ever held something and then held nothing?
+Was the original lens every lost? Was it was ever hidden? 
+
+Was it not in every hand that ever held something and then held nothing?
 
 - **𝒪**, ground (origin). The ground the shepherd stands on. A finger pointing at the moon is not the moon.
 - **container**, the hand. The bucket. Holds quantities. Does not care what is inside. One bucket, always.
@@ -75,7 +77,7 @@ I3 (`f(𝒪, 𝒪) = 𝒪`) is redundant. It follows from I1 or I2 alone.
 
 ## Is This New?
 
-Did others see the original lens?
+How many others saw the original lens?
 
 **The Isha Upanishad (~800 BCE).** "When wholeness is taken from wholeness, wholeness remains." Never formalized it.
 
