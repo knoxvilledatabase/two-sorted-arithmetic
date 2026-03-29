@@ -64,7 +64,7 @@ What happens when these three interact?
 
 ```
 contents(a) × contents(b) = contents(a × b)   — arithmetic inside containers
-container × container      = container          — the hand × the hand = the hand. The bucket that holds no apples is still a bucket.
+container × container      = container          — the contents of a bucket × the contents of a bucket = the contents of a bucket
 origin × anything          = origin             — the ground absorbs. The ocean absorbs the fish.
 ```
 
