@@ -79,19 +79,17 @@ I3 (`f(𝒪, 𝒪) = 𝒪`) is redundant. It follows from I1 or I2 alone.
 
 How many others saw the original lens?
 
-**The Isha Upanishad (~800 BCE).** "When wholeness is taken from wholeness, wholeness remains." Never formalized it.
+**The Isha Upanishad (~800 BCE).** "When wholeness is taken from wholeness, wholeness remains."
 
-**Euclid (~300 BCE).** *"The whole is greater than the part."* The category distinction. Never applied to zero specifically.
+**Euclid (~300 BCE).** *"The whole is greater than the part."* The category distinction.
 
-**Plotinus (~250 CE).** *"The One is all things and no one of them."* Never connected to arithmetic.
+**Plotinus (~250 CE).** *"The One is all things and no one of them."* 
 
-**Spencer-Brown (1969).** *"A universe comes into being when a space is severed."* The mark and the unmarked co-emerge.
+**Spencer-Brown (1969).** *"A universe comes into being when a space is severed."*
 
-**IEEE 754 (1985).** NaN propagation rules ARE the interaction axioms: `NaN + x = NaN` (I1), `x + NaN = NaN` (I2). The computing industry built the original lens into every floating-point chip on earth without connecting it to the mathematics.
+**IEEE 754 (1985).** Are the NaN propagation rules the interaction axioms: `NaN + x = NaN` (I1), `x + NaN = NaN` (I2)? Did the computing industry build the original lens into every floating-point chip on earth without connecting it to the mathematics?
 
-**Rust (2015).** `Option<T>` separates `None` (origin) from `Some(value)` (contents). ML introduced this in 1973.
-
-Obviously the insight is not new.
+**Rust (2015).** Did `Option<T>` separate `None` (origin) from `Some(value)` (contents) when introduced by ML in 1973?
 
 ---
 
