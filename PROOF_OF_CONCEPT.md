@@ -81,7 +81,7 @@ How many others saw the original lens?
 
 **The Isha Upanishad (~800 BCE).** "When wholeness is taken from wholeness, wholeness remains."
 
-**Euclid (~300 BCE).** *"The whole is greater than the part."* The category distinction.
+**Euclid (~300 BCE).** *"The whole is greater than the part."*
 
 **Plotinus (~250 CE).** *"The One is all things and no one of them."* 
 
@@ -111,7 +111,7 @@ When Brahmagupta formalized the arithmetic, did only *śūnya* make it into the 
 
 Were the two faces that the Upanishadic tradition held together collapsed entering mathematics as the symbol 0?
 
-What if Brahmagupta was right about origin, the ground dividing itself yields the ground, and later mathematicians rejected it because they didn't realize he was talking about the whole not the part?
+What if Brahmagupta was right about origin, the ground dividing itself yields the ground, and later mathematicians rejected it because they didn't realize he was talking about the whole not the part or vice versa?
 
 ## The Journey West
 
