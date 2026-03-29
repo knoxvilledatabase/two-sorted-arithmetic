@@ -50,7 +50,7 @@ Until 628 CE.
 
 ## How Did the Shepherd Know?
 
-Was the original lens every lost? Was it was ever hidden? 
+Was the original lens ever lost? Was it ever hidden? 
 
 Was it not in every hand that ever held something and then held nothing?
 
