@@ -56,6 +56,11 @@ def mul (f : α → α → α) : Val α → Val α → Val α
   | contents _, container   => container
   | contents a, contents b  => contents (f a b)
 
+-- contents(0) × contents(a) = contents(f 0 a) = contents(0).
+-- This is inaction, not absorption. Zero iterations of addition.
+-- The a is untouched. The Foundation passes f through — it takes
+-- no position on zero inside α. Absorption lives in origin only.
+
 -- ============================================================================
 -- Addition: contents add, origin absorbs, container absorbs
 -- ============================================================================
