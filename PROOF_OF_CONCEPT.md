@@ -6,6 +6,10 @@
 
 ## Preface
 
+This is not a replacement for mathematics. It sits above mathematics, not inside it (the claim is meta-theoretic). Every theorem, every field axiom, every result stands exactly where it is. Origin was never in the number line. It's what the number line stands on.
+
+The Lean proofs verify that the lens is internally consistent — not that the lens is the only lens or that mathematics must adopt it.
+
 What would happen if we went back to the beginning?
 
 Before calculus. Before algebra. Before arithmetic. Before math.
