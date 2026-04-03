@@ -81,29 +81,18 @@ def add (f : α → α → α) : Val α → Val α → Val α
 -- Additive identity: contents(0) where 0 is the additive identity in α
 -- ============================================================================
 
--- In a type α with a zero element, contents(0) is the additive identity.
--- This is the CONTENTS-level zero. Not the boundary. Not the container.
-
-def addWithIdentity (f : α → α → α) (_zero : α) : Val α → Val α → Val α
-  | origin, _                  => origin
-  | _, origin                  => origin
-  | container a, container b   => container (f a b)
-  | container a, contents b    => container (f a b)
-  | contents a, container b    => container (f a b)
-  | contents a, contents b     => contents (f a b)
-
 -- The additive identity lives INSIDE contents. It is contents(zero).
 -- Not a special sort. Not a boundary. Just the empty content.
 
 theorem additive_identity_left (f : α → α → α) (zero : α)
     (h : ∀ a : α, f zero a = a) (a : α) :
-    addWithIdentity f zero (contents zero) (contents a) = contents a := by
-  simp [addWithIdentity, h]
+    add f (contents zero) (contents a) = contents a := by
+  simp [add, h]
 
 theorem additive_identity_right (f : α → α → α) (zero : α)
     (h : ∀ a : α, f a zero = a) (a : α) :
-    addWithIdentity f zero (contents a) (contents zero) = contents a := by
-  simp [addWithIdentity, h]
+    add f (contents a) (contents zero) = contents a := by
+  simp [add, h]
 
 -- ✓ Additive identity works. Lives in contents. No patches needed.
 
@@ -297,7 +286,23 @@ theorem distrib_contents (mulF addF : α → α → α)
              (mul mulF (contents a) (contents c)) := by
   simp [mul, add, h]
 
--- ✓ Distributivity holds for contents when f distributes over g.
+theorem distrib_container (mulF addF : α → α → α)
+    (h : ∀ a b c : α, mulF a (addF b c) = addF (mulF a b) (mulF a c))
+    (a b c : α) :
+    mul mulF (container a) (add addF (container b) (container c)) =
+    add addF (mul mulF (container a) (container b))
+             (mul mulF (container a) (container c)) := by
+  simp [mul, add, h]
+
+theorem distrib_mixed (mulF addF : α → α → α)
+    (h : ∀ a b c : α, mulF a (addF b c) = addF (mulF a b) (mulF a c))
+    (a b c : α) :
+    mul mulF (container a) (add addF (contents b) (contents c)) =
+    add addF (mul mulF (container a) (contents b))
+             (mul mulF (container a) (contents c)) := by
+  simp [mul, add, h]
+
+-- ✓ Distributivity holds for all sorts when f distributes over g.
 
 -- ============================================================================
 -- Sort trichotomy: every element is exactly one sort
