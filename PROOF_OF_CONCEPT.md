@@ -8,7 +8,7 @@
 
 This is not a replacement for mathematics. It sits above mathematics, not inside it (the claim is meta-theoretic). Every theorem, every field axiom, every result stands exactly where it is. Origin was never in the number line. It's what the number line stands on.
 
-The Lean proofs verify that the lens is internally consistent — not that the lens is the only lens or that mathematics must adopt it.
+The Lean proofs verify that the lens is internally consistent, not that the lens is the only lens or that mathematics must adopt it.
 
 What would happen if we went back to the beginning?
 
@@ -192,9 +192,9 @@ Algebra on arithmetic. Calculus on algebra. Analysis on calculus. Every floor of
 
 ### Did the collapse spread across domains? 
 
-The empty set `∅` is the oldest two-faced zero. It contains *nothing* yet *is* one thing. From inside B, ∅ is the empty container, the additive identity of sets under union. From outside, ∅ is the first distinction, the boundary the entire set hierarchy is built on.
+Is the empty set `∅` the oldest two-faced zero? It contains *nothing* yet *is* one thing? From inside B, is  ∅ the empty container, the additive identity of sets under union? From outside, is ∅ the first distinction, the boundary the entire set hierarchy is built on?
 
-Russell's paradox is a sort conflict: applying set membership (an operation within B) to an object at the boundary of B. NBG set theory fixed this by distinguishing sets from proper classes — the same split, discovered independently.
+Is Russell's paradox a sort conflict: applying set membership (an operation within B) to an object at the boundary of B? Did NBG set theory fix this by distinguishing sets from proper classes? Is this the same collapse of zero discovered independently?
 
 IEEE 754's NaN propagation rules *are* the interaction axioms:
 
@@ -209,7 +209,7 @@ Rust's `Option<T>` is the original distinction implemented as a language feature
 
 ### The Isomorphism Claim
 
-The claim is isomorphism of the absorbing element structure, not of the full domains. Division by zero and Russell's paradox are not the same problem. They have the same *boundary shape* — an operation leaving its domain and hitting an absorber that satisfies I1-I3.
+The claim is isomorphism of the absorbing element structure, not of the full domains. Division by zero and Russell's paradox are not the same problem. They have the same *boundary shape*, an operation leaving its domain and hitting an absorber that satisfies I1-I3.
 
 **Kill switch:** Prove any two of these boundaries have structurally different absorbing behavior. One counterexample kills the claim.
 
@@ -237,13 +237,13 @@ Seventeen domains tested as modeled by original arithmetic. Zero non-isomorphic 
 
 *Physics candidates (renormalization, GR singularities) are structurally motivated analogies, not formally verified. See [NEXT.md](NEXT.md).*
 
-One person, Girard, found 𝒪 twice — once in type theory in 1972, once in resource logic in 1987 — without connecting them. The boundary is invisible even to the person standing closest to it.
+One person, Girard, found 𝒪 twice, once in type theory in 1972, once in resource logic in 1987, without connecting them. The boundary is invisible even to the person standing closest to it.
 
 ### Level Invariance
 
 The boundary reappears at every level of abstraction sufficient to encounter it.
 
-Set theory hits 𝒪 through proper classes. Topos theory, which *contains* set theory, hits the same boundary from above. HoTT built an infinite tower of universes because 𝒪 cannot be internalized at any level. Linear logic redesigned the rules of logic itself — resources consumed by use — and the boundary reappeared as the ! modality.
+Set theory hits 𝒪 through proper classes. Topos theory, which *contains* set theory, hits the same boundary from above. HoTT built an infinite tower of universes because 𝒪 cannot be internalized at any level. Linear logic redesigned the rules of logic itself, resources consumed by use, and the boundary reappeared as the ! modality.
 
 The boundary does not dissolve when you climb above it, and it does not dissolve when you change the rules of the game entirely.
 
@@ -305,9 +305,9 @@ The field axiom is the factory. Remove the conflation from the factory and the p
 
 ## The Consolidation
 
-The backwards direction — six benchmarks — measured the cost of the collapse in specific, countable ways. 18 hypotheses. 2 axioms. 1 convention.
+The backwards direction, six benchmarks, measured the cost of the collapse in specific, countable ways. 18 hypotheses. 2 axioms. 1 convention.
 
-The forwards direction — ten files, 202 theorems — showed why those costs exist and where they come from. Not 18 specific hypotheses. The factory that generates hypotheses of that type across all of mathematics. `≠ 0`. `det A ≠ 0`. `denominator ≠ 0`. `limit exists`. `morphism preserves structure`. `s ≠ 0` for localization. `measure ≠ 0`. All of them are the same guard against the same confusion. Contents being mistaken for boundary.
+The forwards direction, ten files, 202 theorems, showed why those costs exist and where they come from. Not 18 specific hypotheses. The factory that generates hypotheses of that type across all of mathematics. `≠ 0`. `det A ≠ 0`. `denominator ≠ 0`. `limit exists`. `morphism preserves structure`. `s ≠ 0` for localization. `measure ≠ 0`. All of them are the same guard against the same confusion. Contents being mistaken for boundary.
 
 In Val α that confusion is a type error. Not a proof obligation. A type error.
 
@@ -369,7 +369,7 @@ Every test must pass because a failure would mean we changed the math instead of
 
 Every test passed.
 
-The 509 theorems verify how the boundary behaves. The law — you cannot have a part without a whole — is why the boundary is there.
+The 509 theorems verify how the boundary behaves. The law, you cannot have a part without a whole, is why the boundary is there.
 
 ## Structural Properties
 
@@ -395,7 +395,7 @@ Every claim formally verified. [509 theorems, zero errors, zero `sorry`s.](PROOF
 
 Can we build arithmetic from scratch using just 𝒪, container, and contents?
 
-Yes. All the way to fields — and beyond. Addition, multiplication, division, inverse, the ring laws, the field laws. Then ordered fields, vector spaces, polynomial rings, linear algebra, analysis and limits, topology, category theory, functional analysis, measure theory, and commutative algebra. 509 theorems from the seed. No patches. No conventions. No `≠ 0` hypotheses.
+Yes. All the way to fields, and beyond. Addition, multiplication, division, inverse, the ring laws, the field laws. Then ordered fields, vector spaces, polynomial rings, linear algebra, analysis and limits, topology, category theory, functional analysis, measure theory, and commutative algebra. 509 theorems from the seed. No patches. No conventions. No `≠ 0` hypotheses.
 
 The one honest finding: `Val α` as a whole type is not a field. Origin and container are not field elements. They are outside the field. But that is not a problem. That is the point. The field lives in contents where arithmetic belongs. Origin and container are the boundary and structure that arithmetic was always bumping into without knowing what they were.
 
@@ -411,13 +411,13 @@ The field is the fish. Origin is the ocean. The fish does not need to contain th
 
 We went back to the beginning.
 
-Before the patches. Before the conventions. Before "undefined." We found the original distinction — origin, container, contents — and looked at arithmetic through that lens.
+Before the patches. Before the conventions. Before "undefined." We found the original distinction, origin, container, contents, and looked at arithmetic through that lens.
 
 509 theorems. Zero errors. Zero sorries. 46 hypotheses dissolved to zero. Every seed proof `rfl`.
 
 The lens was always there. The Upanishads described it. Euclid named the principle. Brahmagupta saw the two faces and chose one. Spencer-Brown drew the distinction. IEEE 754 built it into hardware. Rust enforced it with `Option<T>`.
 
-Nobody looked through all three at once — the philosophy, the proof, and the enforcement — until now.
+Nobody looked through all three at once, the philosophy, the proof, and the enforcement, until now.
 
 The [minimalist solution](lean/OriginalArith/HasBoundary.lean): one typeclass, two axioms.
 
