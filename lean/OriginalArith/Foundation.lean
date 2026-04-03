@@ -247,8 +247,25 @@ theorem add_assoc_contents (f : α → α → α)
 
 -- ✓ Associativity holds for contents when the underlying operation is associative.
 
+theorem mul_assoc_container (f : α → α → α)
+    (h : ∀ x y z : α, f (f x y) z = f x (f y z))
+    (a b c : α) :
+    mul f (mul f (container a) (container b)) (container c) =
+    mul f (container a) (mul f (container b) (container c)) := by
+  simp [mul, h]
+
+theorem mul_assoc_mixed (f : α → α → α)
+    (h : ∀ x y z : α, f (f x y) z = f x (f y z))
+    (a b c : α) :
+    mul f (mul f (container a) (contents b)) (contents c) =
+    mul f (container a) (mul f (contents b) (contents c)) := by
+  simp [mul, h]
+
+-- ✓ Associativity holds for container when the underlying operation is associative.
+-- Container and contents follow the same algebraic laws at the value level.
+
 -- ============================================================================
--- Commutativity (contents level, given commutative f)
+-- Commutativity (contents and container level, given commutative f)
 -- ============================================================================
 
 theorem mul_comm_contents (f : α → α → α)
@@ -256,7 +273,12 @@ theorem mul_comm_contents (f : α → α → α)
     mul f (contents a) (contents b) = mul f (contents b) (contents a) := by
   simp [mul, h]
 
--- ✓ Commutativity holds for contents when f is commutative.
+theorem mul_comm_container (f : α → α → α)
+    (h : ∀ x y : α, f x y = f y x) (a b : α) :
+    mul f (container a) (container b) = mul f (container b) (container a) := by
+  simp [mul, h]
+
+-- ✓ Commutativity holds for both sorts when f is commutative.
 
 -- ============================================================================
 -- Distributivity (contents level)
@@ -338,7 +360,7 @@ theorem smallest_bound_ne_no_bound (f : α → α → α) (zero : α) (a : α) :
 --   ✓ Multiplicative identity (contents(1), lives in contents)
 --   ✓ Division and inverse (each sort handles itself)
 --   ✓ Origin absorption (I1, I2, I3)
---   ✓ Container structure (container × container = container)
+--   ✓ Container computes (container(a) × container(b) = container(f a b))
 --   ✓ Contents closure (never leave contents)
 --   ✓ No NeZero needed (contents ≠ origin by type)
 --   ✓ No NoZeroDivisors needed (contents × contents = contents)
