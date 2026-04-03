@@ -73,23 +73,31 @@ theorem val_mul_assoc {α : Type} (f : α → α → α)
     mul f (mul f a b) c = mul f a (mul f b c) := by
   cases a with
   | origin => rfl
-  | container =>
+  | container va =>
     cases b with
     | origin => rfl
-    | container => cases c with | origin => rfl | container => rfl | contents _ => rfl
-    | contents _ => cases c with | origin => rfl | container => rfl | contents _ => rfl
+    | container vb =>
+      cases c with
+      | origin => rfl
+      | container vc => simp [mul, hf]
+      | contents vc => simp [mul, hf]
+    | contents vb =>
+      cases c with
+      | origin => rfl
+      | container vc => simp [mul, hf]
+      | contents vc => simp [mul, hf]
   | contents va =>
     cases b with
     | origin => rfl
-    | container =>
+    | container vb =>
       cases c with
       | origin => rfl
-      | container => rfl
-      | contents _ => simp [mul]
+      | container vc => simp [mul, hf]
+      | contents vc => simp [mul, hf]
     | contents vb =>
       cases c with
       | origin => simp [mul]
-      | container => simp [mul]
+      | container vc => simp [mul, hf]
       | contents vc => simp [mul]; exact hf va vb vc
 
 -- ✓ Semigroup law holds.
@@ -102,7 +110,7 @@ theorem val_one_mul {α : Type} (f : α → α → α) (one : α)
     mul f (contents one) a = a := by
   cases a with
   | origin => simp [mul]
-  | container => simp [mul]
+  | container v => simp [mul, h]
   | contents v => simp [mul, h]
 
 /-- contents(one) is a right identity for mul when one is a right identity for f. -/
@@ -111,11 +119,11 @@ theorem val_mul_one {α : Type} (f : α → α → α) (one : α)
     mul f a (contents one) = a := by
   cases a with
   | origin => rfl
-  | container => rfl
+  | container v => simp [mul, h]
   | contents v => simp [mul, h]
 
 -- ✓ Monoid laws hold. contents(1) is the identity.
--- origin * 1 = origin (absorption). container * 1 = container (structural).
+-- origin * 1 = origin (absorption). container(a) * 1 = container(a) (computes, f a 1 = a).
 
 -- ---------- Arithmetic zero: contents(0) is the zero of α, not an absorber ----------
 
@@ -136,16 +144,16 @@ theorem val_mul_zero_contents {α : Type} (f : α → α → α) (zero : α)
 theorem zero_contents_does_not_absorb_origin {α : Type} (f : α → α → α) (zero : α) :
     mul f (contents zero) origin = origin := by rfl
 
-/-- contents(0) does NOT absorb container — container is idempotent over it. -/
-theorem zero_contents_does_not_absorb_container {α : Type} (f : α → α → α) (zero : α) :
-    mul f (contents zero) container = container := by rfl
+/-- contents(0) meets container — result is container, values combine. -/
+theorem zero_contents_meets_container {α : Type} (f : α → α → α) (zero a : α) :
+    mul f (contents zero) (container a) = container (f zero a) := by rfl
 
 -- CRITICAL OBSERVATION (from a build failure that caught an overclaim):
 --
 -- These are three DIFFERENT behaviors, not three levels of "absorption":
 --
 --   𝒪: ABSORPTION — the ocean eats the fish. Forced by the first principle.
---   B: IDEMPOTENCE — structure of structure is structure. B × B = B.
+--   container: COMPUTATION AT BOUNDARY — values combine, boundary persists.
 --   contents(0): ARITHMETIC ZERO — empty times anything is empty, within α.
 --
 -- Mathlib's zero_mul says 0 * a = 0 as if there is one behavior.
@@ -178,7 +186,7 @@ theorem val_left_distrib {α : Type}
 --   ✓ α's arithmetic is exactly preserved inside Val α
 --
 -- Algebraic laws (proved directly, no typeclass machinery):
---   ✓ Associativity (semigroup law)
+--   ✓ Associativity (semigroup law, all sort combinations)
 --   ✓ Identity (monoid law, contents(1) as identity)
 --   ✓ Arithmetic zero (contents(0) is zero within contents)
 --   ✓ Distributivity (contents level)
@@ -186,7 +194,7 @@ theorem val_left_distrib {α : Type}
 -- Critical finding (from a build failure):
 --   Three different behaviors, not three levels of absorption:
 --     𝒪: absorption — forced by the first principle
---     B: idempotence — structure of structure is structure
+--     container: computation at boundary — values combine, boundary persists
 --     contents(0): arithmetic zero — α's own zero property
 --   Mathlib's zero_mul conflates all three into one axiom.
 --   The three-primitive system makes them visibly different.

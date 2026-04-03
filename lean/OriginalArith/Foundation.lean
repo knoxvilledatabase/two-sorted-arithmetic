@@ -118,8 +118,8 @@ theorem multiplicative_identity_right (f : α → α → α) (one : α)
 
 def inv (g : α → α) : Val α → Val α
   | origin => origin              -- 𝒪⁻¹ = 𝒪 (absorption)
-  | container a => container a    -- container preserves its value
-  | contents a => contents (g a)  -- contents invert within contents
+  | container a => container (g a)  -- container inverts its value
+  | contents a => contents (g a)    -- contents invert within contents
 
 def div (f : α → α → α) (g : α → α) (a b : Val α) : Val α :=
   mul f a (inv g b)
