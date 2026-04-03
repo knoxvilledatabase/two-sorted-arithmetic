@@ -1,7 +1,7 @@
 /-
 Released under MIT license.
 -/
-import Std
+import OriginalArith.Foundation
 
 /-!
 # ZMod Benchmark: NeZero in modular arithmetic
@@ -12,7 +12,7 @@ that defines the type) and a natural number (that could be zero).
 
 `NeZero` is the patch: "we know `n` isn't zero, trust us."
 
-In the two-sorted version, the modulus is a positive natural — nonzero by
+In the Val α version, the modulus is a positive natural — nonzero by
 type, not by hypothesis. `[NeZero n]` becomes unnecessary.
 
 This is a simplified model of `ZMod`, not a replacement for Mathlib's
@@ -86,13 +86,15 @@ theorem natCast_zero (n : Nat) [NeZero n] :
 end ZModCollapsed
 
 -- ============================================================================
--- TWO-SORTED: ZMod on PosNat, no NeZero needed
+-- VAL α: ZMod on PosNat, no NeZero needed
 -- ============================================================================
 
-namespace ZModTwoSorted
+namespace ZModValAlpha
 
 /-- PosNat: positive naturals. The modulus type.
-    Nonzero by construction. No NeZero needed. -/
+    Nonzero by construction. No NeZero needed.
+    In Val α terms, PosNat values live in `contents` — they are
+    quantities, never origin. -/
 structure PosNat where
   val : Nat
   pos : 0 < val
@@ -140,26 +142,35 @@ theorem natCast_zero (n : PosNat) :
     natCast n 0 = zero n := by
   rfl
 
+-- Connection to Val α: PosNat values are contents.
+-- A PosNat modulus n is `Val.contents n.val` — a quantity, never origin.
+-- The NeZero hypothesis was checking "is n origin or contents?"
+-- With Val α, contents elements are structurally not origin.
+
+/-- PosNat as a Val Nat contents element is never origin. -/
+theorem posnat_as_contents_ne_origin (n : PosNat) :
+    (Val.contents n.val : Val Nat) ≠ Val.origin := by simp
+
 -- SUMMARY:
 --   [NeZero n] instances required: 0
 --   Theorems/defs total: 8
 --   NeZero adoption rate: 0%
 --   Information lost: 0
 
-end ZModTwoSorted
+end ZModValAlpha
 
 -- ============================================================================
 -- THE DIFF
 -- ============================================================================
 --
---                         Collapsed (Nat)    Two-Sorted (PosNat)
+--                         Collapsed (Nat)    Val α (PosNat)
 --  [NeZero n] required         8                  0
 --  Theorems/defs                8                  8
 --  Degenerate case (n=0)   must exclude         impossible by type
 --  Information lost             0                  0
 --
 --  Every definition and every theorem in the collapsed version carries
---  [NeZero n]. In the two-sorted version, zero of them do.
+--  [NeZero n]. In the Val α version, zero of them do.
 --
 --  The modulus n is playing two roles in the collapsed version:
 --  1. A structural parameter that defines ZMod n
@@ -167,7 +178,5 @@ end ZModTwoSorted
 --
 --  NeZero is the patch that says "role 2 won't cause problems for role 1."
 --  PosNat eliminates the collision. The modulus is positive by type.
+--  In Val α terms: the modulus is contents, not origin.
 --  The patch becomes unnecessary.
---
---  This is the same finding as the GroupWithZero benchmarks, extended
---  from division to modular arithmetic. The pattern generalizes.

@@ -1,22 +1,22 @@
 /-
 Released under MIT license.
 -/
-import Std
+import OriginalArith.Foundation
 
 /-!
-# NoZeroDivisors Benchmark: collapsed vs two-sorted
+# NoZeroDivisors Benchmark: collapsed vs Val α
 
 Mathlib's `NoZeroDivisors` states: `a * b = 0 → a = 0 ∨ b = 0`.
 This typeclass exists because in a collapsed type, two nonzero elements
 can multiply to produce zero (a "zero divisor"). The typeclass asserts
 this pathology doesn't happen.
 
-In the two-sorted version, `bounded(a) * bounded(b) = bounded(a*b)`.
-The result is always bounded. It never equals origin. The pathology
+In Val α, `contents(a) * contents(b) = contents(f a b)`.
+The result is always contents. It never equals origin. The pathology
 can't arise. The typeclass becomes unnecessary.
 
 **File 1 (Collapsed):** NoZeroDivisors must be asserted as an axiom.
-**File 2 (Two-sorted):** The property follows from the type. No axiom needed.
+**File 2 (Val α):** The property follows from the type. No axiom needed.
 -/
 
 set_option linter.unusedSectionVars false
@@ -35,11 +35,6 @@ def mul : G₀ α → G₀ α → G₀ α
   | none, _ => none
   | _, none => none
   | some a, some _ => some a  -- simplified
-
--- The NoZeroDivisors property must be ASSERTED.
--- In a general ring, a * b can equal 0 even when a ≠ 0 and b ≠ 0.
--- (Example: in ℤ/6ℤ, 2 * 3 = 0 but 2 ≠ 0 and 3 ≠ 0.)
--- Mathlib requires a separate typeclass to exclude this.
 
 /-- NoZeroDivisors: if a * b = 0 then a = 0 or b = 0.
     This is an AXIOM — asserted about the structure, not derived from it. -/
@@ -84,59 +79,55 @@ theorem eq_zero_of_mul_eq_zero_right (a b : G₀ α)
 end ZDCollapsed
 
 -- ============================================================================
--- TWO-SORTED: zero divisors can't happen
+-- VAL α: zero divisors can't happen
 -- ============================================================================
 
-namespace ZDTwoSorted
+namespace ZDValAlpha
+
+open Val
 
 variable {α : Type}
 
-inductive Sort' (α : Type) where
-  | origin : Sort' α
-  | bounded : α → Sort' α
-
-open Sort'
-
-def mul : Sort' α → Sort' α → Sort' α
-  | origin, _ => origin
-  | _, origin => origin
-  | bounded a, bounded _ => bounded a  -- simplified
-
--- The key fact: bounded * bounded is ALWAYS bounded. Never origin.
+-- The key fact: contents * contents is ALWAYS contents. Never origin.
 -- Zero divisors require a * b = 0 where a ≠ 0 and b ≠ 0.
--- In the two-sorted version, bounded(a) * bounded(b) = bounded(a*b).
--- The result is bounded. It is not origin. The pathology cannot arise.
+-- In Val α, contents(a) * contents(b) = contents(f a b).
+-- The result is contents. It is not origin. The pathology cannot arise.
 
-/-- Bounded * bounded is always bounded. The type prevents zero divisors. -/
-theorem mul_bounded_bounded (a b : α) :
-    mul (bounded a) (bounded b) = bounded a := by
-  rfl
+/-- Contents * contents is always contents. The type prevents zero divisors. -/
+theorem mul_contents_contents (f : α → α → α) (a b : α) :
+    Val.mul f (contents a) (contents b) = contents (f a b) := by rfl
 
-/-- Bounded * bounded is never origin. This is what NoZeroDivisors asserts
+/-- Contents * contents is never origin. This is what NoZeroDivisors asserts
     as an axiom. Here it follows from the type. -/
-theorem mul_bounded_ne_origin (a b : α) :
-    mul (bounded a) (bounded b) ≠ origin := by
-  simp [mul]
+theorem mul_contents_ne_origin (f : α → α → α) (a b : α) :
+    Val.mul f (contents a) (contents b) ≠ origin := by
+  simp [Val.mul]
 
 /-- The only way to get origin from multiplication is if an input was origin. -/
-theorem mul_eq_origin_iff (a b : Sort' α) :
-    mul a b = origin ↔ (a = origin ∨ b = origin) := by
+theorem mul_eq_origin_iff (f : α → α → α) (a b : Val α) :
+    Val.mul f a b = origin ↔ (a = origin ∨ b = origin) := by
   constructor
   · intro h
     cases a with
     | origin => left; rfl
-    | bounded va =>
+    | container va =>
       cases b with
       | origin => right; rfl
-      | bounded _ => simp [mul] at h
+      | container _ => simp [Val.mul] at h
+      | contents _ => simp [Val.mul] at h
+    | contents va =>
+      cases b with
+      | origin => right; rfl
+      | container _ => simp [Val.mul] at h
+      | contents _ => simp [Val.mul] at h
   · intro h
     cases h with
     | inl ha => rw [ha]; rfl
-    | inr hb => rw [hb]; cases a with | origin => rfl | bounded _ => rfl
+    | inr hb => rw [hb]; exact Val.origin_absorbs_mul_right f a
 
 -- No ≠ 0 hypotheses anywhere. No NoZeroDivisors axiom.
--- The type carries the information. Bounded elements stay bounded
--- under multiplication. Origin only appears when Origin is an input.
+-- The type carries the information. Contents elements stay contents
+-- under multiplication. Origin only appears when origin is an input.
 
 -- SUMMARY:
 --   Axioms asserted: 0
@@ -144,13 +135,13 @@ theorem mul_eq_origin_iff (a b : Sort' α) :
 --   NoZeroDivisors status: UNNECESSARY (follows from type)
 --   Total theorems: 3 (all without hypotheses)
 
-end ZDTwoSorted
+end ZDValAlpha
 
 -- ============================================================================
 -- THE DIFF
 -- ============================================================================
 --
---                           Collapsed       Two-Sorted
+--                           Collapsed       Val α
 --  NoZeroDivisors axiom         1               0
 --  ≠ 0 hypotheses               4               0
 --  Theorems needed               4               3
@@ -158,8 +149,8 @@ end ZDTwoSorted
 --  Information lost              0               0
 --
 --  In the collapsed version, NoZeroDivisors is a constraint you impose
---  on a structure to exclude a pathology. In the two-sorted version,
---  the pathology cannot arise. Bounded * bounded is bounded. Always.
+--  on a structure to exclude a pathology. In Val α, the pathology
+--  cannot arise. Contents * contents is contents. Always.
 --
 --  The axiom becomes a theorem. The constraint becomes a consequence.
 --  The pathology dissolves.

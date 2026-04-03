@@ -1,7 +1,7 @@
 /-
 Released under MIT license.
 -/
-import Std
+import OriginalArith.Foundation
 
 /-!
 # Inverse Convention Benchmark: 0⁻¹ = 0 asserted vs derived
@@ -11,11 +11,11 @@ The documentation says: "working with total functions has the advantage of not
 constantly having to check that x ≠ 0 when writing x⁻¹."
 
 That convention is a choice. Not a derivation. This benchmark asks:
-with the two-sorted split, does the convention become a theorem?
+with Val α, does the convention become a theorem?
 
 **File 1 (Collapsed):** `0⁻¹ = 0` is asserted as an axiom.
-**File 2 (Two-sorted):** `origin'⁻¹ = origin'` follows from absorption.
-  `bounded'(0)⁻¹` is a separate question within B.
+**File 2 (Val α):** `origin⁻¹ = origin` follows from absorption.
+  `contents(0)⁻¹` is a separate question within contents.
 -/
 
 set_option linter.unusedSectionVars false
@@ -41,14 +41,9 @@ def mul : G₀ α → G₀ α → G₀ α
   | _, none => none
   | some a, some _ => some a
 
--- The convention stated as a theorem — but it's just unfolding the definition.
--- In Mathlib this is the `inv_zero` axiom. It's asserted, not proved from
--- deeper principles. The choice of `none` (rather than `some x` for any x)
--- is a human decision.
-
 /-- The convention: 0⁻¹ = 0. Asserted by definition. -/
 theorem inv_zero : inv (none : G₀ α) = none := by
-  rfl  -- trivially true because we DEFINED it this way
+  rfl
 
 /-- Downstream: 0 / 0 = 0. Follows from the convention. -/
 theorem zero_div_zero : mul (none : G₀ α) (inv none) = none := by
@@ -74,84 +69,74 @@ theorem inv_ne_zero (a : G₀ α) (h : a ≠ none) : inv a ≠ none := by
 end ConventionCollapsed
 
 -- ============================================================================
--- TWO-SORTED: origin'⁻¹ = origin' by absorption, no convention
+-- VAL α: origin⁻¹ = origin by absorption, no convention
 -- ============================================================================
 
-namespace ConventionTwoSorted
+namespace ConventionValAlpha
+
+open Val
 
 variable {α : Type}
 
--- The two-sorted type: Origin (boundary) or Bounded (interior).
-inductive Sort' (α : Type) where
-  | origin : Sort' α         -- the boundary
-  | bounded : α → Sort' α    -- interior elements
-
-open Sort'
-
--- Inverse: NOT a convention. Origin absorbs. Bounded inverts within B.
-def inv : Sort' α → Sort' α
-  | origin => origin          -- ← NOT A CONVENTION: absorption. I1/I2.
-  | bounded a => bounded a    -- nonzero inverse within B (simplified)
-
-def mul : Sort' α → Sort' α → Sort' α
-  | origin, _ => origin       -- absorption I2
-  | _, origin => origin       -- absorption I1
-  | bounded a, bounded _ => bounded a  -- within B (simplified)
-
--- origin'⁻¹ = origin' is not a convention. It's absorption.
--- The boundary absorbs the inverse operation the same way it absorbs
--- multiplication. This follows from what Origin IS, not from a choice.
+-- Inverse: NOT a convention. Origin absorbs. Contents inverts within contents.
+-- Container inverts its carried value.
 
 /-- origin⁻¹ = origin. Derived from absorption, not asserted by convention. -/
-theorem inv_origin : inv (origin : Sort' α) = origin := by
+theorem inv_origin : Val.inv (id : α → α) (origin : Val α) = origin := by
   rfl  -- same rfl, but the REASON is different: absorption, not convention
 
-/-- bounded(0)⁻¹ is a separate question within B. -/
-theorem inv_bounded (a : α) : inv (bounded a) = bounded a := by
-  rfl
+/-- contents(a)⁻¹ is contents(g a). Arithmetic within contents. -/
+theorem inv_contents (g : α → α) (a : α) :
+    Val.inv g (contents a) = contents (g a) := by rfl
+
+/-- container(a)⁻¹ is container(g a). The bucket inverts its value. -/
+theorem inv_container (g : α → α) (a : α) :
+    Val.inv g (container a) = container (g a) := by rfl
 
 /-- origin / origin = origin. Absorption, not 0/0=0 convention. -/
-theorem origin_div_origin : mul (origin : Sort' α) (inv origin) = origin := by
-  rfl
+theorem origin_div_origin (f : α → α → α) (g : α → α) :
+    Val.div f g (origin : Val α) origin = origin := by rfl
 
-/-- origin / a = origin for all a. Absorption I2. -/
-theorem origin_div (a : Sort' α) : mul origin (inv a) = origin := by
-  rfl
+/-- origin / a = origin for all a. Absorption. -/
+theorem origin_div (f : α → α → α) (g : α → α) (a : Val α) :
+    Val.div f g origin a = origin := by rfl
 
-/-- a / origin = origin for all a. Absorption I1. Not a convention. -/
-theorem div_origin (a : Sort' α) : mul a (inv origin) = origin := by
-  cases a with | origin => rfl | bounded _ => rfl
+/-- a / origin = origin for all a. Absorption. Not a convention. -/
+theorem div_origin (f : α → α → α) (g : α → α) (a : Val α) :
+    Val.div f g a origin = origin := by
+  exact Val.div_by_origin f g a
 
-/-- bounded(a)⁻¹ is always bounded. No ≠ 0 hypothesis needed.
-    The type already knows bounded elements are not origin. -/
-theorem inv_bounded_ne_origin (a : α) : inv (bounded a) ≠ origin := by
-  simp [inv]
+/-- contents(a)⁻¹ is always contents. No ≠ 0 hypothesis needed.
+    The type already knows contents elements are not origin. -/
+theorem inv_contents_ne_origin (g : α → α) (a : α) :
+    Val.inv g (contents a) ≠ (origin : Val α) := by
+  simp [Val.inv]
 
 -- SUMMARY:
 --   Conventions asserted: 0
 --   Theorems needing ≠ 0: 0 (type carries it)
---   Total theorems: 6 (but inv_bounded_ne_origin replaces inv_ne_zero
+--   Total theorems: 7 (but inv_contents_ne_origin replaces inv_ne_zero
 --                       without a hypothesis — the type does the work)
 
-end ConventionTwoSorted
+end ConventionValAlpha
 
 -- ============================================================================
 -- THE DIFF
 -- ============================================================================
 --
---                           Collapsed       Two-Sorted
+--                           Collapsed       Val α
 --  Conventions asserted          1               0
 --  ≠ 0 hypotheses               1               0
 --  inv_zero status          asserted        derived (absorption)
 --  0/0 status               0 (convention)  origin (absorption)
---  bounded(0)⁻¹ status      same as 0⁻¹     separate question in B
+--  contents(0)⁻¹ status     same as 0⁻¹     separate question in contents
 --  Information lost              0               0
 --
---  The convention `0⁻¹ = 0` is Brahmagupta's collapse formalized.
+--  The convention `0⁻¹ = 0` is the collapse formalized.
 --  Mathlib chose 0 without asking which zero is in the denominator.
 --
---  With the two-sorted split:
+--  With Val α:
 --  - origin⁻¹ = origin follows from absorption. No choice needed.
---  - bounded(0)⁻¹ is a question within B. Calculus handles it.
+--  - contents(0)⁻¹ is a question within contents. Calculus handles it.
 --  - The convention dissolves. It was never needed. It was papering
 --    over the collision between two different zeros.
