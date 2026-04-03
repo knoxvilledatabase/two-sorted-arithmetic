@@ -19,15 +19,15 @@ starts from nothing and builds forward.
 ## The three primitives
 
 - `𝒪` (origin) — the whole. Absorbs everything.
-- `container` — the bucket. Structural. Not a number.
+- `container` — the bucket. Carries the last known value. Not a number.
 - `contents` — quantities. 0, 1, 2, 3... Just numbers.
 
 ## The four rules
 
-1. `𝒪 × anything = 𝒪` — the whole absorbs
-2. `container × container = container` — the hand × the hand = the hand
-3. `container × contents = container` — bucket holding something is bucket
-4. `contents × contents = contents` — actual arithmetic
+1. `𝒪 × anything = 𝒪` — the whole absorbs. Nothing to retrieve.
+2. `container(a) × container(_) = container(a)` — left bucket wins, keeps its value
+3. `container(a) × contents(_) = container(a)` — bucket wins, apples stay inside
+4. `contents(a) × contents(b) = contents(f a b)` — actual arithmetic
 -/
 
 -- ============================================================================
@@ -36,7 +36,7 @@ starts from nothing and builds forward.
 
 inductive Val (α : Type) where
   | origin : Val α
-  | container : Val α
+  | container : α → Val α   -- carries the last known value
   | contents : α → Val α
 deriving DecidableEq, Repr
 
@@ -49,12 +49,12 @@ variable {α : Type}
 -- ============================================================================
 
 def mul (f : α → α → α) : Val α → Val α → Val α
-  | origin, _               => origin
-  | _, origin               => origin
-  | container, container    => container
-  | container, contents _   => container
-  | contents _, container   => container
-  | contents a, contents b  => contents (f a b)
+  | origin, _                  => origin
+  | _, origin                  => origin
+  | container a, container _   => container a    -- left wins, keeps its value
+  | container a, contents _    => container a    -- container wins, keeps its value
+  | contents _, container b    => container b    -- container wins, keeps its value
+  | contents a, contents b     => contents (f a b)
 
 -- contents(0) × contents(a) = contents(f 0 a) = contents(0).
 -- This is inaction, not absorption. Zero iterations of addition.
@@ -66,12 +66,12 @@ def mul (f : α → α → α) : Val α → Val α → Val α
 -- ============================================================================
 
 def add (f : α → α → α) : Val α → Val α → Val α
-  | origin, _               => origin
-  | _, origin               => origin
-  | container, container    => container
-  | container, contents _   => container
-  | contents _, container   => container
-  | contents a, contents b  => contents (f a b)
+  | origin, _                  => origin
+  | _, origin                  => origin
+  | container a, container _   => container a
+  | container a, contents _    => container a
+  | contents _, container b    => container b
+  | contents a, contents b     => contents (f a b)
 
 -- Note: add and mul have the same absorption structure.
 -- The difference is in what f does (additive vs multiplicative operation on α).
@@ -85,12 +85,12 @@ def add (f : α → α → α) : Val α → Val α → Val α
 -- This is the CONTENTS-level zero. Not the boundary. Not the container.
 
 def addWithIdentity (f : α → α → α) (_zero : α) : Val α → Val α → Val α
-  | origin, _               => origin
-  | _, origin               => origin
-  | container, container    => container
-  | container, contents _   => container
-  | contents _, container   => container
-  | contents a, contents b  => contents (f a b)
+  | origin, _                  => origin
+  | _, origin                  => origin
+  | container a, container _   => container a
+  | container a, contents _    => container a
+  | contents _, container b    => container b
+  | contents a, contents b     => contents (f a b)
 
 -- The additive identity lives INSIDE contents. It is contents(zero).
 -- Not a special sort. Not a boundary. Just the empty content.
@@ -128,8 +128,8 @@ theorem multiplicative_identity_right (f : α → α → α) (one : α)
 -- ============================================================================
 
 def inv (g : α → α) : Val α → Val α
-  | origin => origin           -- 𝒪⁻¹ = 𝒪 (absorption)
-  | container => container     -- B⁻¹ = B (structural)
+  | origin => origin              -- 𝒪⁻¹ = 𝒪 (absorption)
+  | container a => container a    -- container preserves its value
   | contents a => contents (g a)  -- contents invert within contents
 
 def div (f : α → α → α) (g : α → α) (a b : Val α) : Val α :=
@@ -140,15 +140,15 @@ theorem div_by_origin (f : α → α → α) (g : α → α) (a : Val α) :
     div f g a origin = origin := by
   cases a with
   | origin => rfl
-  | container => rfl
+  | container _ => rfl
   | contents _ => rfl
 
 -- Division by container = depends on what's dividing
-theorem div_by_container_origin (f : α → α → α) (g : α → α) :
-    div f g origin container = origin := by rfl
+theorem div_by_container_origin (f : α → α → α) (g : α → α) (a : α) :
+    div f g origin (container a) = origin := by rfl
 
-theorem div_by_container_container (f : α → α → α) (g : α → α) :
-    div f g container container = container := by rfl
+theorem div_by_container_container (f : α → α → α) (g : α → α) (a b : α) :
+    div f g (container a) (container b) = container a := by rfl
 
 -- Contents divided by contents = contents (arithmetic within α)
 theorem contents_div_contents (f : α → α → α) (g : α → α) (a b : α) :
@@ -165,14 +165,14 @@ theorem origin_absorbs_mul_left (f : α → α → α) (x : Val α) :
 
 theorem origin_absorbs_mul_right (f : α → α → α) (x : Val α) :
     mul f x origin = origin := by
-  cases x with | origin => rfl | container => rfl | contents _ => rfl
+  cases x with | origin => rfl | container _ => rfl | contents _ => rfl
 
 theorem origin_absorbs_add_left (f : α → α → α) (x : Val α) :
     add f origin x = origin := by rfl
 
 theorem origin_absorbs_add_right (f : α → α → α) (x : Val α) :
     add f x origin = origin := by
-  cases x with | origin => rfl | container => rfl | contents _ => rfl
+  cases x with | origin => rfl | container _ => rfl | contents _ => rfl
 
 -- ✓ Origin absorbs all operations from both sides. I1, I2, I3.
 
@@ -180,14 +180,14 @@ theorem origin_absorbs_add_right (f : α → α → α) (x : Val α) :
 -- Container proofs: container × container = container, contains contents
 -- ============================================================================
 
-theorem container_mul_container (f : α → α → α) :
-    mul f (container : Val α) container = container := by rfl
+theorem container_mul_container (f : α → α → α) (a b : α) :
+    mul f (container a : Val α) (container b) = container a := by rfl
 
-theorem container_mul_contents (f : α → α → α) (a : α) :
-    mul f (container : Val α) (contents a) = container := by rfl
+theorem container_mul_contents (f : α → α → α) (a b : α) :
+    mul f (container a : Val α) (contents b) = container a := by rfl
 
-theorem contents_mul_container (f : α → α → α) (a : α) :
-    mul f (contents a) (container : Val α) = container := by rfl
+theorem contents_mul_container (f : α → α → α) (a b : α) :
+    mul f (contents a) (container b : Val α) = container b := by rfl
 
 -- container × contents = container is containment, not absorption.
 -- The apples are inside the bucket. The bucket is still a bucket.
@@ -210,20 +210,20 @@ theorem contents_closed_add (f : α → α → α) (a b : α) :
 -- ✓ Contents are closed under both operations. Never leave contents.
 
 -- ============================================================================
--- No patches needed: contents never produce origin or bare container
+-- No patches needed: contents never produce origin or container
 -- ============================================================================
 
 theorem contents_mul_ne_origin (f : α → α → α) (a b : α) :
     mul f (contents a) (contents b) ≠ origin := by simp [mul]
 
-theorem contents_mul_ne_container (f : α → α → α) (a b : α) :
-    mul f (contents a) (contents b) ≠ container := by simp [mul]
+theorem contents_mul_ne_container (f : α → α → α) (a b c : α) :
+    mul f (contents a) (contents b) ≠ container c := by simp [mul]
 
 theorem contents_add_ne_origin (f : α → α → α) (a b : α) :
     add f (contents a) (contents b) ≠ origin := by simp [add]
 
-theorem contents_add_ne_container (f : α → α → α) (a b : α) :
-    add f (contents a) (contents b) ≠ container := by simp [add]
+theorem contents_add_ne_container (f : α → α → α) (a b c : α) :
+    add f (contents a) (contents b) ≠ container c := by simp [add]
 
 -- ✓ No NeZero. No NoZeroDivisors. No convention. The type prevents it.
 
@@ -277,17 +277,35 @@ theorem distrib_contents (mulF addF : α → α → α)
 -- ============================================================================
 
 theorem sort_trichotomy (x : Val α) :
-    x = origin ∨ x = container ∨ (∃ a : α, x = contents a) := by
+    x = origin ∨ (∃ a : α, x = container a) ∨ (∃ a : α, x = contents a) := by
   cases x with
   | origin => left; rfl
-  | container => right; left; rfl
+  | container a => right; left; exact ⟨a, rfl⟩
   | contents a => right; right; exact ⟨a, rfl⟩
 
-theorem sorts_disjoint_oc : (origin : Val α) ≠ container := by simp
+theorem sorts_disjoint_oc (a : α) : (origin : Val α) ≠ container a := by simp
 theorem sorts_disjoint_ox (a : α) : (origin : Val α) ≠ contents a := by simp
-theorem sorts_disjoint_cx (a : α) : (container : Val α) ≠ contents a := by simp
+theorem sorts_disjoint_cx (a b : α) : (container a : Val α) ≠ contents b := by simp
 
 -- ✓ Three sorts. Mutually exclusive. Exhaustive.
+
+-- ============================================================================
+-- Project: the distinction between absorption and containment
+-- ============================================================================
+
+-- Origin has nothing to retrieve. Container has a value inside.
+-- Contents is the value. This is what makes container different from origin.
+
+def project : Val α → Option α
+  | origin => none           -- absorption: nothing to retrieve
+  | container a => some a    -- containment: the value is inside
+  | contents a => some a     -- the value itself
+
+theorem project_origin : project (origin : Val α) = none := by rfl
+theorem project_container (a : α) : project (container a : Val α) = some a := by rfl
+theorem project_contents (a : α) : project (contents a : Val α) = some a := by rfl
+
+-- ✓ Origin absorbs — nothing left. Container contains — data persists.
 
 -- ============================================================================
 -- The Collapse: smallest bound ≠ no bound
