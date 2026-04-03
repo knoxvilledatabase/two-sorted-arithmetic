@@ -177,7 +177,7 @@ theorem origin_absorbs_add_right (f : α → α → α) (x : Val α) :
 -- ✓ Origin absorbs all operations from both sides. I1, I2, I3.
 
 -- ============================================================================
--- Container proofs: container × container = container, absorbs contents structurally
+-- Container proofs: container × container = container, contains contents
 -- ============================================================================
 
 theorem container_mul_container (f : α → α → α) :
@@ -189,7 +189,11 @@ theorem container_mul_contents (f : α → α → α) (a : α) :
 theorem contents_mul_container (f : α → α → α) (a : α) :
     mul f (contents a) (container : Val α) = container := by rfl
 
--- ✓ Container is structural. Not a number. Absorbs contents into structure.
+-- container × contents = container is containment, not absorption.
+-- The apples are inside the bucket. The bucket is still a bucket.
+-- Origin absorbs — the fish is gone. Container contains — the apples are inside.
+
+-- ✓ Container is structural. Not a number. Contains contents.
 
 -- ============================================================================
 -- Contents closure: contents × contents stays in contents
