@@ -278,7 +278,12 @@ theorem mul_comm_container (f : α → α → α)
     mul f (container a) (container b) = mul f (container b) (container a) := by
   simp [mul, h]
 
--- ✓ Commutativity holds for both sorts when f is commutative.
+theorem mul_comm_mixed (f : α → α → α)
+    (h : ∀ x y : α, f x y = f y x) (a b : α) :
+    mul f (container a) (contents b) = mul f (contents b) (container a) := by
+  simp [mul, h]
+
+-- ✓ Commutativity holds across sorts when f is commutative.
 
 -- ============================================================================
 -- Distributivity (contents level)
