@@ -35,7 +35,7 @@ variable {α : Type}
     contents negate within α. -/
 def neg (g : α → α) : Val α → Val α
   | origin => origin
-  | container => container
+  | container a => container (g a)
   | contents a => contents (g a)
 
 -- ============================================================================
@@ -54,23 +54,23 @@ theorem val_add_assoc {α : Type} (f : α → α → α)
     add f (add f a b) c = add f a (add f b c) := by
   cases a with
   | origin => rfl
-  | container =>
+  | container _ =>
     cases b with
     | origin => rfl
-    | container => cases c with | origin => rfl | container => rfl | contents _ => rfl
-    | contents _ => cases c with | origin => rfl | container => rfl | contents _ => rfl
+    | container _ => cases c with | origin => rfl | container _ => simp [add, hf] | contents _ => simp [add, hf]
+    | contents _ => cases c with | origin => rfl | container _ => simp [add, hf] | contents _ => simp [add, hf]
   | contents va =>
     cases b with
     | origin => rfl
-    | container =>
+    | container _ =>
       cases c with
       | origin => rfl
-      | container => rfl
-      | contents _ => simp [add]
+      | container _ => simp [add, hf]
+      | contents _ => simp [add, hf]
     | contents vb =>
       cases c with
       | origin => simp [add]
-      | container => simp [add]
+      | container _ => simp [add, hf]
       | contents vc => simp [add]; exact hf va vb vc
 
 /-- Additive commutativity on Val α (contents level). -/
@@ -82,17 +82,17 @@ theorem val_add_comm {α : Type} (f : α → α → α)
   | origin =>
     cases b with
     | origin => rfl
-    | container => rfl
+    | container _ => rfl
     | contents _ => rfl
-  | container =>
+  | container _ =>
     cases b with
     | origin => rfl
-    | container => rfl
-    | contents _ => rfl
+    | container _ => simp [add, hf]
+    | contents _ => simp [add, hf]
   | contents va =>
     cases b with
     | origin => rfl
-    | container => rfl
+    | container _ => simp [add, hf]
     | contents vb => simp [add]; exact hf va vb
 
 /-- Additive identity (left): contents(zero) + a = a for contents a. -/
@@ -128,8 +128,8 @@ theorem val_neg_add {α : Type} (addF : α → α → α) (negF : α → α) (ze
 /-- Negation of origin is origin. -/
 theorem neg_origin {α : Type} (g : α → α) : neg g (origin : Val α) = origin := by rfl
 
-/-- Negation of container is container. -/
-theorem neg_container {α : Type} (g : α → α) : neg g (container : Val α) = container := by rfl
+/-- Negation of container is container (with negated payload). -/
+theorem neg_container {α : Type} (g : α → α) (a : α) : neg g (container a : Val α) = container (g a) := by rfl
 
 -- ✓ Each sort negates to itself. No sort-crossing.
 
@@ -193,10 +193,10 @@ theorem origin_has_no_contents_inverse {α : Type} (mulF : α → α → α) (in
     mul mulF (origin : Val α) (inv invF origin) = origin := by rfl
 
 /-- container has no multiplicative inverse that returns contents(1).
-    container⁻¹ = container, and container * container = container.
+    container(a)⁻¹ = container(invF a), and container * container = container.
     This is correct: container is structural, not a field element. -/
-theorem container_has_no_contents_inverse {α : Type} (mulF : α → α → α) (invF : α → α) :
-    mul mulF (container : Val α) (inv invF container) = container := by rfl
+theorem container_has_no_contents_inverse {α : Type} (mulF : α → α → α) (invF : α → α) (a : α) :
+    mul mulF (container a : Val α) (inv invF (container a)) = container (mulF a (invF a)) := by rfl
 
 -- ✓ Origin and container are not field elements. They don't have
 --   multiplicative inverses in the contents sense. They invert to
@@ -242,8 +242,8 @@ theorem field_never_hits_origin {α : Type} (mulF : α → α → α) (invF : α
 
 /-- Contents never escape to container under field operations. -/
 theorem field_never_hits_container {α : Type} (mulF : α → α → α) (invF : α → α)
-    (a : α) :
-    mul mulF (contents a) (inv invF (contents a)) ≠ container := by
+    (a c : α) :
+    mul mulF (contents a) (inv invF (contents a)) ≠ container c := by
   simp [mul, inv]
 
 -- ============================================================================

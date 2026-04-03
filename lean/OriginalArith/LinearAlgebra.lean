@@ -94,8 +94,8 @@ theorem det2_contents_ne_origin (mulF subF : α → α → α) (a b c d : α) :
   simp [det2, mul, add]
 
 /-- Contents determinant is never container either. -/
-theorem det2_contents_ne_container (mulF subF : α → α → α) (a b c d : α) :
-    det2 mulF subF ⟨contents a, contents b, contents c, contents d⟩ ≠ container := by
+theorem det2_contents_ne_container (mulF subF : α → α → α) (a b c d e : α) :
+    det2 mulF subF ⟨contents a, contents b, contents c, contents d⟩ ≠ container e := by
   simp [det2, mul, add]
 
 -- ✓ The ≠ 0 dissolution works exactly as predicted.
@@ -217,11 +217,13 @@ theorem cayley_hamilton_diag_11 (addF mulF subF : α → α → α) (negF : α �
 theorem cayley_hamilton_diag_22 (addF mulF subF : α → α → α) (negF : α → α)
     (hmn : ∀ x y : α, mulF x (negF y) = negF (mulF x y))
     (hsub : ∀ x y : α, addF x (negF y) = subF x y)
+    (hcomm_mul : ∀ x y : α, mulF x y = mulF y x)
+    (hcomm_add : ∀ x y : α, addF x y = addF y x)
     (a b c d : α) :
     let m : Mat2 (Val α) := ⟨contents a, contents b, contents c, contents d⟩
     (matMul2 addF mulF m (adj2 negF m)).e₂₂ =
     det2 mulF subF m := by
-  simp [matMul2, adj2, neg, mul, add, det2, hmn, hsub]
+  simp [matMul2, adj2, neg, mul, add, det2, hmn, hsub, hcomm_mul, hcomm_add]
 
 -- ✓ The diagonal of A·adj(A) equals det(A). Standard Cayley-Hamilton,
 -- but now the det is guaranteed to be contents — no ≠ 0 check.
@@ -236,20 +238,22 @@ theorem cayley_hamilton_off_12 (addF mulF : α → α → α) (negF : α → α)
     (hmn : ∀ x y : α, mulF x (negF y) = negF (mulF x y))
     (hcomm : ∀ x y : α, mulF x y = mulF y x)
     (hcancel : ∀ x : α, addF x (negF x) = zero)
+    (hcomm_add : ∀ x y : α, addF x y = addF y x)
     (a b c d : α) :
     let m : Mat2 (Val α) := ⟨contents a, contents b, contents c, contents d⟩
     (matMul2 addF mulF m (adj2 negF m)).e₁₂ = contents zero := by
-  simp [matMul2, adj2, neg, mul, add, hmn, hcomm, hcancel]
+  simp [matMul2, adj2, neg, mul, add, hmn, hcomm, hcancel, hcomm_add]
 
 /-- The (2,1) entry of A·adj(A) is contents(zero). -/
 theorem cayley_hamilton_off_21 (addF mulF : α → α → α) (negF : α → α) (zero : α)
     (hmn : ∀ x y : α, mulF x (negF y) = negF (mulF x y))
     (hcomm : ∀ x y : α, mulF x y = mulF y x)
     (hcancel : ∀ x : α, addF x (negF x) = zero)
+    (hcomm_add : ∀ x y : α, addF x y = addF y x)
     (a b c d : α) :
     let m : Mat2 (Val α) := ⟨contents a, contents b, contents c, contents d⟩
     (matMul2 addF mulF m (adj2 negF m)).e₂₁ = contents zero := by
-  simp [matMul2, adj2, neg, mul, add, hmn, hcomm, hcancel]
+  simp [matMul2, adj2, neg, mul, add, hmn, hcomm, hcancel, hcomm_add]
 
 -- ✓ Full Cayley-Hamilton for 2×2 over Val α:
 --   Diagonal entries = det(A) = contents(det at α level)

@@ -41,7 +41,7 @@ variable {α β : Type}
     ‖contents x‖ = contents(normF x) (actual norm). -/
 def norm (normF : α → α) : Val α → Val α
   | origin => origin
-  | container => container
+  | container a => container (normF a)
   | contents a => contents (normF a)
 
 -- ============================================================================
@@ -51,8 +51,8 @@ def norm (normF : α → α) : Val α → Val α
 /-- Norm of origin is origin. -/
 theorem norm_origin (normF : α → α) : norm normF (origin : Val α) = origin := by rfl
 
-/-- Norm of container is container. -/
-theorem norm_container (normF : α → α) : norm normF (container : Val α) = container := by rfl
+/-- Norm of container is container (with normed payload). -/
+theorem norm_container (normF : α → α) (a : α) : norm normF (container a : Val α) = container (normF a) := by rfl
 
 /-- Norm of contents is contents. Always. -/
 theorem norm_contents (normF : α → α) (a : α) :
@@ -63,8 +63,8 @@ theorem norm_contents_ne_origin (normF : α → α) (a : α) :
     norm normF (contents a) ≠ origin := by simp [norm]
 
 /-- Norm of contents is never container. -/
-theorem norm_contents_ne_container (normF : α → α) (a : α) :
-    norm normF (contents a) ≠ container := by simp [norm]
+theorem norm_contents_ne_container (normF : α → α) (a c : α) :
+    norm normF (contents a) ≠ container c := by simp [norm]
 
 -- ✓ Norms preserve the sort structure. Same pattern as add, mul, inv.
 -- In standard math: ‖x‖ ≠ 0 iff x ≠ 0 (a proof obligation).
@@ -113,7 +113,7 @@ theorem norm_zero (normF : α → α) (zero : α)
     Same structure as valMap from Category.lean. -/
 def opApply (f : α → α) : Val α → Val α
   | origin => origin
-  | container => container
+  | container a => container (f a)
   | contents a => contents (f a)
 
 /-- Operator norm: the norm of an operator applied to a vector.
@@ -134,11 +134,11 @@ theorem op_comp_contents (f g : α → α) (a : α) :
     opApply f (opApply g (contents a)) = contents (f (g a)) := by rfl
 
 /-- Operator preserves the sort structure. -/
-theorem op_preserves_sort (f : α → α) (x : Val α) :
+theorem op_sort_preservation (f : α → α) (x : Val α) :
     (x = origin → opApply f x = origin) ∧
-    (x = container → opApply f x = container) ∧
+    (∀ a, x = container a → opApply f x = container (f a)) ∧
     (∀ a, x = contents a → opApply f x = contents (f a)) :=
-  ⟨fun h => h ▸ rfl, fun h => h ▸ rfl, fun a h => h ▸ rfl⟩
+  ⟨fun h => by subst h; rfl, fun a h => by subst h; rfl, fun a h => by subst h; rfl⟩
 
 -- ✓ Bounded linear operators preserve sort structure.
 -- In standard math: ‖T‖ ≠ 0 iff T ≠ 0 (proof obligation).
@@ -179,7 +179,7 @@ theorem op_inv_mul_contents (f finv : α → α)
 -- Completeness: Cauchy Sequences in Contents
 -- ============================================================================
 
-/-- A Cauchy condition on α, parametrized abstractly. -/
+-- A Cauchy condition on α, parametrized abstractly.
 -- We don't define Cauchy — we parametrize by it, same as Analysis.lean.
 
 /-- If a sequence in α is Cauchy and converges to L,
@@ -197,8 +197,8 @@ theorem cauchy_contents_never_origin (s : Nat → α) (n : Nat) :
     (fun n => contents (s n)) n ≠ (origin : Val α) := by simp
 
 /-- Cauchy sequence in contents never has a container term. -/
-theorem cauchy_contents_never_container (s : Nat → α) (n : Nat) :
-    (fun n => contents (s n)) n ≠ (container : Val α) := by simp
+theorem cauchy_contents_never_container (s : Nat → α) (n : Nat) (c : α) :
+    (fun n => contents (s n)) n ≠ (container c : Val α) := by simp
 
 /-- Completeness: if α is complete (every Cauchy sequence converges),
     then contents-level sequences are complete too. -/
@@ -222,9 +222,9 @@ theorem contents_complete
 def inner (innerF : α → α → α) : Val α → Val α → Val α
   | origin, _ => origin
   | _, origin => origin
-  | container, container => container
-  | container, contents _ => container
-  | contents _, container => container
+  | container a, container b => container (innerF a b)
+  | container a, contents b => container (innerF a b)
+  | contents a, container b => container (innerF a b)
   | contents a, contents b => contents (innerF a b)
 
 /-- Inner product of contents is contents. -/
@@ -240,13 +240,12 @@ theorem inner_comm_contents (innerF : α → α → α) (conjF : α → α)
     (h : ∀ a b : α, innerF a b = conjF (innerF b a)) (a b : α) :
     inner innerF (contents a) (contents b) =
     contents (conjF (innerF b a)) := by
-  simp [inner, h]
+  show contents (innerF a b) = contents (conjF (innerF b a))
+  congr 1; exact h a b
 
-/-- Linearity in first argument within contents. -/
-theorem inner_linear_contents (innerF : α → α → α) (addF : α → α → α)
-    (smulF : α → α → α)
-    (h : ∀ c a b : α, innerF (addF (smulF c a) b) = addF (smulF c (innerF a b)) (innerF b b))
-    -- simplified; actual linearity has more structure
+/-- Linearity in first argument within contents.
+    (Simplified: the full linearity axiom has more structure.) -/
+theorem inner_linear_contents (innerF : α → α → α)
     (a b : α) :
     inner innerF (contents a) (contents b) = contents (innerF a b) := by rfl
 

@@ -109,19 +109,19 @@ theorem not_le_origin (r : α → α → Prop) (x : Val α) :
   | contents _ => exact id
 
 /-- Container is not ≤ anything. -/
-theorem container_not_le (r : α → α → Prop) (x : Val α) :
-    ¬ le r container x := by
+theorem container_not_le (r : α → α → Prop) (c : α) (x : Val α) :
+    ¬ le r (container c) x := by
   cases x with
   | origin => exact id
-  | container => exact id
+  | container _ => exact id
   | contents _ => exact id
 
 /-- Nothing is ≤ container. -/
-theorem not_le_container (r : α → α → Prop) (x : Val α) :
-    ¬ le r x container := by
+theorem not_le_container (r : α → α → Prop) (c : α) (x : Val α) :
+    ¬ le r x (container c) := by
   cases x with
   | origin => exact id
-  | container => exact id
+  | container _ => exact id
   | contents _ => exact id
 
 /-- Origin is not < anything. -/
@@ -133,11 +133,11 @@ theorem origin_not_lt (r s : α → α → Prop) (x : Val α) :
   | contents _ => exact id
 
 /-- Container is not < anything. -/
-theorem container_not_lt (r s : α → α → Prop) (x : Val α) :
-    ¬ lt r s container x := by
+theorem container_not_lt (r s : α → α → Prop) (c : α) (x : Val α) :
+    ¬ lt r s (container c) x := by
   cases x with
   | origin => exact id
-  | container => exact id
+  | container _ => exact id
   | contents _ => exact id
 
 -- ✓ Origin and container are outside the ordering entirely.

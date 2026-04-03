@@ -67,9 +67,9 @@ theorem null_ne_origin (μ : S → Val α) (zero : α) (s : S)
   rw [h]; simp
 
 /-- Null sets are not container. -/
-theorem null_ne_container (μ : S → Val α) (zero : α) (s : S)
+theorem null_ne_container (μ : S → Val α) (zero : α) (s : S) (c : α)
     (h : isNull μ zero s) :
-    μ s ≠ container := by
+    μ s ≠ container c := by
   rw [h]; simp
 
 -- ✓ "Measure zero" and "boundary" are visibly different sorts.
@@ -163,8 +163,8 @@ theorem radon_nikodym_ne_origin (mulF : α → α → α) (invF : α → α)
 
 /-- Radon-Nikodym derivative is never container. -/
 theorem radon_nikodym_ne_container (mulF : α → α → α) (invF : α → α)
-    (μ_val ν_val : α) :
-    Val.mul mulF (contents μ_val) (inv invF (contents ν_val)) ≠ container := by
+    (μ_val ν_val c : α) :
+    Val.mul mulF (contents μ_val) (inv invF (contents ν_val)) ≠ container c := by
   simp [mul, inv]
 
 -- ✓ The Radon-Nikodym derivative is contents. Unconditionally.

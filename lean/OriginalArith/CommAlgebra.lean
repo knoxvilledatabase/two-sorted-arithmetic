@@ -56,8 +56,8 @@ theorem origin_not_in_ideal (I : α → Prop) :
   exact id
 
 /-- Container is not in any ideal. -/
-theorem container_not_in_ideal (I : α → Prop) :
-    ¬ inIdeal I (container : Val α) := by
+theorem container_not_in_ideal (I : α → Prop) (c : α) :
+    ¬ inIdeal I (container c : Val α) := by
   exact id
 
 -- ✓ Ideals live in contents. Origin and container are outside.
@@ -93,7 +93,7 @@ theorem ideal_mul_absorb (I : α → Prop) (mulF : α → α → α)
     Origin and container pass through unchanged. -/
 def quotientMap (proj : α → α) : Val α → Val α
   | origin => origin
-  | container => container
+  | container a => container (proj a)
   | contents a => contents (proj a)
 
 /-- Quotient map preserves contents. -/
@@ -105,8 +105,8 @@ theorem quotient_ne_origin (proj : α → α) (a : α) :
     quotientMap proj (contents a) ≠ origin := by simp [quotientMap]
 
 /-- Quotient of contents is never container. -/
-theorem quotient_ne_container (proj : α → α) (a : α) :
-    quotientMap proj (contents a) ≠ container := by simp [quotientMap]
+theorem quotient_ne_container (proj : α → α) (a c : α) :
+    quotientMap proj (contents a) ≠ container c := by simp [quotientMap]
 
 /-- Quotient map commutes with addition, within contents. -/
 theorem quotient_add (proj : α → α) (addF addQ : α → α → α)
@@ -145,8 +145,8 @@ theorem localization_ne_origin (mulF : α → α → α) (invF : α → α) (a s
   simp [mul, inv]
 
 /-- Localized element is never container. -/
-theorem localization_ne_container (mulF : α → α → α) (invF : α → α) (a s : α) :
-    Val.mul mulF (contents a) (inv invF (contents s)) ≠ container := by
+theorem localization_ne_container (mulF : α → α → α) (invF : α → α) (a s c : α) :
+    Val.mul mulF (contents a) (inv invF (contents s)) ≠ container c := by
   simp [mul, inv]
 
 /-- Localization preserves multiplication within contents. -/
@@ -201,8 +201,8 @@ theorem no_zero_divisors_structural (mulF : α → α → α) (a b : α) :
   simp [mul]
 
 /-- Contents × contents is never container. -/
-theorem no_zero_divisors_ne_container (mulF : α → α → α) (a b : α) :
-    mul mulF (contents a) (contents b) ≠ container := by
+theorem no_zero_divisors_ne_container (mulF : α → α → α) (a b c : α) :
+    mul mulF (contents a) (contents b) ≠ container c := by
   simp [mul]
 
 /-- The "zero divisor" question reduces to α: does mulF a b = zero? -/
@@ -215,9 +215,8 @@ theorem integral_domain_contents (mulF : α → α → α) (zero : α)
     (h : ∀ a b : α, mulF a b = zero → a = zero ∨ b = zero)
     (a b : α) (hab : mul mulF (contents a) (contents b) = contents zero) :
     contents a = contents zero ∨ contents b = contents zero := by
-  have := congr_arg (fun x => match x with | contents c => c | _ => zero) hab
-  simp [mul] at this
-  cases h a b this with
+  simp [mul] at hab
+  cases h a b hab with
   | inl ha => left; congr
   | inr hb => right; congr
 
@@ -237,7 +236,7 @@ theorem residue_field_inv_contents (proj : α → α) (invQ : α → α) (a : α
     contents (proj (invQ a)) := by rfl
 
 /-- Residue field element is never origin. -/
-theorem residue_field_ne_origin (proj : α → α) (a : α) :
+theorem residue_field_ne_origin' (proj : α → α) (a : α) :
     quotientMap proj (contents a) ≠ origin := by
   simp [quotientMap]
 

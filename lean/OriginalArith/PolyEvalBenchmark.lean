@@ -85,7 +85,7 @@ theorem poly_quotient_defined (p q x : F α)
     The result none means BOTH "the value is zero" AND "we evaluated at the boundary."
     Indistinguishable. -/
 theorem eval_at_zero_ambiguous (a₁ : F α) :
-    polyEval [none, a₁] (some _root_.Unit.unit) = none := by
+    polyEval [(none : F α), a₁] none = none := by
   cases a₁ <;> simp [polyEval, add, mul]
 
 -- TOTAL:

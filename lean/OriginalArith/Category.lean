@@ -44,7 +44,7 @@ variable {α β γ : Type}
     The contents action is determined by a function f : α → β. -/
 def valMap (f : α → β) : Val α → Val β
   | origin => origin
-  | container => container
+  | container a => container (f a)
   | contents a => contents (f a)
 
 -- ============================================================================
@@ -55,7 +55,7 @@ def valMap (f : α → β) : Val α → Val β
 theorem valMap_id : valMap (id : α → α) = id := by
   funext x; cases x with
   | origin => rfl
-  | container => rfl
+  | container _ => rfl
   | contents _ => rfl
 
 /-- valMap preserves composition: valMap (g ∘ f) = valMap g ∘ valMap f. -/
@@ -63,7 +63,7 @@ theorem valMap_comp (f : α → β) (g : β → γ) :
     valMap (g ∘ f) = valMap g ∘ valMap f := by
   funext x; cases x with
   | origin => rfl
-  | container => rfl
+  | container _ => rfl
   | contents _ => rfl
 
 -- ✓ Val is a functor from Type to Type.
@@ -77,8 +77,8 @@ theorem valMap_comp (f : α → β) (g : β → γ) :
 /-- valMap sends origin to origin. -/
 theorem valMap_origin (f : α → β) : valMap f (origin : Val α) = origin := by rfl
 
-/-- valMap sends container to container. -/
-theorem valMap_container (f : α → β) : valMap f (container : Val α) = container := by rfl
+/-- valMap sends container to container (preserving sort, mapping payload). -/
+theorem valMap_container (f : α → β) (a : α) : valMap f (container a) = container (f a) := by rfl
 
 /-- valMap sends contents to contents. -/
 theorem valMap_contents (f : α → β) (a : α) :
@@ -88,9 +88,9 @@ theorem valMap_contents (f : α → β) (a : α) :
     contents stays contents. -/
 theorem valMap_preserves_sort (f : α → β) (x : Val α) :
     (x = origin → valMap f x = origin) ∧
-    (x = container → valMap f x = container) ∧
+    (∀ a, x = container a → valMap f x = container (f a)) ∧
     (∀ a, x = contents a → valMap f x = contents (f a)) := by
-  exact ⟨fun h => h ▸ rfl, fun h => h ▸ rfl, fun a h => h ▸ rfl⟩
+  exact ⟨fun h => h ▸ rfl, fun a h => h ▸ rfl, fun a h => h ▸ rfl⟩
 
 -- ✓ Morphisms preserve sort. The three sorts are categorical invariants.
 
@@ -105,15 +105,15 @@ theorem valMap_preserves_mul (f : α → β) (mulA : α → α → α) (mulB : �
     valMap f (mul mulA x y) = mul mulB (valMap f x) (valMap f y) := by
   cases x with
   | origin => rfl
-  | container =>
+  | container a =>
     cases y with
     | origin => rfl
-    | container => rfl
-    | contents _ => rfl
+    | container _ => simp [mul, valMap, hf]
+    | contents _ => simp [mul, valMap, hf]
   | contents a =>
     cases y with
     | origin => rfl
-    | container => rfl
+    | container _ => simp [mul, valMap, hf]
     | contents b => simp [mul, valMap, hf]
 
 /-- valMap commutes with add when f preserves addition. -/
@@ -123,15 +123,15 @@ theorem valMap_preserves_add (f : α → β) (addA : α → α → α) (addB : �
     valMap f (add addA x y) = add addB (valMap f x) (valMap f y) := by
   cases x with
   | origin => rfl
-  | container =>
+  | container a =>
     cases y with
     | origin => rfl
-    | container => rfl
-    | contents _ => rfl
+    | container _ => simp [add, valMap, hf]
+    | contents _ => simp [add, valMap, hf]
   | contents a =>
     cases y with
     | origin => rfl
-    | container => rfl
+    | container _ => simp [add, valMap, hf]
     | contents b => simp [add, valMap, hf]
 
 /-- valMap commutes with inv when f preserves inversion. -/
@@ -141,7 +141,7 @@ theorem valMap_preserves_inv (f : α → β) (invA : α → α) (invB : β → �
     valMap f (inv invA x) = inv invB (valMap f x) := by
   cases x with
   | origin => rfl
-  | container => rfl
+  | container a => simp [inv, valMap, hf]
   | contents a => simp [inv, valMap, hf]
 
 -- ✓ valMap is a homomorphism of Val-algebras when f is a homomorphism of α-algebras.
@@ -173,24 +173,24 @@ theorem contents_naturality (f : α → β) :
     sort-preserving extension of f through contents. -/
 theorem valMap_unique (f : α → β) (g : Val α → Val β)
     (h_origin : g origin = origin)
-    (h_container : g container = container)
+    (h_container : ∀ a : α, g (container a) = container (f a))
     (h_contents : ∀ a : α, g (contents a) = contents (f a)) :
     g = valMap f := by
   funext x; cases x with
   | origin => exact h_origin
-  | container => exact h_container
+  | container a => exact h_container a
   | contents a => exact h_contents a
 
 /-- Equivalent formulation: g agrees with valMap f pointwise. -/
 theorem valMap_unique' (f : α → β) (g : Val α → Val β)
     (h_origin : g origin = origin)
-    (h_container : g container = container)
+    (h_container : ∀ a : α, g (container a) = container (f a))
     (h_contents : ∀ a : α, g (contents a) = contents (f a))
     (x : Val α) :
     g x = valMap f x := by
   cases x with
   | origin => exact h_origin
-  | container => exact h_container
+  | container a => exact h_container a
   | contents a => exact h_contents a
 
 -- ✓ UNIVERSAL PROPERTY.
@@ -207,12 +207,12 @@ theorem valMap_unique' (f : α → β) (g : Val α → Val β)
 theorem sort_preserving_determined_by_contents
     (g₁ g₂ : Val α → Val β)
     (h₁_o : g₁ origin = origin) (h₂_o : g₂ origin = origin)
-    (h₁_c : g₁ container = container) (h₂_c : g₂ container = container)
+    (h₁_c : ∀ a : α, g₁ (container a) = g₂ (container a))
     (h_eq : ∀ a : α, g₁ (contents a) = g₂ (contents a)) :
     g₁ = g₂ := by
   funext x; cases x with
   | origin => rw [h₁_o, h₂_o]
-  | container => rw [h₁_c, h₂_c]
+  | container a => exact h₁_c a
   | contents a => exact h_eq a
 
 -- ✓ A sort-preserving endomorphism is completely determined by its
@@ -250,7 +250,7 @@ theorem contents_getContents (x : Val α) (h : ∃ a, x = contents a) :
     Contents of origin/container collapse. Contents of contents unwrap. -/
 def valJoin : Val (Val α) → Val α
   | origin => origin
-  | container => container
+  | container x => x
   | contents x => x
 
 /-- valJoin ∘ contents = id: joining after embedding is identity. -/
@@ -284,27 +284,39 @@ theorem monad_join_assoc :
     valJoin ∘ valJoin = valJoin ∘ valMap (valJoin : Val (Val α) → Val α) := by
   funext x; cases x with
   | origin => rfl
-  | container => rfl
+  | container y => cases y with
+    | origin => rfl
+    | container _ => rfl
+    | contents _ => rfl
   | contents y => cases y with
     | origin => rfl
-    | container => rfl
+    | container _ => rfl
     | contents _ => rfl
 
 -- ✓ The monad laws that CAN hold, DO hold.
--- The right unit law (valJoin ∘ valMap contents = id) also holds:
+-- The right unit law (valJoin ∘ valMap contents = id) holds for origin and
+-- contents, but NOT for container — container(contents a) joins to contents a,
+-- not container a. This is the honest boundary of the monad structure when
+-- container carries a payload.
 
-/-- Right unit law: valJoin ∘ valMap contents = id. -/
-theorem monad_right_unit :
-    valJoin ∘ valMap (contents : α → Val α) = id := by
-  funext x; cases x with
-  | origin => rfl
-  | container => rfl
-  | contents _ => rfl
+/-- Right unit law holds on origin. -/
+theorem monad_right_unit_origin :
+    valJoin (valMap (contents : α → Val α) (origin : Val α)) = origin := by rfl
 
--- ✓ All three monad laws hold: left unit, right unit, associativity.
--- Val is a monad on Type. contents is the unit. valJoin is the join.
--- The earlier valJoin_not_section is NOT a monad law violation —
--- it's about contents ∘ valJoin (wrong order), not valJoin ∘ valMap contents.
+/-- Right unit law holds on contents. -/
+theorem monad_right_unit_contents (a : α) :
+    valJoin (valMap (contents : α → Val α) (contents a)) = contents a := by rfl
+
+/-- Right unit law FAILS on container: container(contents a) joins to contents a.
+    This is correct — valJoin flattens container(x) to x, and x = contents a.
+    The container sort is not preserved through join ∘ valMap contents.
+    This is the honest cost of container carrying a payload. -/
+theorem monad_right_unit_container_flattens (a : α) :
+    valJoin (valMap (contents : α → Val α) (container a)) = contents a := by rfl
+
+-- ✓ Two of three monad laws hold fully. The right unit holds for origin
+-- and contents but not container. Val with payload-carrying container is
+-- a monad on the origin+contents subsystem. Container sits outside the monad.
 
 -- ============================================================================
 -- THE RESULT
@@ -331,9 +343,10 @@ theorem monad_right_unit :
 --
 -- Monad structure:
 --   ✓ valJoin ∘ contents = id (left unit)
---   ✓ valJoin ∘ valMap contents = id (right unit)
 --   ✓ valJoin ∘ valJoin = valJoin ∘ valMap valJoin (associativity)
---   → Val is a monad. The boundary structure is monadic.
+--   ~ Right unit holds for origin and contents, not container
+--   → Val is a monad on the origin+contents subsystem.
+--     Container sits outside the monad (honest boundary).
 --
 -- Retraction:
 --   ✓ getContents is left inverse of contents on the contents sort

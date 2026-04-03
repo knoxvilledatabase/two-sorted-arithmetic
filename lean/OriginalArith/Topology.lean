@@ -43,7 +43,7 @@ variable {α : Type}
 /-- Predicate for the container sort. Definitionally clean:
     isContainer(container) = True, isContainer(anything else) = False. -/
 def isContainer : Val α → Prop
-  | container => True
+  | container _ => True
   | _ => False
 
 /-- Lift a subset of α to a subset of Val α (in the contents sort).
@@ -176,8 +176,8 @@ theorem contents_can_converge_to_origin
 theorem contents_cannot_converge_to_container
     (openα : (α → Prop) → Prop) (compactα : (α → Prop) → Prop)
     (h_empty_open : openα (fun _ : α => False))
-    (s : Nat → α) :
-    ¬ topoConverges openα compactα (fun n => contents (s n)) container := by
+    (s : Nat → α) (c : α) :
+    ¬ topoConverges openα compactα (fun n => contents (s n)) (container c) := by
   intro h
   obtain ⟨N, hN⟩ := h isContainer
     (container_singleton_open openα compactα h_empty_open) trivial

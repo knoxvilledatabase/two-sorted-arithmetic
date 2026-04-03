@@ -81,15 +81,17 @@ theorem polyEval_at_origin (addF mulF : α → α → α) (zero : α)
 -- Evaluation at Container (degree ≥ 1, contents coefficients)
 -- ============================================================================
 
-/-- Linear polynomial with contents coefficients at container gives container.
-    container enters via multiplication, then absorbs the contents addition. -/
-theorem polyEval_at_container_linear (addF mulF : α → α → α) (zero : α) (a₀ a₁ : α) :
-    polyEval addF mulF zero [contents a₀, contents a₁] container = container := by rfl
+/-- Linear polynomial with contents coefficients at container gives container
+    (values combine). -/
+theorem polyEval_at_container_linear (addF mulF : α → α → α) (zero : α) (a₀ a₁ c : α) :
+    polyEval addF mulF zero [contents a₀, contents a₁] (container c) =
+    container (addF a₀ (mulF c a₁)) := by rfl
 
-/-- Quadratic with contents coefficients at container gives container. -/
-theorem polyEval_at_container_quad (addF mulF : α → α → α) (zero : α) (a₀ a₁ a₂ : α) :
-    polyEval addF mulF zero [contents a₀, contents a₁, contents a₂] container = container := by
-  rfl
+/-- Quadratic with contents coefficients at container gives container
+    (values combine through Horner). -/
+theorem polyEval_at_container_quad (addF mulF : α → α → α) (zero : α) (a₀ a₁ a₂ c : α) :
+    polyEval addF mulF zero [contents a₀, contents a₁, contents a₂] (container c) =
+    container (addF a₀ (mulF c (addF a₁ (mulF c a₂)))) := by rfl
 
 -- ✓ Container absorbs non-constant polynomials with contents coefficients.
 -- Same pattern: mul introduces container, add propagates it.
@@ -216,21 +218,16 @@ theorem origin_propagates_outward (addF mulF : α → α → α) (zero : α)
 -- Container Propagation
 -- ============================================================================
 
-/-- Container as leading coefficient: absorbs (for degree ≥ 1). -/
-theorem container_head_propagates (addF mulF : α → α → α) (zero : α)
-    (b : Val α) (rest : List (Val α)) (x : Val α) :
-    polyEval addF mulF zero (container :: b :: rest) x = origin ∨
-    polyEval addF mulF zero (container :: b :: rest) x = container := by
-  show add addF container (mul mulF x (polyEval addF mulF zero (b :: rest) x)) = origin ∨
-       add addF container (mul mulF x (polyEval addF mulF zero (b :: rest) x)) = container
-  -- The inner mul gives origin, container, or contents.
-  -- add(container, origin) = origin. add(container, container) = container.
-  -- add(container, contents _) = container.
-  have hm := mul mulF x (polyEval addF mulF zero (b :: rest) x)
-  cases hm with
-  | origin => left; rfl
-  | container => right; rfl
-  | contents _ => right; rfl
+/-- Container as leading coefficient: the result is never contents.
+    It is either origin (if origin enters via multiplication) or container. -/
+theorem container_head_not_contents (addF mulF : α → α → α) (zero : α)
+    (a₀ : α) (b : Val α) (rest : List (Val α)) (x : Val α) (v : α) :
+    polyEval addF mulF zero (container a₀ :: b :: rest) x ≠ contents v := by
+  show add addF (container a₀) (mul mulF x (polyEval addF mulF zero (b :: rest) x)) ≠ contents v
+  cases mul mulF x (polyEval addF mulF zero (b :: rest) x) with
+  | origin => simp [add]
+  | container _ => simp [add]
+  | contents _ => simp [add]
 
 -- ✓ Container as leading coefficient gives either origin or container — never contents.
 -- Origin wins over container (absorption hierarchy: origin > container > contents).
@@ -245,8 +242,8 @@ theorem polyEval_contents_ne_origin_linear (addF mulF : α → α → α) (zero 
   simp [polyEval, mul, add]
 
 /-- Contents-only polynomial evaluated at contents: never container. -/
-theorem polyEval_contents_ne_container_linear (addF mulF : α → α → α) (zero : α) (a₀ a₁ v : α) :
-    polyEval addF mulF zero [contents a₀, contents a₁] (contents v) ≠ container := by
+theorem polyEval_contents_ne_container_linear (addF mulF : α → α → α) (zero : α) (a₀ a₁ v c : α) :
+    polyEval addF mulF zero [contents a₀, contents a₁] (contents v) ≠ container c := by
   simp [polyEval, mul, add]
 
 -- ✓ Contents polynomials evaluated at contents stay in contents.

@@ -44,7 +44,7 @@ variable {α : Type}
 def liftConv (conv : (Nat → α) → α → Prop) : (Nat → Val α) → Val α → Prop
   | s, contents l => ∃ raw : Nat → α, (∀ n, s n = contents (raw n)) ∧ conv raw l
   | s, origin => ∀ n, s n = origin
-  | s, container => ∀ n, s n = container
+  | s, container c => ∀ n, s n = container c
 
 -- ============================================================================
 -- Contents Convergence Lifts Faithfully
@@ -75,10 +75,10 @@ theorem origin_not_limit_of_contents (conv : (Nat → α) → α → Prop)
 /-- No contents sequence converges to container. Structure is unreachable
     from the interior. -/
 theorem container_not_limit_of_contents (conv : (Nat → α) → α → Prop)
-    (s : Nat → α) :
-    ¬ liftConv conv (fun n => contents (s n)) container := by
+    (s : Nat → α) (c : α) :
+    ¬ liftConv conv (fun n => contents (s n)) (container c) := by
   intro h
-  exact absurd (h 0).symm (sorts_disjoint_cx (s 0))
+  exact absurd (h 0).symm (sorts_disjoint_cx c (s 0))
 
 -- ✓ Origin and container are topologically separated from contents.
 -- In standard math, "approaching the boundary" means values grow unbounded
@@ -182,7 +182,7 @@ theorem sub_self_is_contents (subF : α → α → α) (a : α) :
     contents (subF a a) := by rfl
 
 /-- Any contents divided by any contents is contents. Unconditional. -/
-theorem contents_div_contents (mulF : α → α → α) (invF : α → α) (a b : α) :
+theorem contents_div_contents_exists (mulF : α → α → α) (invF : α → α) (a b : α) :
     ∃ c : α, div mulF invF (contents a) (contents b) = contents c :=
   ⟨mulF a (invF b), rfl⟩
 
@@ -192,8 +192,8 @@ theorem contents_div_contents_ne_origin (mulF : α → α → α) (invF : α →
   simp [div, mul, inv]
 
 /-- Contents divided by contents is never container. -/
-theorem contents_div_contents_ne_container (mulF : α → α → α) (invF : α → α) (a b : α) :
-    div mulF invF (contents a) (contents b) ≠ (container : Val α) := by
+theorem contents_div_contents_ne_container (mulF : α → α → α) (invF : α → α) (a b c : α) :
+    div mulF invF (contents a) (contents b) ≠ (container c : Val α) := by
   simp [div, mul, inv]
 
 -- ✓ Every "indeterminate form" from calculus has a determinate SORT in Val α.
