@@ -6,7 +6,7 @@ Authors: Knox Database
 import Std
 
 /-!
-# From First Principles: 𝒪, B, and Contents
+# From First Principles: 𝒪, container, and contents
 
 Start from three primitives. Build arithmetic up.
 Show that addition, multiplication, division, and inverse
@@ -19,14 +19,14 @@ starts from nothing and builds forward.
 ## The three primitives
 
 - `𝒪` (origin) — the whole. Absorbs everything.
-- `B` (container) — the bucket. Structural. Not a number.
+- `container` — the bucket. Structural. Not a number.
 - `contents` — quantities. 0, 1, 2, 3... Just numbers.
 
 ## The four rules
 
 1. `𝒪 × anything = 𝒪` — the whole absorbs
-2. `B × B = B` — container of containers is container
-3. `B × contents = B` — bucket holding something is bucket
+2. `container × container = container` — the hand × the hand = the hand
+3. `container × contents = container` — bucket holding something is bucket
 4. `contents × contents = contents` — actual arithmetic
 -/
 
@@ -177,7 +177,7 @@ theorem origin_absorbs_add_right (f : α → α → α) (x : Val α) :
 -- ✓ Origin absorbs all operations from both sides. I1, I2, I3.
 
 -- ============================================================================
--- Container proofs: B × B = B, B absorbs contents structurally
+-- Container proofs: container × container = container, absorbs contents structurally
 -- ============================================================================
 
 theorem container_mul_container (f : α → α → α) :
@@ -309,14 +309,14 @@ theorem smallest_bound_ne_no_bound (f : α → α → α) (zero : α) (a : α) :
 -- THE RESULT
 -- ============================================================================
 --
--- Built from three primitives (𝒪, B, contents):
+-- Built from three primitives (𝒪, container, contents):
 --   ✓ Multiplication (four rules, no exceptions)
 --   ✓ Addition (same absorption structure)
 --   ✓ Additive identity (contents(0), lives in contents)
 --   ✓ Multiplicative identity (contents(1), lives in contents)
 --   ✓ Division and inverse (each sort handles itself)
 --   ✓ Origin absorption (I1, I2, I3)
---   ✓ Container structure (B × B = B)
+--   ✓ Container structure (container × container = container)
 --   ✓ Contents closure (never leave contents)
 --   ✓ No NeZero needed (contents ≠ origin by type)
 --   ✓ No NoZeroDivisors needed (contents × contents = contents)
