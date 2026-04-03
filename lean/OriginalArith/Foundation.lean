@@ -25,8 +25,8 @@ starts from nothing and builds forward.
 ## The four rules
 
 1. `𝒪 × anything = 𝒪` — the whole absorbs. Nothing to retrieve.
-2. `container(a) × container(_) = container(a)` — left bucket wins, keeps its value
-3. `container(a) × contents(_) = container(a)` — bucket wins, apples stay inside
+2. `container(a) × container(b) = container(f a b)` — values combine, boundary persists
+3. `container(a) × contents(b) = container(f a b)` — values combine, boundary persists
 4. `contents(a) × contents(b) = contents(f a b)` — actual arithmetic
 -/
 
@@ -51,9 +51,9 @@ variable {α : Type}
 def mul (f : α → α → α) : Val α → Val α → Val α
   | origin, _                  => origin
   | _, origin                  => origin
-  | container a, container _   => container a    -- left wins, keeps its value
-  | container a, contents _    => container a    -- container wins, keeps its value
-  | contents _, container b    => container b    -- container wins, keeps its value
+  | container a, container b   => container (f a b)  -- values combine, sort stays
+  | container a, contents b    => container (f a b)  -- combine, keep boundary
+  | contents a, container b    => container (f a b)  -- combine, keep boundary
   | contents a, contents b     => contents (f a b)
 
 -- contents(0) × contents(a) = contents(f 0 a) = contents(0).
@@ -68,14 +68,14 @@ def mul (f : α → α → α) : Val α → Val α → Val α
 def add (f : α → α → α) : Val α → Val α → Val α
   | origin, _                  => origin
   | _, origin                  => origin
-  | container a, container _   => container a
-  | container a, contents _    => container a
-  | contents _, container b    => container b
+  | container a, container b   => container (f a b)
+  | container a, contents b    => container (f a b)
+  | contents a, container b    => container (f a b)
   | contents a, contents b     => contents (f a b)
 
--- Note: add and mul have the same absorption structure.
--- The difference is in what f does (additive vs multiplicative operation on α).
--- The boundary behavior is identical for both.
+-- Note: add and mul have the same structure at every level.
+-- Origin absorbs. Container combines values and keeps the boundary.
+-- Contents combines values. The difference is in what f does.
 
 -- ============================================================================
 -- Additive identity: contents(0) where 0 is the additive identity in α
@@ -87,9 +87,9 @@ def add (f : α → α → α) : Val α → Val α → Val α
 def addWithIdentity (f : α → α → α) (_zero : α) : Val α → Val α → Val α
   | origin, _                  => origin
   | _, origin                  => origin
-  | container a, container _   => container a
-  | container a, contents _    => container a
-  | contents _, container b    => container b
+  | container a, container b   => container (f a b)
+  | container a, contents b    => container (f a b)
+  | contents a, container b    => container (f a b)
   | contents a, contents b     => contents (f a b)
 
 -- The additive identity lives INSIDE contents. It is contents(zero).
@@ -148,7 +148,7 @@ theorem div_by_container_origin (f : α → α → α) (g : α → α) (a : α) 
     div f g origin (container a) = origin := by rfl
 
 theorem div_by_container_container (f : α → α → α) (g : α → α) (a b : α) :
-    div f g (container a) (container b) = container a := by rfl
+    div f g (container a) (container b) = container (f a (g b)) := by rfl
 
 -- Contents divided by contents = contents (arithmetic within α)
 theorem contents_div_contents (f : α → α → α) (g : α → α) (a b : α) :
@@ -181,19 +181,19 @@ theorem origin_absorbs_add_right (f : α → α → α) (x : Val α) :
 -- ============================================================================
 
 theorem container_mul_container (f : α → α → α) (a b : α) :
-    mul f (container a : Val α) (container b) = container a := by rfl
+    mul f (container a : Val α) (container b) = container (f a b) := by rfl
 
 theorem container_mul_contents (f : α → α → α) (a b : α) :
-    mul f (container a : Val α) (contents b) = container a := by rfl
+    mul f (container a : Val α) (contents b) = container (f a b) := by rfl
 
 theorem contents_mul_container (f : α → α → α) (a b : α) :
-    mul f (contents a) (container b : Val α) = container b := by rfl
+    mul f (contents a) (container b : Val α) = container (f a b) := by rfl
 
--- container × contents = container is containment, not absorption.
--- The apples are inside the bucket. The bucket is still a bucket.
--- Origin absorbs — the fish is gone. Container contains — the apples are inside.
+-- Container combines values and keeps the boundary.
+-- The apples interact inside the bucket. The bucket is still a bucket.
+-- Origin absorbs — the fish is gone. Container computes — the data persists.
 
--- ✓ Container is structural. Not a number. Contains contents.
+-- ✓ Container is structural. Values combine. Boundary persists.
 
 -- ============================================================================
 -- Contents closure: contents × contents stays in contents
