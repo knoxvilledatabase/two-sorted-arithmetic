@@ -291,7 +291,6 @@ cargo add origin-lang
 | `lean/OriginalArith/HasBoundary.lean` | One typeclass. Five Mathlib concepts derived from it. |
 | `lean/OriginalArith/*Benchmark.lean` | Ten benchmarks: 46 hypotheses → 0, all seed proofs `rfl` |
 | **Other** | |
-| `lean/*.lean` | Original working proofs (4,125 lines, standalone for live.lean-lang.org) |
 | `packages/typescript/` | TypeScript prototype: 71% fewer branches |
 | `packages/python/` | Python prototype |
 | `packages/rust-python/` | Rust core + energy benchmark: 98.6% less energy per operation |
