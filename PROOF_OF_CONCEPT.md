@@ -211,29 +211,38 @@ Rust's `Option<T>` is the original distinction implemented as a language feature
 
 The claim is isomorphism of the absorbing element structure, not of the full domains. Division by zero and Russell's paradox are not the same problem. They have the same *boundary shape*, an operation leaving its domain and hitting an absorber that satisfies I1-I3.
 
-**Kill switch:** Prove any two of these boundaries have structurally different absorbing behavior. One counterexample kills the claim.
+**Kill switch:** Prove any two of the strong cases have structurally different absorbing behavior. One counterexample kills the claim.
+
+#### Strong cases: boundary element formally satisfies I1-I2
 
 | Case | Operation | Domain | Boundary | Standard Response |
 |---|---|---|---|---|
 | Arithmetic | Division | Field ℝ | Zero as divisor | Mark undefined |
-| Computation | Halting | Turing machines | Self-reference | Undecidability |
+| IEEE 754 | Float arithmetic | Binary ℝ | Invalid operations | Two-sorted NaN |
+| SQL NULL | Any operation | Relational databases | NULL value | Three-valued logic |
 | Set Theory | Set membership | Naive set theory | All sets | Categorical restriction |
 | Logic/Provability | Provability | Formal systems | Gödel sentence | Incompleteness |
 | Truth Values | Truth predicate | Propositions | Liar sentence | Paradox |
-| Category Theory | Hom-functor | Objects with morphisms | Initial object | Structural axiom |
-| Modal Logic | Modal evaluation | Possible worlds | Kripke frame | Frame axiom |
-| Topos Theory | Internal evaluation | Internal objects | The topos itself | Containment axiom |
-| HoTT | Universe membership | Types in a universe | Type : Type | Universe tower |
-| Linear Logic | Resource consumption | Linear resources | ! modality | ! promotion |
-| IEEE 754 | Float arithmetic | Binary ℝ | Invalid operations | Two-sorted NaN |
-| SQL NULL | Any operation | Relational databases | NULL value | Three-valued logic |
+| Computation | Halting | Turing machines | Self-reference | Undecidability |
 | Lambda Calculus | Application | λ-terms | Non-termination (Ω) | Divergence |
-| Measure Theory | Measure assignment | σ-algebra | Non-measurable sets | Restrict domain |
-| Game Theory | Equilibrium solving | Strategic games | No pure equilibrium | Mixed strategies |
-| Topology | Separation | Topological spaces | Indiscrete topology | Weaken axioms |
+| Category Theory | Hom-functor | Objects with morphisms | Initial object | Structural axiom |
+| HoTT | Universe membership | Types in a universe | Type : Type | Universe tower |
+| Topos Theory | Internal evaluation | Internal objects | The topos itself | Containment axiom |
+| Modal Logic | Modal evaluation | Possible worlds | Kripke frame | Frame axiom |
 | Proof Theory | Cut elimination | Formal proofs | Cut-requiring proofs | Restrict rules |
 
-Seventeen domains tested as modeled by original arithmetic. Zero non-isomorphic pairs found. 136 pairwise boundary preservations verified. Five novel predictions confirmed. The kill switch has not been triggered.
+Thirteen domains with formally verifiable absorbing elements. Zero non-isomorphic pairs found. The kill switch has not been triggered.
+
+#### Analogous cases: boundary pattern similar, absorber claim weaker
+
+| Case | Operation | Domain | Boundary | Standard Response |
+|---|---|---|---|---|
+| Game Theory | Equilibrium solving | Strategic games | No pure equilibrium | Mixed strategies |
+| Topology | Separation | Topological spaces | Indiscrete topology | Weaken axioms |
+| Linear Logic | Resource consumption | Linear resources | ! modality | ! promotion |
+| Measure Theory | Measure assignment | σ-algebra | Non-measurable sets | Restrict domain |
+
+These four domains share the boundary pattern, an operation leaving its domain and the system responding with a structural workaround, but do not have a formal absorbing element satisfying I1-I2 under their native operations. The resemblance is real. The isomorphism claim does not extend to them.
 
 *Physics candidates (renormalization, GR singularities) are structurally motivated analogies, not formally verified. See [NEXT.md](NEXT.md).*
 
