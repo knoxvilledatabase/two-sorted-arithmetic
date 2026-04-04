@@ -145,7 +145,7 @@ If I have no apples in my hand and I divide it by no apples in my hand, how many
 
 **Standard behavior:** Defined. `0! = 1` by convention.
 
-**Through the original lens:** Is it a convention? Or is it what remains when the apples are gone — the hand itself?
+**Through the original lens:** Is it a convention? Or is it what remains when the apples are gone, the hand itself?
 
 ### Exponentiation: `0 ^ 0`
 
@@ -157,7 +157,7 @@ If I have no apples in my hand and I divide it by no apples in my hand, how many
 
 **Standard behavior:** Undefined.
 
-**Through the original lens:** Which zero is the divisor? No apples — the counting gets tired. The ground — the ocean absorbs the fish.
+**Through the original lens:** Which zero is the divisor? No apples, the counting gets tired. The ground, the ocean absorbs the fish.
 
 ### Multiplication: `0 × 0`
 
