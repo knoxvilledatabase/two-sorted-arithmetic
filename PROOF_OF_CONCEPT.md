@@ -426,7 +426,9 @@ We went back to the beginning.
 
 Before the patches. Before the conventions. Before "undefined." We found the original distinction, origin, container, contents, and looked at arithmetic through that lens.
 
-509 theorems. Zero errors. Zero sorries. 46 hypotheses dissolved to zero. Every seed proof `rfl`.
+509 theorems. Zero errors. Zero sorries. 46 hypotheses dissolved to zero. Every seed proof `rfl`. 16 files inside Mathlib, 2,917 lines, 10 mathematical domains rebuilt with three constructors.
+
+The result is traceable arithmetic. Every value carries its sort. You know where you stopped and what you were holding when it happened. The sort propagates orthogonally to the value. Two tracks. Never touching. The provenance of a result is baked into its type.
 
 The lens was always there. The Upanishads described it. Euclid named the principle. Brahmagupta saw the two faces and chose one. Spencer-Brown drew the distinction. IEEE 754 built it into hardware. Rust enforced it with `Option<T>`.
 
