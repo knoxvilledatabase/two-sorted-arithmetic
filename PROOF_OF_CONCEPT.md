@@ -472,3 +472,17 @@ Or clone the [Mathlib fork](https://github.com/knoxvilledatabase/origin-mathlib4
 
 *509 theorems. Zero errors. Zero sorries.*
 — Lean 4, 2026 CE
+
+---
+
+## Why Traceability Matters
+
+**In computation:** every silent NaN that propagated through 47 layers and surfaced as a wrong answer at the output. Every model hallucination that was a boundary value dressed as contents. Every null pointer exception that crashed production because someone forgot to check. Traceability means you know which operation lost confidence, what the last good value was, and why the sort changed. That's the difference between "the model failed" and "the model was uncertain at layer 3, here's what it knew."
+
+**In mathematics:** every `≠ 0` hypothesis that a human had to write, a reviewer had to check, and a proof assistant had to verify. Thousands of them across Mathlib. Traceability means the type carries it. The hypothesis was always answering "is this value at the boundary?", the sort question. Now the sort answers it by construction.
+
+**In AI safety:** every time a model produces output past the point where it knows. The model doesn't have a vocabulary for "I stopped here." It only has contents. So everything comes out looking like contents, even when it isn't. Traceability means the model could output `container("I'm uncertain", last_good_value)` instead of confidently hallucinating past the edge.
+
+**In energy:** every redundant boundary check baked into every inference. 97 patches, each one a branch instruction on silicon. Traceability means the compiler knows the sort at compile time. 458 of 499 operations proven safe. No runtime check needed for those.
+
+How valuable? It's the difference between a system that tells you what happened and a system that makes you guess.
