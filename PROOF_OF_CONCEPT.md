@@ -207,15 +207,15 @@ IEEE 754 defined two kinds of NaN: Quiet NaN (propagates silently, Origin) and S
 
 Rust's `Option<T>` is the original distinction implemented as a language feature. `None` is Origin. `Some(value)` is Bounded. Pattern matching enforces the interaction axioms at compile time. ML introduced this in 1973. The answer was already there.
 
-### The Claim
+### The Question
 
-Division by zero and Russell's paradox are not the same problem. But they share the same confusion: the system asked the part to be the whole. An operation that can't produce an output because a symbol was asked to be its own ground.
+Division by zero and Russell's paradox are not the same problem. But do they share the same confusion? The system asked the part to be the whole. An operation that can't produce an output because a symbol was asked to be its own ground.
 
-Arithmetic confused the part with the whole first. Every domain built on arithmetic inherited that confusion. Not 13 independent boundaries. One confusion, appearing wherever arithmetic reaches.
+Did arithmetic confuse the part with the whole first? Did every domain built on arithmetic inherit that confusion? Not 13 independent problems. One confusion, appearing wherever arithmetic reaches?
 
-IEEE 754's `NaN ≠ NaN` is a real distinction, but it is a design choice in the 1985 standard, not a structural property of the confusion. The absorbing behavior, `NaN + x = NaN`, is the claim.
+IEEE 754's `NaN ≠ NaN` is a real distinction, but it is a design choice in the 1985 standard, not a structural property of the confusion. The absorbing behavior, `NaN + x = NaN`, is what we are asking about.
 
-**Kill switch:** Prove any domain built on arithmetic can ask the part to be the whole and get a coherent answer. One example kills the claim.
+**Kill switch:** Prove any domain built on arithmetic can ask the part to be the whole and get a coherent answer. Or show that [Val α inside Mathlib](https://github.com/knoxvilledatabase/origin-mathlib4) fails to build, produces a sorry, or requires one of the 17 typeclasses. One example kills the question.
 
 #### Domains where the confusion is formally verifiable
 
@@ -254,11 +254,11 @@ One person, Girard, found the confusion twice, once in type theory in 1972, once
 
 ### Level Invariance
 
-The boundary reappears at every level of abstraction sufficient to encounter it.
+The confusion reappears at every level of abstraction sufficient to encounter it.
 
-Set theory hits 𝒪 through proper classes. Topos theory, which *contains* set theory, hits the same boundary from above. HoTT built an infinite tower of universes because 𝒪 cannot be internalized at any level. Linear logic redesigned the rules of logic itself, resources consumed by use, and the boundary reappeared as the ! modality.
+Set theory hits 𝒪 through proper classes. Topos theory, which *contains* set theory, hits the same confusion from above. HoTT built an infinite tower of universes because 𝒪 cannot be internalized at any level. Linear logic redesigned the rules of logic itself, resources consumed by use, and the confusion reappeared as the ! modality.
 
-The boundary does not dissolve when you climb above it, and it does not dissolve when you change the rules of the game entirely.
+The confusion does not dissolve when you climb above it, and it does not dissolve when you change the rules of the game entirely.
 
 ---
 
@@ -445,13 +445,17 @@ That is the backwards direction. Start from Mathlib's existing structures, show 
 
 The [foundation](lean/OriginalArith/Foundation.lean) is the forwards direction. Three constructors. Four rules. 509 theorems from the seed.
 
-Both directions confirmed by code. Both building clean. The backwards direction dissolves the patches. The forwards direction shows they were never needed.
+The [Mathlib fork](https://github.com/knoxvilledatabase/origin-mathlib4) is the test. 16 files, 2,917 lines, 10 mathematical domains rebuilt inside Mathlib using Val α. Zero typeclasses from the 17. Zero sorries. Building clean alongside 8,261 Mathlib files.
+
+Both directions confirmed by code. All three building clean. The backwards direction dissolves the patches. The forwards direction shows they were never needed. The Mathlib fork shows it works in practice.
 
 ---
 
 ## How to Break This
 
 This is a standing invitation. Original arithmetic includes its own kill switch. See [FALSIFICATION.md](FALSIFICATION.md).
+
+Or clone the [Mathlib fork](https://github.com/knoxvilledatabase/origin-mathlib4) and find a theorem that requires one of the 17 typeclasses and cannot be restated with Val α. That kills the question.
 
 ---
 
