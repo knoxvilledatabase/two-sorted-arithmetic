@@ -1,4 +1,4 @@
-# Original Arithmetic
+# Original Arithmetic - A Proof of Concept for a Unification of Undefined
 
 *The [README](README.md) asked the question. What would happen if we went back to the beginning? [DISCOVERY](DISCOVERY.md) asks why the answer was always true.*
 
@@ -6,11 +6,15 @@
 
 ## Preface
 
-This is traceable arithmetic. Every value carries its sort: origin, container, or contents. You know where you stopped, why you stopped, and what you were holding when it happened. The provenance of a result is baked into its type.
+What would happen if a number wasn't allowed to also be its categorical origin?
 
-This is not a replacement for mathematics. It sits above mathematics, not inside it (the position is meta-theoretic). Every theorem, every field axiom, every result stands exactly where it is. Origin was never in the number line. It's what the number line stands on.
+This proof of concept is an attempt to find the answer.
 
-The Lean proofs verify that the lens is internally consistent, not that the lens is the only lens or that mathematics must adopt it.
+This is not a replacement for mathematics. Every theorem, every field axiom, every result stands exactly where it is. 
+
+If a number cannot also be its categorical origin then was the origin ever in the number line or is it what the number line stands on? 
+
+Was the answer there all along? 
 
 What would happen if we went back to the beginning?
 
