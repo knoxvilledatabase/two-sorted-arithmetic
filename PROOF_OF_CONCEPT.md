@@ -6,7 +6,9 @@
 
 ## Preface
 
-This is not a replacement for mathematics. It sits above mathematics, not inside it (the claim is meta-theoretic). Every theorem, every field axiom, every result stands exactly where it is. Origin was never in the number line. It's what the number line stands on.
+This is traceable arithmetic. Every value carries its sort: origin, container, or contents. You know where you stopped, why you stopped, and what you were holding when it happened. The provenance of a result is baked into its type.
+
+This is not a replacement for mathematics. It sits above mathematics, not inside it (the position is meta-theoretic). Every theorem, every field axiom, every result stands exactly where it is. Origin was never in the number line. It's what the number line stands on.
 
 The Lean proofs verify that the lens is internally consistent, not that the lens is the only lens or that mathematics must adopt it.
 
