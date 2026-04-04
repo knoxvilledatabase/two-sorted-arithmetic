@@ -145,7 +145,7 @@ If I have no apples in my hand and I divide it by no apples in my hand, how many
 
 **Standard behavior:** Defined. `0! = 1` by convention.
 
-**Through the original lens:** How many ways are there for no apples in my hand to be no apples in my hand?
+**Through the original lens:** Is it a convention? Or is it what remains when the apples are gone — the hand itself?
 
 ### Exponentiation: `0 ^ 0`
 
@@ -157,13 +157,13 @@ If I have no apples in my hand and I divide it by no apples in my hand, how many
 
 **Standard behavior:** Undefined.
 
-**Through the original lens:** Which zero is the divisor? Are we asking what is a fish divided by the ocean or a bug divided by the air?
+**Through the original lens:** Which zero is the divisor? No apples — the counting gets tired. The ground — the ocean absorbs the fish.
 
 ### Multiplication: `0 × 0`
 
 **Standard behavior:** Defined. `0 × 0 = 0`. No indeterminacy.
 
-**Through the original lens:** Which zero? Are we multiplying by a quantity of zero or by the categorical origin?
+**Through the original lens:** Which zero? No apples times no apples — still no apples. But can you multiply a fish by the ocean?
 
 ### Limits: `lim(x→0)`
 
@@ -177,7 +177,7 @@ Is L'Hôpital asking "which zero am I holding?" or have symbols stopped making s
 
 **Standard behavior:** Undefined. The limit gives −∞.
 
-**Through the original lens:** If I put a dot on a sheet of paper, could I fit that sheet of paper inside that dot? 
+**Through the original lens:** What power produces no apples? Calculus handles it. What power produces the ground? Can a symbol produce what made symbols possible? 
 
 ## What Did the Collapse Do Across Domains?
 
