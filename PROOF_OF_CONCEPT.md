@@ -207,46 +207,50 @@ IEEE 754 defined two kinds of NaN: Quiet NaN (propagates silently, Origin) and S
 
 Rust's `Option<T>` is the original distinction implemented as a language feature. `None` is Origin. `Some(value)` is Bounded. Pattern matching enforces the interaction axioms at compile time. ML introduced this in 1973. The answer was already there.
 
-### The Isomorphism Claim
+### The Claim
 
-The claim is isomorphism of absorbing behavior under domain operations as described by I1 and I2, not under all possible operations including equality. Division by zero and Russell's paradox are not the same problem. They have the same *boundary shape*, an operation leaving its domain and hitting an absorber that satisfies I1-I3. IEEE 754's `NaN ≠ NaN` is a real distinction but it is a design choice in the 1985 standard, not a structural property of the absorption. The absorbing behavior, `NaN + x = NaN`, is the claim.
+Division by zero and Russell's paradox are not the same problem. But they share the same confusion: the system asked the part to be the whole. An operation that can't produce an output because a symbol was asked to be its own ground.
 
-**Kill switch:** Prove any two of the strong cases have structurally different absorbing behavior under their domain's native operations. One counterexample kills the claim.
+Arithmetic confused the part with the whole first. Every domain built on arithmetic inherited that confusion. Not 13 independent boundaries. One confusion, appearing wherever arithmetic reaches.
 
-#### Strong cases: boundary element formally satisfies I1-I2
+IEEE 754's `NaN ≠ NaN` is a real distinction, but it is a design choice in the 1985 standard, not a structural property of the confusion. The absorbing behavior, `NaN + x = NaN`, is the claim.
 
-| Case | Operation | Domain | Boundary | Standard Response |
-|---|---|---|---|---|
-| Arithmetic | Division | Field ℝ | Zero as divisor | Mark undefined |
-| IEEE 754 | Float arithmetic | Binary ℝ | Invalid operations | Two-sorted NaN |
-| SQL NULL | Any operation | Relational databases | NULL value | Three-valued logic |
-| Set Theory | Set membership | Naive set theory | All sets | Categorical restriction |
-| Logic/Provability | Provability | Formal systems | Gödel sentence | Incompleteness |
-| Truth Values | Truth predicate | Propositions | Liar sentence | Paradox |
-| Computation | Halting | Turing machines | Self-reference | Undecidability |
-| Lambda Calculus | Application | λ-terms | Non-termination (Ω) | Divergence |
-| Category Theory | Hom-functor | Objects with morphisms | Initial object | Structural axiom |
-| HoTT | Universe membership | Types in a universe | Type : Type | Universe tower |
-| Topos Theory | Internal evaluation | Internal objects | The topos itself | Containment axiom |
-| Modal Logic | Modal evaluation | Possible worlds | Kripke frame | Frame axiom |
-| Proof Theory | Cut elimination | Formal proofs | Cut-requiring proofs | Restrict rules |
+**Kill switch:** Prove any domain built on arithmetic can ask the part to be the whole and get a coherent answer. One example kills the claim.
 
-Thirteen domains with formally verifiable absorbing elements. Zero non-isomorphic pairs found. The kill switch has not been triggered.
+#### Domains where the confusion is formally verifiable
 
-#### Analogous cases: boundary pattern similar, absorber claim weaker
+| Case | What was asked | Standard Response |
+|---|---|---|
+| Arithmetic | Zero to be both quantity and ground | Mark undefined |
+| IEEE 754 | A bit pattern to be both number and not-a-number | Two-sorted NaN |
+| SQL NULL | A value to be both present and absent | Three-valued logic |
+| Set Theory | A set to contain its own ground | Categorical restriction |
+| Logic/Provability | A system to prove its own ground | Incompleteness |
+| Truth Values | A sentence to evaluate its own ground | Paradox |
+| Computation | A program to decide its own ground | Undecidability |
+| Lambda Calculus | A term to reduce its own ground | Divergence |
+| Category Theory | An object to be its own initial object | Structural axiom |
+| HoTT | A type to contain its own universe | Universe tower |
+| Topos Theory | An object to evaluate its own topos | Containment axiom |
+| Modal Logic | A world to evaluate its own frame | Frame axiom |
+| Proof Theory | A proof to eliminate its own cut | Restrict rules |
 
-| Case | Operation | Domain | Boundary | Standard Response |
-|---|---|---|---|---|
-| Game Theory | Equilibrium solving | Strategic games | No pure equilibrium | Mixed strategies |
-| Topology | Separation | Topological spaces | Indiscrete topology | Weaken axioms |
-| Linear Logic | Resource consumption | Linear resources | ! modality | ! promotion |
-| Measure Theory | Measure assignment | σ-algebra | Non-measurable sets | Restrict domain |
+Thirteen domains. One confusion. The part was asked to be the whole.
 
-These four domains share the boundary pattern, an operation leaving its domain and the system responding with a structural workaround, but do not have a formal absorbing element satisfying I1-I2 under their native operations. The resemblance is real. The isomorphism claim does not extend to them.
+#### Domains where the pattern is similar but the confusion is weaker
+
+| Case | What was asked | Standard Response |
+|---|---|---|
+| Game Theory | A strategy to be its own equilibrium | Mixed strategies |
+| Topology | A space to separate itself | Weaken axioms |
+| Linear Logic | A resource to be reusable | ! promotion |
+| Measure Theory | A set to measure itself | Restrict domain |
+
+These four share the pattern but the confusion is not formally the same as asking the part to be the whole. The resemblance is real. The claim does not extend to them.
 
 *Physics candidates (renormalization, GR singularities) are structurally motivated analogies, not formally verified. See [NEXT.md](NEXT.md).*
 
-One person, Girard, found 𝒪 twice, once in type theory in 1972, once in resource logic in 1987, without connecting them. The boundary is invisible even to the person standing closest to it.
+One person, Girard, found the confusion twice, once in type theory in 1972, once in resource logic in 1987, without connecting them.
 
 ### Level Invariance
 
