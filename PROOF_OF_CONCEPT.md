@@ -209,9 +209,9 @@ Rust's `Option<T>` is the original distinction implemented as a language feature
 
 ### The Isomorphism Claim
 
-The claim is isomorphism of the absorbing element structure, not of the full domains. Division by zero and Russell's paradox are not the same problem. They have the same *boundary shape*, an operation leaving its domain and hitting an absorber that satisfies I1-I3.
+The claim is isomorphism of absorbing behavior under domain operations as described by I1 and I2, not under all possible operations including equality. Division by zero and Russell's paradox are not the same problem. They have the same *boundary shape*, an operation leaving its domain and hitting an absorber that satisfies I1-I3. IEEE 754's `NaN ≠ NaN` is a real distinction but it is a design choice in the 1985 standard, not a structural property of the absorption. The absorbing behavior, `NaN + x = NaN`, is the claim.
 
-**Kill switch:** Prove any two of the strong cases have structurally different absorbing behavior. One counterexample kills the claim.
+**Kill switch:** Prove any two of the strong cases have structurally different absorbing behavior under their domain's native operations. One counterexample kills the claim.
 
 #### Strong cases: boundary element formally satisfies I1-I2
 
